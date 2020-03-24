@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FleatMarket.Base\FleatMarket.Base.csproj" />
+    <ProjectReference Include="..\FleatMarket.Model.Interface\FleatMarket.Model.Interface.csproj" />
+  </ItemGroup>
+
 </Project>
