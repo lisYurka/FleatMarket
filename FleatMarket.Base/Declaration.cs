@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
+
+namespace FleatMarket.Base
+{
+    public class Declaration
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public DateTime TimeOfCreation { get; set; }
+        public string Description { get; set; }
+
+        public int DeclarationStatusId { get; set; }
+        [ForeignKey("DeclarationStatusId")]
+        public DeclarationStatus DeclarationStatus { get; set; }
+
+        public int CategoryId { get; set; }
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
+
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
+    }
+}
