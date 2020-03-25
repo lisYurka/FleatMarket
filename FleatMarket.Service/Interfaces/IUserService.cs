@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FleatMarket.Base.Interfaces
+namespace FleatMarket.Service.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserService
     {
-        List<User> GetAllUsers();
+        IEnumerable<User> GetAllUsers();
         User GetUserById(int? id);
         void CreateUser(User user);
         void UpdateUser(User user);

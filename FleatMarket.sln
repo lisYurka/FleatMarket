@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Base", "FleatMa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Infrastructure", "FleatMarket.Data\FleatMarket.Infrastructure.csproj", "{59FFE232-9144-49A3-9E76-DAD461E2DC2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleatMarket.Service", "FleatMarket.Service\FleatMarket.Service.csproj", "{444E91C0-CB9E-467D-96D2-F1AB198A92CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{59FFE232-9144-49A3-9E76-DAD461E2DC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59FFE232-9144-49A3-9E76-DAD461E2DC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59FFE232-9144-49A3-9E76-DAD461E2DC2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{444E91C0-CB9E-467D-96D2-F1AB198A92CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{444E91C0-CB9E-467D-96D2-F1AB198A92CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{444E91C0-CB9E-467D-96D2-F1AB198A92CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{444E91C0-CB9E-467D-96D2-F1AB198A92CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{E7814717-FADD-4C14-80FC-388E6B7D25C2} = {82C9A2E8-DB57-44E1-B904-64166BEEB0F7}
 		{37A89836-DD78-47E2-8714-C189E8A4C1B0} = {82C9A2E8-DB57-44E1-B904-64166BEEB0F7}
 		{59FFE232-9144-49A3-9E76-DAD461E2DC2F} = {82C9A2E8-DB57-44E1-B904-64166BEEB0F7}
+		{444E91C0-CB9E-467D-96D2-F1AB198A92CE} = {82C9A2E8-DB57-44E1-B904-64166BEEB0F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DB8402C-CA71-422E-A716-EE4A4EBE4AF0}

@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using FleatMarket.Service.Interfaces;
+using FleatMarket.Service.BusinessLogic;
 
 namespace FleatMarket
 {
@@ -26,8 +28,7 @@ namespace FleatMarket
             services.AddControllersWithViews();
             services.AddTransient<DbContext,DataContext>();
             services.AddTransient<IBaseRepository,BaseRepository>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<BaseRepository>();
+            services.AddTransient<IUserService,UserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

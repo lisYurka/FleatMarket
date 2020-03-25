@@ -7,37 +7,39 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
+using FleatMarket.Service.Interfaces;
+using FleatMarket.Base.Entities;
 
 namespace FleatMarket.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IUserRepository userRepository;
+        private readonly IUserService userService;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository _userRepository)
+        public HomeController(ILogger<HomeController> logger, IUserService _userService)
         {
             _logger = logger;
-            userRepository = _userRepository;
+            userService = _userService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            var users = userRepository.GetAllUsers();
             List<UserViewModel> showUsers = new List<UserViewModel>();
-            foreach(var item in users)
+            userService.GetAllUsers().ToList().ForEach(u =>
             {
-                UserViewModel user = new UserViewModel
+                User user = userService.GetUserById(u.Id);
+                UserViewModel userViewModel = new UserViewModel
                 {
-                    EMail = item.EMail,
-                    IsActive = item.IsActive,
-                    Name = item.Name,
-                    Phone = item.Phone,
-                    Surname = item.Surname,
-                    Role = item.Role.RoleName
+                    EMail = u.EMail,
+                    IsActive = u.IsActive,
+                    Name = u.Name,
+                    Phone = u.Phone,
+                    Surname = u.Surname
                 };
-                showUsers.Add(user);
-            }
+                showUsers.Add(userViewModel);
+            });
             return View(showUsers);
         }
     }

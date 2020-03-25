@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FleatMarket.Base\FleatMarket.Base.csproj" />
     <ProjectReference Include="..\FleatMarket.Data\FleatMarket.Infrastructure.csproj" />
+    <ProjectReference Include="..\FleatMarket.Service\FleatMarket.Service.csproj" />
   </ItemGroup>
 
 
