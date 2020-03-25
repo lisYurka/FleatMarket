@@ -1,9 +1,10 @@
-﻿using FleatMarket.Base;
-using FleatMarket.Model.Interface;
+﻿using FleatMarket.Base.Entities;
+using FleatMarket.Base.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace FleatMarket.Data
 {
@@ -20,7 +21,7 @@ namespace FleatMarket.Data
         {
             IEnumerable<User> users = repository.GetWithInclude<User>("Role");
             //List<User> userList = new List<User>();
-            //foreach(var item in users)
+            //foreach (var item in users)
             //{
             //    Role role = new Role
             //    {
@@ -41,6 +42,7 @@ namespace FleatMarket.Data
             //}
             return users.ToList();
         }
+
         public User GetUserById(int? id)
         {
             if (id != null)
@@ -52,6 +54,7 @@ namespace FleatMarket.Data
             }
             else throw new Exception("Id can't be null!");
         }
+
         public void CreateUser(User user)
         {
             User newUser = new User
@@ -64,8 +67,10 @@ namespace FleatMarket.Data
                 Surname = user.Surname,
                 IsActive = true
             };
+
             repository.Create(newUser);
         }
+
         public void UpdateUser(User user)
         {
             if (user != null)
@@ -83,6 +88,7 @@ namespace FleatMarket.Data
             }
             else throw new Exception("User can't be null!");
         }
+
         public void RemoveUser(int? id)
         {
             if (id != null) {

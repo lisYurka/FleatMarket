@@ -1,4 +1,4 @@
-﻿using FleatMarket.Model.Interface;
+﻿using FleatMarket.Base.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using FleatMarket.Base;
+﻿using FleatMarket.Base.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -115,7 +115,7 @@ namespace FleatMarket.Data
                     EMail = "User1@mail.ru",
                     Id = 1,
                     Name = "Vasya",
-                    Password = "User1",
+                    Password = "user1",
                     Phone = "123456789",
                     RoleId = 1,
                     Surname = "Ivanov",
@@ -125,7 +125,7 @@ namespace FleatMarket.Data
                     EMail = "User2@mail.ru",
                     Id = 2,
                     Name = "Petya",
-                    Password = "User2",
+                    Password = "user2",
                     Phone = "987654321",
                     RoleId = 1,
                     Surname = "Tushenka",
@@ -135,7 +135,7 @@ namespace FleatMarket.Data
                     EMail = "Admin@mail.ru",
                     Id = 3,
                     Name = "Alesha",
-                    Password = "Admin",
+                    Password = "admin",
                     Phone = "192837465",
                     RoleId = 2,
                     Surname = "Popovich",

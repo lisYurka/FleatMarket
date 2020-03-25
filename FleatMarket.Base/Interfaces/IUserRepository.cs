@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FleatMarket.Model.Interface
+namespace FleatMarket.Base.Interfaces
 {
     public interface IUserRepository
     {

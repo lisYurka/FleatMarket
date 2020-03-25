@@ -1,6 +1,6 @@
 using System;
 
-namespace FleatMarket.Models
+namespace FleatMarket.Web.Models
 {
     public class ErrorViewModel
     {

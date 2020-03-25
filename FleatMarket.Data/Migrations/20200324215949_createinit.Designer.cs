@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleatMarket.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200324184050_init")]
-    partial class init
+    [Migration("20200324215949_createinit")]
+    partial class createinit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -110,7 +110,7 @@ namespace FleatMarket.Data.Migrations
                             CategoryId = 1,
                             DeclarationStatusId = 1,
                             Description = "Не упустите момент попасть на российские Мальдивы",
-                            TimeOfCreation = new DateTime(2020, 3, 24, 21, 40, 38, 347, DateTimeKind.Local).AddTicks(3060),
+                            TimeOfCreation = new DateTime(2020, 3, 25, 0, 59, 38, 973, DateTimeKind.Local).AddTicks(3290),
                             Title = "Путевка в Челябинск",
                             UserId = 1
                         },
@@ -120,7 +120,7 @@ namespace FleatMarket.Data.Migrations
                             CategoryId = 5,
                             DeclarationStatusId = 1,
                             Description = "Заберите кота от меня подальше",
-                            TimeOfCreation = new DateTime(2020, 3, 24, 21, 40, 38, 348, DateTimeKind.Local).AddTicks(1983),
+                            TimeOfCreation = new DateTime(2020, 3, 25, 0, 59, 38, 974, DateTimeKind.Local).AddTicks(1679),
                             Title = "Британец короткошерстный",
                             UserId = 2
                         },
@@ -130,7 +130,7 @@ namespace FleatMarket.Data.Migrations
                             CategoryId = 3,
                             DeclarationStatusId = 2,
                             Description = "Увлекательное путешествие в мир волшебства",
-                            TimeOfCreation = new DateTime(2020, 3, 24, 21, 40, 38, 348, DateTimeKind.Local).AddTicks(2024),
+                            TimeOfCreation = new DateTime(2020, 3, 25, 0, 59, 38, 974, DateTimeKind.Local).AddTicks(1718),
                             Title = "Книга Гарри Поттера",
                             UserId = 3
                         });
@@ -236,7 +236,7 @@ namespace FleatMarket.Data.Migrations
                             EMail = "User1@mail.ru",
                             IsActive = true,
                             Name = "Vasya",
-                            Password = "User1",
+                            Password = "user1",
                             Phone = "123456789",
                             RoleId = 1,
                             Surname = "Ivanov"
@@ -247,7 +247,7 @@ namespace FleatMarket.Data.Migrations
                             EMail = "User2@mail.ru",
                             IsActive = true,
                             Name = "Petya",
-                            Password = "User2",
+                            Password = "user2",
                             Phone = "987654321",
                             RoleId = 1,
                             Surname = "Tushenka"
@@ -258,7 +258,7 @@ namespace FleatMarket.Data.Migrations
                             EMail = "Admin@mail.ru",
                             IsActive = true,
                             Name = "Alesha",
-                            Password = "Admin",
+                            Password = "admin",
                             Phone = "192837465",
                             RoleId = 2,
                             Surname = "Popovich"

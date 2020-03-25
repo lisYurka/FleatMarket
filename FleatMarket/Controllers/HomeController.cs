@@ -5,11 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using FleatMarket.Models;
-using FleatMarket.Model.Interface;
-using FleatMarket.ViewModel;
+using FleatMarket.Web.Models;
+using FleatMarket.Base.Interfaces;
+using FleatMarket.Web.ViewModel;
 
-namespace FleatMarket.Controllers
+namespace FleatMarket.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -31,12 +31,11 @@ namespace FleatMarket.Controllers
                 UserViewModel user = new UserViewModel
                 {
                     EMail = item.EMail,
-                    Id = item.Id,
                     IsActive = item.IsActive,
                     Name = item.Name,
-                    Password = item.Password,
                     Phone = item.Phone,
-                    Surname = item.Surname
+                    Surname = item.Surname,
+                    Role = item.Role.RoleName
                 };
                 showUsers.Add(user);
             }

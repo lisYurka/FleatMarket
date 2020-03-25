@@ -3,19 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket", "FleatMarket\FleatMarket.csproj", "{E7814717-FADD-4C14-80FC-388E6B7D25C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Web", "FleatMarket\FleatMarket.Web.csproj", "{E7814717-FADD-4C14-80FC-388E6B7D25C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain Model", "Domain Model", "{82C9A2E8-DB57-44E1-B904-64166BEEB0F7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{840C105A-DAAE-4DF7-953A-7784D3CBFBE8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Model.Interface", "FleatMarket.Model.Interface\FleatMarket.Model.Interface.csproj", "{9B635580-3948-42E6-BD81-04FFBC00130F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FleatMarketProject", "FleatMarketProject", "{82C9A2E8-DB57-44E1-B904-64166BEEB0F7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Base", "FleatMarket.Base\FleatMarket.Base.csproj", "{37A89836-DD78-47E2-8714-C189E8A4C1B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Data", "FleatMarket.Data\FleatMarket.Data.csproj", "{59FFE232-9144-49A3-9E76-DAD461E2DC2F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Business", "FleatMarket.Business\FleatMarket.Business.csproj", "{8E01C5A4-8326-4B10-BD30-CF4B0C5890D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +21,6 @@ Global
 		{E7814717-FADD-4C14-80FC-388E6B7D25C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7814717-FADD-4C14-80FC-388E6B7D25C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7814717-FADD-4C14-80FC-388E6B7D25C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B635580-3948-42E6-BD81-04FFBC00130F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B635580-3948-42E6-BD81-04FFBC00130F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B635580-3948-42E6-BD81-04FFBC00130F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B635580-3948-42E6-BD81-04FFBC00130F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{37A89836-DD78-47E2-8714-C189E8A4C1B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{37A89836-DD78-47E2-8714-C189E8A4C1B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37A89836-DD78-47E2-8714-C189E8A4C1B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,19 +29,14 @@ Global
 		{59FFE232-9144-49A3-9E76-DAD461E2DC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59FFE232-9144-49A3-9E76-DAD461E2DC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59FFE232-9144-49A3-9E76-DAD461E2DC2F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E01C5A4-8326-4B10-BD30-CF4B0C5890D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E01C5A4-8326-4B10-BD30-CF4B0C5890D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E01C5A4-8326-4B10-BD30-CF4B0C5890D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E01C5A4-8326-4B10-BD30-CF4B0C5890D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9B635580-3948-42E6-BD81-04FFBC00130F} = {82C9A2E8-DB57-44E1-B904-64166BEEB0F7}
+		{E7814717-FADD-4C14-80FC-388E6B7D25C2} = {82C9A2E8-DB57-44E1-B904-64166BEEB0F7}
 		{37A89836-DD78-47E2-8714-C189E8A4C1B0} = {82C9A2E8-DB57-44E1-B904-64166BEEB0F7}
-		{59FFE232-9144-49A3-9E76-DAD461E2DC2F} = {840C105A-DAAE-4DF7-953A-7784D3CBFBE8}
-		{8E01C5A4-8326-4B10-BD30-CF4B0C5890D7} = {840C105A-DAAE-4DF7-953A-7784D3CBFBE8}
+		{59FFE232-9144-49A3-9E76-DAD461E2DC2F} = {82C9A2E8-DB57-44E1-B904-64166BEEB0F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DB8402C-CA71-422E-A716-EE4A4EBE4AF0}

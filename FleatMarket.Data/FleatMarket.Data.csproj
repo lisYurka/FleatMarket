@@ -17,11 +17,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FleatMarket.Base\FleatMarket.Base.csproj" />
-    <ProjectReference Include="..\FleatMarket.Model.Interface\FleatMarket.Model.Interface.csproj" />
   </ItemGroup>
 
 </Project>
