@@ -2,10 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
-namespace FleatMarket.Data
+namespace FleatMarket.Infrastructure.Repositories
 {
     public class BaseRepository:IBaseRepository
     {

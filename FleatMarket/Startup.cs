@@ -1,4 +1,5 @@
-using FleatMarket.Data;
+using FleatMarket.Infrastructure.Data;
+using FleatMarket.Infrastructure.Repositories;
 using FleatMarket.Base.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

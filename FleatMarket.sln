@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FleatMarketProject", "Fleat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Base", "FleatMarket.Base\FleatMarket.Base.csproj", "{37A89836-DD78-47E2-8714-C189E8A4C1B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Data", "FleatMarket.Data\FleatMarket.Data.csproj", "{59FFE232-9144-49A3-9E76-DAD461E2DC2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleatMarket.Infrastructure", "FleatMarket.Data\FleatMarket.Infrastructure.csproj", "{59FFE232-9144-49A3-9E76-DAD461E2DC2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

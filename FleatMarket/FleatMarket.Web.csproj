@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FleatMarket.Data\FleatMarket.Data.csproj" />
+    <ProjectReference Include="..\FleatMarket.Data\FleatMarket.Infrastructure.csproj" />
   </ItemGroup>
 
 

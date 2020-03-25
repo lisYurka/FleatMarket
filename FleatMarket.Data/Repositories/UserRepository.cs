@@ -2,11 +2,10 @@
 using FleatMarket.Base.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace FleatMarket.Data
+namespace FleatMarket.Infrastructure.Repositories
 {
     public class UserRepository:IUserRepository
     {
