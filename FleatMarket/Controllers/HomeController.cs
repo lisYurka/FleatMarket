@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using FleatMarket.Web.Models;
 using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
 
@@ -40,17 +39,6 @@ namespace FleatMarket.Web.Controllers
                 showUsers.Add(user);
             }
             return View(showUsers);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
