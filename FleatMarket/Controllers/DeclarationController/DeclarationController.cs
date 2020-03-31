@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;

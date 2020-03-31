@@ -1,18 +1,27 @@
 ﻿using FleatMarket.Base.Entities;
 using FleatMarket.Base.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 
 namespace FleatMarket.Service.BusinessLogic
 {
-    public class UserService : IUserService
+    public class UserService:IUserService
     {
         private readonly IBaseRepository repository;
+        //private readonly SignInManager<User> signInManager;
+        //private readonly UserManager<User> userManager;
+        //private readonly RoleManager<User> roleManager;
         public UserService(IBaseRepository _repository)
         {
             repository = _repository;
+            //signInManager = _signInManager;
+            //userManager = _userManager;
+            //roleManager = _roleManager;
         }
 
         public IEnumerable<User> GetAllUsersWithRoles()

@@ -1,5 +1,8 @@
 ﻿using FleatMarket.Base.Entities;
+using Microsoft.AspNetCore.Authentication;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace FleatMarket.Base.Interfaces

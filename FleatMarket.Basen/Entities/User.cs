@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using IdentityModel;
+using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace FleatMarket.Base.Entities
 {
@@ -21,7 +25,7 @@ namespace FleatMarket.Base.Entities
 
     //    public List<Declaration> Declarations { get; set; }
     //}
-    public class User : IdentityUser
+    public class User:IdentityUser
     {
         public string Name { get; set; }
         public string Surname { get; set; }

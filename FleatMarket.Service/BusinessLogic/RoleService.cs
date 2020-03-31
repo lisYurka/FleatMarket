@@ -1,13 +1,10 @@
 ﻿using FleatMarket.Base.Entities;
 using FleatMarket.Base.Interfaces;
-using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FleatMarket.Service.BusinessLogic
 {
-    public class RoleService:IRoleService
+    public class RoleService : IRoleService
     {
         private readonly IBaseRepository repository;
         public RoleService(IBaseRepository _repository)

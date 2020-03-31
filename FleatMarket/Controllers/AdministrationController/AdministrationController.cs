@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using FleatMarket.Base.Entities;
 using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FleatMarket.Web.Controllers.AdministrationController
 {
