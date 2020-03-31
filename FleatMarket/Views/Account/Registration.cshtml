@@ -1,0 +1,73 @@
+﻿@model RegisterViewModel
+<body class="registration_main">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="card shadow p-3 mb-3 mt-5 bg-white rounded" style="width: 21rem;">
+                <div class="card-body">
+                    <h4 class="card-title text-md-left">Регистрация</h4>
+                    <form asp-controller="Account" asp-action="Registration" method="post" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="input_EMail" style="font-size:0.8em;">Электронная почта</label>
+                            <input type="email" id="input_EMail" required placeholder="E-Mail" class="form-control" asp-for="EMail" />
+                            <div class="valid-feedback">
+                                Отлично!
+                            </div>
+                            <div class="invalid-feedback">
+                                Проверьте правильность заполнения!
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" style="font-size:0.8em;">Имя</label>
+                            <input type="text" id="inputName" required placeholder="Name" class="form-control" asp-for="Name" />
+                            <div class="valid-feedback">
+                                Отлично!
+                            </div>
+                            <div class="invalid-feedback">
+                                Проверьте правильность заполнения!
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputSurname" style="font-size:0.8em;">Фамилия</label>
+                            <input type="text" id="inputSurname" required placeholder="Surname" class="form-control" asp-for="Surname" />
+                            <div class="valid-feedback">
+                                Отлично!
+                            </div>
+                            <div class="invalid-feedback">
+                                Проверьте правильность заполнения!
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input_Phone" style="font-size:0.8em;">Телефон</label>
+                            <input type="tel" id="input_Phone" required placeholder="Phone" class="form-control" asp-for="Phone" />
+                            <div class="valid-feedback">
+                                Отлично!
+                            </div>
+                            <div class="invalid-feedback">
+                                Проверьте правильность заполнения!
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input_Password" style="font-size:0.8em;">Пароль</label>
+                            <input type="password" id="input_Password" required placeholder="Password" class="form-control" asp-for="Password" />
+                            <div class="valid-feedback">
+                                Отлично!
+                            </div>
+                            <div class="invalid-feedback">
+                                Проверьте правильность заполнения!
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-secondary btn-login text-white" value="Зарегистрироваться" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="card_foot">
+                <p>
+                    <a asp-controller="Account" asp-action="Login" id="showLogin">Вход</a> <!---->
+                    для тех, кто уже зарегистрирован
+                </p>
+            </div>
+        </div>
+    </div>
+</body>

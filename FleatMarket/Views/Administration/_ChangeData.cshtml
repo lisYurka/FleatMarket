@@ -1,0 +1,74 @@
+﻿@model UserViewModel
+
+<div class="form-group row">
+    <label for="Id" class="col-sm-2 col-form-label">Id</label>
+    <div class="col-sm-10" id="Id">
+        @Model.Id
+        <input type="text" name="userViewModel.Id" value=@Model.Id hidden />
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="EMail" class="col-sm-2 col-form-label">EMail</label>
+    <div class="col-sm-10" id="EMail">
+        <input class="form-control" type="text" id="adminChangeUserMail" placeholder="Mail" name="userViewModel.EMail" value=@Model.EMail />
+    </div>
+</div>
+<div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">Имя</label>
+    <div class="col-sm-10" id="Name">
+        <input class="form-control" type="text" id="adminChangeUserName" placeholder="Name" name="userViewModel.Name" value=@Model.Name />
+    </div>
+</div>
+<div class="form-group row">
+    <label for="Surname" class="col-sm-2 col-form-label">Фамилия</label>
+    <div class="col-sm-10" id="Surname">
+        <input class="form-control" type="text" id="adminChangeUserSurname" placeholder="Surname" name="userViewModel.Surname" value=@Model.Surname />
+    </div>
+</div>
+<div class="form-group row">
+    <label for="Phone" class="col-sm-2 col-form-label">Телефон</label>
+    <div class="col-sm-10" id="Phone">
+        <input class="form-control" type="text" id="adminChangeUserPhone" placeholder="Phone" name="userViewModel.Phone" value=@Model.Phone />
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="selectRole" class="col-sm-2 col-form-label">Роль</label>
+    <div class="col-sm-10" id="selectRole">
+        <select name="userViewModel.Role" class="form-control">
+            @foreach (var item in Model.RoleList)
+            {
+                @if (Model.Role == item.RoleName)
+                {
+                    <option value=@item.RoleId selected>@item.RoleName</option>
+                }
+                else
+                {
+                    <option value=@item.RoleId>@item.RoleName</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="userStatus" class="col-sm-2 col-form-label">Статус</label>
+    <div class="col-sm-10" id="userStatus">
+        @if (Model.IsActive == true)
+        {
+            <span>Активный</span>
+        }
+        else
+        {
+            <span>Заблокирован</span>
+        }
+    </div>
+</div>
+
+<div class="form-group row">
+    <input class="ml-5 btn btn-success" id=@Model.Id name="UpdateUserButtonAction" type="button" value="Подтвердить">
+    <div name="RemoveLoader" style="display:none" id=@Model.Id class="spinner-border ml-5" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>

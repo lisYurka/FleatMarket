@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
-using FleatMarket.Service.Interfaces;
-using FleatMarket.Base.Entities;
 
 namespace FleatMarket.Web.Controllers
 {
@@ -27,16 +25,17 @@ namespace FleatMarket.Web.Controllers
         public IActionResult Index()
         {
             List<UserViewModel> showUsers = new List<UserViewModel>();
-            userService.GetAllUsers().ToList().ForEach(u =>
+            userService.GetAllUsersWithRoles().ToList().ForEach(u =>
             {
-                User user = userService.GetUserById(u.Id);
                 UserViewModel userViewModel = new UserViewModel
                 {
-                    EMail = u.EMail,
+                    Id = u.Id,
                     IsActive = u.IsActive,
-                    Name = u.Name,
-                    Phone = u.Phone,
-                    Surname = u.Surname
+                    EMail = u.Email,
+                    Name = u.UserName,
+                    Phone = u.PhoneNumber,
+                    Role = u.Role.RoleName
+                    //Surname = u.Surname
                 };
                 showUsers.Add(userViewModel);
             });

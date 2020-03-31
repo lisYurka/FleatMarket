@@ -1,0 +1,54 @@
+﻿@model UserViewModel
+
+<div class="card-title text-center">
+    <h4>Id пользователя: @Model.Id</h4>
+</div>
+<div class="card-body">
+    <div class="form-group row">
+        <label for="EMail" class="col-sm-2 col-form-label">EMail</label>
+        <div class="col-sm-10" id="EMail">
+            @Model.EMail
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Phone" class="col-sm-2 col-form-label">Телефон</label>
+        <div class="col-sm-10" id="Phone">
+            @Model.Phone
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="Role" class="col-sm-2 col-form-label">Роль</label>
+        <div class="col-sm-10" id="Role">
+            @Model.Role
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="IsActive" class="col-sm-2 col-form-label">Статус</label>
+        <div class="col-sm-10" id="IsActive">
+            @if (Model.IsActive)
+            {
+                <div id=@Model.Id class="BlockStatus">Активный</div>
+            }
+            else
+            {
+                <div id=@Model.Id class="BlockStatus">Заблокирован</div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<div class="card-footer">
+    <div class="form-inline">
+        <div>
+            <input id=@Model.Id class="DeleteUserButton btn btn-danger mb-1" type="button" value="Удалить" />
+            <div name="RemoveLoader" style="display:none" id=@Model.Id class="spinner-border ml-5" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div><input id="@Model.Id" class="ChangeUserButton btn btn-warning mb-1" type="button" value="Изменить данные"></div>
+        <div>
+            <input id="@Model.Id" class="BlockUserButton btn btn-warning mb-1" type="button" value="Изменить статус">
+        </div>
+    </div>
+</div>

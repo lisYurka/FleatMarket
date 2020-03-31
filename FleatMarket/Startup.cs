@@ -7,8 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FleatMarket.Service.Interfaces;
 using FleatMarket.Service.BusinessLogic;
+using FleatMarket.Base.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace FleatMarket
 {
@@ -24,11 +27,24 @@ namespace FleatMarket
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MarketDb")));
+            services.AddScoped<DbContext, DataContext>();
+            services.AddTransient<IBaseRepository, BaseRepository>();
+            services.AddTransient<IUserService,UserService>();
+            services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddScoped<SignInManager<User>>();
+            services.AddScoped<RoleManager<Role>>();
+            services.AddScoped<UserManager<User>>();
+            services.AddIdentity<User, Role>().AddDefaultTokenProviders().AddRoles<Role>().AddEntityFrameworkStores<DataContext>();
+
+            services.AddAuthentication().AddGoogle(options =>
+                {
+                    options.ClientId = "875591813759-caesbn5n0qmu8gu2ai2ae418riaukaba.apps.googleusercontent.com";
+                    options.ClientSecret = "eaI3YGrFJxBGGlo3Mehg-eM-";
+                });
+
             services.AddMvc();
             services.AddControllersWithViews();
-            services.AddTransient<DbContext,DataContext>();
-            services.AddTransient<IBaseRepository,BaseRepository>();
-            services.AddTransient<IUserService,UserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,12 +58,12 @@ namespace FleatMarket
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
             app.UseRouting();
-            app.UseCookiePolicy();
             app.UseAuthorization();
+            app.UseCookiePolicy();
 
             app.UseEndpoints(endpoints =>
             {
@@ -55,6 +71,7 @@ namespace FleatMarket
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

@@ -1,0 +1,62 @@
+﻿@model LoginViewModel
+<body class="login_main">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="card shadow p-3 mb-3 mt-5 bg-white rounded" style="width: 21rem;" ><!--сделать вертикальное выравнивание-->
+                <div class="card-body">
+                    <h4 class="card-title text-md-left">Вход</h4>
+                    <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@Model.ReturnUrl" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="inputEMail" style="font-size:0.8em;">Электронная почта</label>
+                            <input type="email" id="inputEMail" required placeholder="E-Mail" class="form-control" asp-for="EMail" />
+                            <div class="valid-feedback">
+                                Отлично!
+                            </div>
+                            <div class="invalid-feedback">
+                                Проверьте правильность заполнения!
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" style="font-size:0.8em;">Пароль</label>
+                            <input type="password" id="inputPassword" required placeholder="Password" class="form-control" asp-for="Password" />
+                            <div class="valid-feedback">
+                                Отлично!
+                            </div>
+                            <div class="invalid-feedback">
+                                Проверьте правильность заполнения!
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-secondary btn-login disabled text-white" value="Войти" />
+                    </form>
+                    @if (Model.ExternalLogins.Count == 0)
+                    {
+                        <div>No external logins</div>
+                    }
+                    else
+                    {
+                        <form method="post" asp-controller="Account" asp-action="ExternalLogin" asp-route-url="@Model.ReturnUrl">
+                            <div class="d-flex flex-column mt-md-4 mt-3">
+                                <label for="googleAuth" style="font-size:0.8rem;">Войти с помощью соцсетей</label>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="col-2 border pt-0 d-flex justify-content-center bg-white" name="provider"
+                                            value="@provider.Name" title="Login with ur @provider.DisplayName acc">
+                                        <img src="~/images/google.jpg" style="height:30px;" />
+                                    </button>
+                                }
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <p>
+                <a asp-controller="Account" asp-action="Registration">Регистрация</a>
+                для тех, кто первый раз най сайте
+            </p>
+        </div>
+    </div>
+</body>
+
+

@@ -65,7 +65,23 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
+  background-color:white;
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+.login_main, .registration_main {
+    background-color: #e7edf3;
+}
+
+textarea{
+    resize:none;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }

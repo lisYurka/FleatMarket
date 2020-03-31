@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace FleatMarket.Web.ViewModel
 {
-    public class UserViewModel
+    public class RegisterViewModel
     {
-        public string Id { get; set; }
+        //[Required]
         public string Name { get; set; }
-        public string Surname { get; set; }
-        public string EMail { get; set; }
-        public string Phone { get; set; }
-        public bool IsActive { get; set; }
-        public string Role { get; set; }
 
-        public List<UserRoleViewModel> RoleList { get; set; }
+        //[Required]
+        public string Surname { get; set; }
+
+        //[Required]
+        //[DataType(DataType.EmailAddress)]
+        public string EMail { get; set; }
+
+        //[Required]
+        public string Phone { get; set; }
+
+        //[Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }
