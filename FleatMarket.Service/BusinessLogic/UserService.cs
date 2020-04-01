@@ -20,6 +20,11 @@ namespace FleatMarket.Service.BusinessLogic
             return repository.GetWithInclude<User>("Role");
         }
 
+        public User GetWithRoleByStringId(string id)
+        {
+            return repository.GetWithIncludeById<User>(id,"Role");
+        }
+
         public User GetUserById(int? id)
         {
             if (id != null)

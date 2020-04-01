@@ -57,6 +57,12 @@
                         <li class="nav-item">
                             <a class="btn btn-info" asp-controller="Administration" asp-action="AllUsers">панель админа</a>
                         </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-info" asp-controller="" asp-action="">Ура, наконец</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -49,7 +49,6 @@ namespace FleatMarket.Web.Controllers.UserController
             if (ModelState.IsValid)
             {
                 var user = userService.GetAllUsersWithRoles().FirstOrDefault(q => q.Email == login.EMail);
-
                 if (user != null)
                 {
                     var result = await signInManager.PasswordSignInAsync(user, login.Password, isPersistent: false, false);
@@ -122,8 +121,11 @@ namespace FleatMarket.Web.Controllers.UserController
                             RoleId = role.Id
                         };
 
-                        //await userManager.CreateAsync(user);
+                        //var result = await userManager.CreateAsync(user);
+                        //if (result.Succeeded)
+                        //    await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role.Name));
                         await userService.CreateUserAsync(user);
+                        await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role.Name));
                     }
                     await userManager.AddLoginAsync(user, info);
                     await signInManager.SignInAsync(user, isPersistent: false);
@@ -160,8 +162,12 @@ namespace FleatMarket.Web.Controllers.UserController
                 };
 
                 var result = await userManager.CreateAsync(user, register.Password);
+
                 if (result.Succeeded)
+                {
+                    await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role.Name));
                     return RedirectToAction("Login", "Account");
+                }
                 else
                 {
                     foreach (var item in result.Errors)

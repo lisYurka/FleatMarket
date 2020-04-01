@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using FleatMarket.Base.Entities;
 using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FleatMarket.Web.Controllers.AdministrationController
@@ -10,11 +14,14 @@ namespace FleatMarket.Web.Controllers.AdministrationController
     {
         private readonly IUserService userService;
         private readonly IRoleService roleService;
+
+        private readonly UserManager<User> userManager;
         public AdministrationController(IUserService _userService,
-            IRoleService _roleService)
+            IRoleService _roleService, UserManager<User> _userManager)
         {
             userService = _userService;
             roleService = _roleService;
+            userManager = _userManager;
         }
 
         [HttpGet]
@@ -79,10 +86,10 @@ namespace FleatMarket.Web.Controllers.AdministrationController
         }
 
         [HttpPost]
-        public IActionResult UpdateUser(UserViewModel userViewModel)
+        public async Task<IActionResult> UpdateUser(UserViewModel userViewModel)
         {
             var role = roleService.GetRoles().Where(r => r.Id == userViewModel.Role).FirstOrDefault();
-            var user = userService.GetUserByStringId(userViewModel.Id);
+            var user = userService.GetWithRoleByStringId(userViewModel.Id);
 
             user.Email = userViewModel.EMail;
             user.IsActive = userViewModel.IsActive;
@@ -94,6 +101,7 @@ namespace FleatMarket.Web.Controllers.AdministrationController
             userViewModel.Role = role.RoleName;
 
             userService.UpdateUser(user);
+            //await userManager.ReplaceClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), "User"), new Claim(ClaimTypes.Role.ToString(),"Admin"));
             return PartialView("_User", userViewModel);
         }
 
