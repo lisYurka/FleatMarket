@@ -22,7 +22,7 @@ namespace FleatMarket.Service.BusinessLogic
 
         public User GetWithRoleByStringId(string id)
         {
-            return repository.GetWithIncludeById<User>(id,"Role");
+            return repository.GetWithIncludeByStringId<User>(id,"Role");
         }
 
         public User GetUserById(int? id)
@@ -53,7 +53,7 @@ namespace FleatMarket.Service.BusinessLogic
         {
             if (email != null)
             {
-                User user = repository.GetAll<User>().FirstOrDefault(m => m.Email == email);
+                User user = repository.GetWithInclude<User>("Role").FirstOrDefault(m => m.Email == email);
                 return user;
             }
             else throw new Exception("EMail can't be null!");
@@ -104,7 +104,7 @@ namespace FleatMarket.Service.BusinessLogic
         {
             if (id != null)
             {
-                var user = repository.GetWithIncludeById<User>(id, "Role");
+                var user = repository.GetWithIncludeByStringId<User>(id, "Role");
                 return user.Role.RoleName;
             }
             else return null;
@@ -112,7 +112,7 @@ namespace FleatMarket.Service.BusinessLogic
 
         public bool IsInRole(string userId, string roleName)
         {
-            var user = repository.GetWithIncludeById<User>(userId, "Role");
+            var user = repository.GetWithIncludeByStringId<User>(userId, "Role");
             if (user.Role.RoleName == roleName)
                 return true;
             else return false;

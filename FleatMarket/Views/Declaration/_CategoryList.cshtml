@@ -1,9 +1,8 @@
 ﻿@foreach (var item in Model.Categories)
 {
-    <div class="form-control btn d-flex justify-content-start" id="@item.Id" 
+    <div class="form-control ChooseCategory btn d-flex justify-content-start" id="category_element_@item.Id" 
          onmouseover="overCategoryBtn(@item.Id)" 
-         onmouseout="outOfCategoryBtn(@item.Id)"
-         onclick="clickCategoryBtn(@item.Id)">
+         onmouseout="outOfCategoryBtn(@item.Id)">
         @item.CategoryName
     </div>
 }

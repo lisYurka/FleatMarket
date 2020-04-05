@@ -4,77 +4,81 @@
     <div class="row mt-sm-5">
         <h3>Подача объявления</h3>
     </div>
-    <div class="row mt-sm-4">
-        <div class="form-group col-8 col-sm-7 col-md-6" role="group">
-            <label for="declar_title" class="font-weight-normal">Название товара *</label>
-            <input type="text" id="declar_title" placeholder="Например, кот-засранец" name="" class="form-control" />
+    <form asp-action="AddDeclaration" asp-controller="Declaration" method="post" id="CreateDeclarationForm">
+        <input type="text" id="@Model.AuthorId" asp-for="AuthorId" class="declarAuthorId" hidden />
+        <div class="row mt-sm-4">
+            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+                <label for="declar_title" class="font-weight-normal">Название товара *</label>
+                <input type="text" id="declar_title" placeholder="Например, кот-засранец" asp-for="Title" class="form-control" />@*name="addDeclaration.Title"*@
+            </div>
         </div>
-    </div>
-    <div class="row mt-sm-3">
-        <div class="form-group col-8 col-sm-7 col-md-6">
-            <label for="category_choose" class="font-weight-bold">Выбор категории *</label>
-            <div class="card" id="category_choose">
-                <div class="card-body">
-                    @Html.Partial("_CategoryList")
+        <div class="row mt-sm-3">
+            <div class="form-group col-8 col-sm-7 col-md-6">
+                <label for="category_choose" class="font-weight-bold">Выбор категории *</label>
+                <div class="card" id="category_choose">
+                    <div class="card-body">
+                        @Html.Partial("_CategoryList")
+                    </div>
+                    <input type="text" id="choosenCategoryId" name="category" hidden />
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row mt-sm-3">
-        <div class="form-group col-8 col-sm-7 col-md-6" role="group">
-            <label for="declar_description" class="font-weight-bold">Описание *</label>
-            <textarea class="form-control" id="declar_description" name="" rows="4"></textarea>
-        </div>
-    </div>
-    <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-md-3"/>
-    <!--блок о цене-->
-    <h4 class="mt-sm-2 mb-sm-3">Цена</h4>
-    <div class="row mt-sm-3">
-        <div class="form-group col-8 col-sm-7 col-md-6">
-            <div class="btn-group btn-group-toggle col-12 p-0 mb-2" role="group" data-toggle="buttons">
-                <button type="button" id="pricedProduct" class="btn" onmousedown="checkForPrice()"
-                        style="background-color:#4cd4a9; color:white;border-color:#4cd4a9;">
-                    Цена
-                </button>
-                <button type="button" id="freeProduct" class="btn" onmousedown="checkForFree()"
-                        style="background-color:white; color:#4cd4a9; border-color:#4cd4a9;">
-                    Бесплатно
-                </button>
-            </div>
-            <div class="form-row pl-1" id="priceInputLabel">
-                <input class="form-control mt-3 col-8" id="inputPrice" type="number" min="1" step="any" placeholder="Например, 99.95" />
-                <label for="inputPrice" class="text-justify col-2 text-center my-4">BYN</label>
-            </div>
-            <div class="custom-control custom-checkbox mt-1">
-                <input type="checkbox" class="custom-control-input" id="isExchanged"/>
-                <label class="custom-control-label" for="isExchanged" style="cursor:pointer;">Возможен обмен</label>
+        <div class="row mt-sm-3">
+            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+                <label for="declar_description" class="font-weight-bold">Описание *</label>
+                <textarea class="form-control" id="declar_description" asp-for="Description" rows="4"></textarea>@*name="addDeclaration.Description"*@
             </div>
         </div>
-    </div>
-    <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-2 mb-md-3"/>
-    <!--блок о продавце-->
-    <h4 class="mt-sm-2 mb-sm-3">О продавце</h4>
-    <div class="row mt-sm-3">
-        <div class="form-group col-8 col-sm-7 col-md-6" role="group">
-            <label for="inputName">Имя</label>
-            <input type="text" class="form-control col-md-8 col-sm-9 col-10" id="inputName" placeholder="Имя">
+        <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-md-3" />
+        <!--блок о цене-->
+        <h4 class="mt-sm-2 mb-sm-3">Цена</h4>
+        <div class="row mt-sm-3">
+            <div class="form-group col-8 col-sm-7 col-md-6">
+                <div class="btn-group btn-group-toggle col-12 p-0 mb-2" role="group" data-toggle="buttons">
+                    <button type="button" id="pricedProduct" class="btn" onmousedown="checkForPrice()"
+                            style="background-color:#4cd4a9; color:white;border-color:#4cd4a9;">
+                        Цена
+                    </button>
+                    <button type="button" id="freeProduct" class="btn" onmousedown="checkForFree()"
+                            style="background-color:white; color:#4cd4a9; border-color:#4cd4a9;">
+                        Бесплатно
+                    </button>
+                </div>
+                <div class="form-row pl-1" id="priceInputLabel">
+                    <input class="form-control mt-3 col-8" id="inputPrice" type="text" placeholder="Например, 99.95" asp-for="Price" />@*name="addDeclaration.Price"*@
+                    <label for="inputPrice" class="text-justify col-2 text-center my-4">BYN</label>
+                </div>
+                <div class="custom-control custom-checkbox mt-1">
+                    <input type="checkbox" class="custom-control-input" id="isExchanged" />
+                    <label class="custom-control-label" for="isExchanged" style="cursor:pointer;">Возможен обмен</label>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row mt-sm-1">
-        <div class="form-group col-8 col-sm-7 col-md-6" role="group">
-            <label for="inputEMail">E-Mail</label>
-            <input type="email" class="form-control col-md-8 col-sm-9 col-10" id="inputEMail" placeholder="E-Mail">
+        <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-2 mb-md-3" />
+        <!--блок о продавце-->
+        <h4 class="mt-sm-2 mb-sm-3">О продавце</h4>
+        <div class="row mt-sm-3">
+            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+                <label for="inputName">Имя</label>
+                <input type="text" class="form-control col-md-8 col-sm-9 col-10" id="inputUserName" asp-for="AuthorName" placeholder="Имя">@*name="addDeclaration.AuthorName"*@
+            </div>
         </div>
-    </div>
-    <div class="row mt-sm-1">
-        <div class="form-group col-8 col-sm-7 col-md-6" role="group">
-            <label for="inputPhone">Телефон</label>
-            <input type="tel" class="form-control col-md-8 col-sm-9 col-10" id="inputPhone" placeholder="Телефон">
+        <div class="row mt-sm-1">
+            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+                <label for="inputEMail">E-Mail</label>
+                <input type="email" class="form-control col-md-8 col-sm-9 col-10" id="inputUserEMail" asp-for="AuthorMail" placeholder="E-Mail">@*name="addDeclaration.AuthorMail"*@
+            </div>
         </div>
-    </div>
-    <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-3"/>
-    <!--завершить оформление-->
-    <div class="row mt-sm-3 col-8 col-sm-7 col-md-6">
-        <input type="submit" class="btn btn-success col-6" id="successAddingDeclaration" value="Завершить"/>
-    </div>
+        <div class="row mt-sm-1">
+            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+                <label for="inputPhone">Телефон</label>
+                <input type="tel" class="form-control col-md-8 col-sm-9 col-10" id="inputUserPhone" asp-for="AuthorPhone" placeholder="Телефон">@*name="addDeclaration.AuthorPhone"*@
+            </div>
+        </div>
+        <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-3" />
+        <!--завершить оформление-->
+        <div class="row mt-sm-3 col-8 col-sm-7 col-md-6">
+            <input type="submit" class="btn btn-success col-6" id="successAddingDeclaration" value="Завершить" />
+        </div>
+    </form>
 </div>

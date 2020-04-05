@@ -3,17 +3,19 @@ using System.Collections.Generic;
 
 namespace FleatMarket.Web.ViewModel
 {
-    public class AddDeclarationViewModel
+    public class OneDeclarationViewModel
     {
-        public List<CategoryViewModel> Categories { get; set; }
-
-        public string AuthorId { get; set; }
-        public string AuthorName { get; set; }
-        public string AuthorMail { get; set; }
-        public string AuthorPhone { get; set; }
+        public int Id { get; set; }
+        public string CategoryName { get; set; }
         public int CategoryId { get; set; }
+        public string AuthorId { get; set; }
+        public string AuthorMail { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public DateTime Date { get; set; }
+        public string StatusName { get; set; }
+        public int StatusId { get; set; }
+
         public double Price { get; set; }
     }
 }

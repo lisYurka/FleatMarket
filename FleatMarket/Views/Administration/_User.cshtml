@@ -37,8 +37,8 @@
     </div>
 </div>
 
-
-<div class="card-footer">
+@if(Model.Role == "user") { 
+<div class="card-footer cardShow">
     <div class="form-inline">
         <div>
             <input id=@Model.Id class="DeleteUserButton btn btn-danger mb-1" type="button" value="Удалить" />
@@ -52,3 +52,4 @@
         </div>
     </div>
 </div>
+}

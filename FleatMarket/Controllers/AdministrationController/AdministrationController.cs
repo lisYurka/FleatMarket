@@ -7,6 +7,7 @@ using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FleatMarket.Web.Controllers.AdministrationController
 {
@@ -16,12 +17,14 @@ namespace FleatMarket.Web.Controllers.AdministrationController
         private readonly IRoleService roleService;
 
         private readonly UserManager<User> userManager;
+        private readonly SignInManager<User> signInManager;
         public AdministrationController(IUserService _userService,
-            IRoleService _roleService, UserManager<User> _userManager)
+            IRoleService _roleService, UserManager<User> _userManager, SignInManager<User> _signInManager)
         {
             userService = _userService;
             roleService = _roleService;
             userManager = _userManager;
+            signInManager = _signInManager;
         }
 
         [HttpGet]
@@ -100,8 +103,21 @@ namespace FleatMarket.Web.Controllers.AdministrationController
 
             userViewModel.Role = role.RoleName;
 
-            userService.UpdateUser(user);
-            //await userManager.ReplaceClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), "User"), new Claim(ClaimTypes.Role.ToString(),"Admin"));
+            //userService.UpdateUser(user);
+            //await userManager.UpdateAsync(user);
+            //await userManager.RemoveClaimAsync(user, new ClaimsIdentity(User.Identity).FindFirst(ClaimTypes.Role.ToString()));
+            var claims = await userManager.GetClaimsAsync(user);
+            var roleClaim = claims.Where(c => c.Type == ClaimTypes.Role.ToString()).FirstOrDefault();
+            if(roleClaim != null)
+            {
+                var result = await userManager.RemoveClaimAsync(user, roleClaim);
+                if (result.Succeeded)
+                {
+
+                }
+            }
+            //await userManager.RemoveClaimAsync(user, new ClaimsIdentity(User.Identity).FindFirst(ClaimTypes.Role.ToString())); 
+            //await userManager.ReplaceClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), user.Role.Name), new Claim(ClaimTypes.Role.ToString(), role.RoleName));
             return PartialView("_User", userViewModel);
         }
 

@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<UserViewModel> 
 
-<div class="container">
+<div class="container-fluid">
     @ViewBag.ErrorMessage
     <form id="UpdateUserForm" asp-action="UpdateUser" asp-controller="Administration" method="post">
         @foreach (var item in Model)
         {
             <div class="card UserData" id="@item.Id" style="width:43rem;">
-                @Html.Partial("_User",item)
+                @Html.Partial("_User", item)
             </div>
-        }
-    </form>
+         }
+            </form>
     @*<form asp-action="RemoveUser" asp-route-Id="@item.Id" method="post">
         <a asp-action="EditUser" asp-route-Id="@item.Id" class="btn btn-info">Изменить</a>
 

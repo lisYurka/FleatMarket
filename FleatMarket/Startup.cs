@@ -12,6 +12,8 @@ using FleatMarket.Base.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace FleatMarket
 {
@@ -26,21 +28,30 @@ namespace FleatMarket
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MarketDb")));
+            services.AddDbContext<DataContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("MarketDb"))
+                .EnableSensitiveDataLogging()
+                );
+
             services.AddScoped<DbContext, DataContext>();
             services.AddTransient<IBaseRepository, BaseRepository>();
             services.AddTransient<IUserService,UserService>();
+            services.AddTransient<IDeclarationService, DeclarationService>();
+            services.AddTransient<IDeclarationStatusService, DeclarationStatusService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddScoped<SignInManager<User>>();
             services.AddScoped<RoleManager<Role>>();
             services.AddScoped<UserManager<User>>();
+
             services.AddIdentity<User, Role>().AddDefaultTokenProviders().AddRoles<Role>().AddEntityFrameworkStores<DataContext>();
 
             services.AddAuthentication().AddGoogle(options =>
                 {
                     options.ClientId = "875591813759-caesbn5n0qmu8gu2ai2ae418riaukaba.apps.googleusercontent.com";
                     options.ClientSecret = "eaI3YGrFJxBGGlo3Mehg-eM-";
+
+                    options.ClaimActions.MapJsonKey(ClaimTypes.Role.ToString(),"Admin");
                 });
 
             services.AddMvc();

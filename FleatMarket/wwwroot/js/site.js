@@ -2,21 +2,37 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+function changeTextColor(bool) {
+    if (bool == true) {
+        document.getElementById("showDeclWithAllCateg").style.fontWeight = "bold";
+        document.getElementById("showDeclWithAllCateg").style.color = "#0ced66";
+        document.getElementById("showDeclWithAllCateg").style.cursor = "pointer";
+    }
+    else {
+        document.getElementById("showDeclWithAllCateg").style.fontWeight = "normal";
+        document.getElementById("showDeclWithAllCateg").style.color = "#000000";
+    }
+}
 
 function overCategoryBtn(id) {
-    document.getElementById(id).style.backgroundColor = "#c8d2e3";
-    document.getElementById(id).style.cursor = "pointer";
+    document.getElementById("category_element_"+id).style.color = "#0ced66";
+    document.getElementById("category_element_" +id).style.cursor = "pointer";
 }
 
 function outOfCategoryBtn(id) {
-    document.getElementById(id).style.backgroundColor = "white";
+    document.getElementById("category_element_" +id).style.color = "#000000";
 }
 
-function clickCategoryBtn(id) {
-    //сделать
+function overStatusBtn(id) {
+    document.getElementById("status_element_"+id).style.color = "#faa405";
+    document.getElementById("status_element_"+id).style.cursor = "pointer";
 }
 
-//менять цвет, есливыбрана стоимость или фри для продукта
+function outOfStatusBtn(id) {
+    document.getElementById("status_element_" +id).style.color = "#000000";
+}
+
+//менять цвет, если выбрана стоимость или фри для продукта
 function checkForFree() {
     document.getElementById("pricedProduct").style.backgroundColor = "white";
     document.getElementById("pricedProduct").style.color = "#4cd4a9";
@@ -136,7 +152,7 @@ $('.UserData').on('click', '.DeleteUserButton', function () {
     });
 });
 
-//кнопка "Подтвердить"(при изменении юзера)
+//кнопка "Подтвердить"(при изменении юзера) ДОДЕЛАТЬ ВАЛИДАЦИЮ
 $('.UserData').on('click', 'input[name=UpdateUserButtonAction]', function () {
     var string = $('.UserData');
     var loaderArr = $("div[name=RemoveLoader]");
@@ -195,7 +211,7 @@ $('.UserData').on('click', 'input[name=UpdateUserButtonAction]', function () {
     });
 });
 
-//валидация регистрации
+//валидация регистрации(ДОДЕЛАТЬ)
 (function () {
     'use strict';
     window.addEventListener('load', function () {
@@ -211,3 +227,196 @@ $('.UserData').on('click', 'input[name=UpdateUserButtonAction]', function () {
         });
     }, false);
 })();
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    //выбор категории товара при создании объявления
+    $('.ChooseCategory').on('click', function () {
+        var category_id = $(this).attr("id").replace("category_element_", "");
+        $('#choosenCategoryId').val(category_id);
+
+        if (category_id == 5) {
+            $('#pricedProduct').attr("disabled", true);
+            checkForFree();
+        }
+        else {
+            $('#pricedProduct').attr("disabled", false);
+            checkForPrice();
+        }
+
+        $(".lastClicked").removeClass("lastClicked");
+        $(this).addClass("lastClicked");
+    });
+
+    //var authorid = $('.declarAuthorId').val();
+    //$('.declarAuthorId').val(authorid);
+
+    //var priceFlag = true;
+    //$('#pricedProduct').on('click', function () {
+    //    priceFlag = true;
+    //});
+    //$('#freeProduct').on('click', function () {
+    //    priceFlag = false;
+    //});
+
+    //$('#successAddingDeclaration').on('click', function () {
+    //    var title = $('#declar_title').val();
+    //    var description = $('#declar_description').val();
+    //    var price = $('#inputPrice').val();
+    //    var userName = $('#inputUserName').val();
+    //    var userEMail = $('#inputUserEMail').val();
+    //    var userPhone = $('#inputUserPhone').val();
+    //    $.ajax({
+    //        type: $('#CreateDeclarationForm').attr('method'),
+    //        url: $('#CreateDeclarationForm').attr('action'),
+    //        data: $('#CreateDeclarationForm').serialize(),
+
+    //        success: function () {
+    //            $('#declar_title').val(title);
+    //            $('#declar_description').val(description);
+
+    //            if (priceFlag)
+    //                $('#inputPrice').val(price);
+    //            else
+    //                $('#inputPrice').val("0");
+
+    //            $('#choosenCategoryId').val(category_id);
+    //            $('#inputUserName').val(userName);
+    //            $('#inputUserEMail').val(userEMail);
+    //            $('#inputUserPhone').val(userPhone);
+    //            $(this).submit();
+    //        },
+    //        error: function(xhr, ajaxOptions, thrownError) {
+    //            alert(xhr.responseText);
+    //        }
+    //    });
+    //});
+
+    //$('#successAddingDeclaration').on('click', function () {
+
+    //    var title = $('#declar_title');
+
+    //    $('.ChooseCategory').on('click', function () {
+    //        var category_id = $(this).attr("id").replace("category_element_", "");
+    //        alert(category_id.toString());
+    //    });
+
+    //    var description = $('#declar_description');
+
+    //    var price = $('#inputPrice');
+    //    var priceFlag;
+    //    $('#pricedProduct').on('click', function () {
+    //        priceFlag = true;
+    //    });
+    //    $('#freeProduct').on('click', function () {
+    //        priceFlag = false;
+    //    });
+
+    //    var userName = $('#inputUserName');
+    //    var userEMail = $('#inputUserEMail');
+    //    var userPhone = $('#inputUserPhone');
+
+    //    $.ajax({
+    //    });
+        
+    //});
+
+    //поиск по категориям
+    $('.categoryLink').on('click', function () {
+        var id = $(this).attr('id').replace('category_element_', '');
+        $('#SearchCategoryId').val(id);
+        $('#FindCategoryPostFeedForm').submit();
+
+
+        //var formData = new FormData();
+        //$.ajax({
+        //    type: $('#FindCategoryPostFeedForm').attr('method'),
+        //    url: $('#FindCategoryPostFeedForm').attr('action'),
+        //    data: formData,
+        //    success: function (data) {
+        //        $('#SearchCategoryId').val(data);
+        //        $('#FindCategoryPostFeedForm').submit();
+        //    }
+        //});
+        //alert(id.valueOf());
+    });
+
+    // статус "Продано"
+    $('.SoldDeclarationBtn').on('click', function () {
+        $('#SoldDeclarationId').val(event.target.id);
+        var form = $('#SoldDeclarationForm');
+        var id = $('#SoldDeclarationId').val();
+        var status = $('#statusName_' + id);
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function () {
+                status.text("Продано");
+                $('.SoldDeclarationBtn').hide();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+    //удаление из базы данных(для админа)
+    $('.RemoveDeclFromDbBtn').on('click', function () {
+        $('#DeleteDeclarId').val(event.target.id);
+    });
+    $('#DeleteThisDeclarFromDb').on('click', function () {
+        var form = $('#DeleteDeclarFromDbForm');
+        var id = $('#DeleteDeclarId').val();
+        var partialPost = $('.OneDeclaration');
+        partialPost.each(function (index) {
+            if (partialPost[index].id == id)
+                id = index;
+        });
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function () {
+                $(partialPost[id]).remove();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+    //статус "Удалено"
+    $('.RemoveDeclarationBtn').on('click', function () {
+        $('#RemoveDeclarationId').val(event.target.id);
+    });
+    $('#RemoveThisDeclaration').on('click', function () {
+        var form = $('#RemoveDeclarationForm');
+        var id = $('#RemoveDeclarationId').val();
+        var partialPost = $('.OneDeclaration');
+        var status = $('#statusName_' + id);
+        partialPost.each(function (index) {
+            if (partialPost[index].id == id)
+                id = index;
+        });
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function () {
+                status.text("Удалено");
+                $(partialPost[id]).hide();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+    //открыть объявление
+    $('body').on('click', '.card-body', function ()
+    {
+        $('#PostId').val(this.id);
+        $("#PostOpen").submit();
+    });
+});

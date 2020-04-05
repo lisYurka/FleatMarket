@@ -1,6 +1,114 @@
-﻿@model List<UserViewModel>
-<div>
-    <p>
-        @Html.Partial("_Users")
-    </p>
+﻿@model List<OneDeclarationViewModel>
+@{
+    List<CategoryViewModel> categories = ViewBag.Categories;
+    List<DeclarationStatusViewModel> statuses = ViewBag.Statuses;
+}
+<div class="container">
+    <div class="container float-left col col-sm-3">
+        <div class="card border-left-0 border-right-0 rounded-0" style="width:15rem;z-index:1">
+            <div class="card-body p-2 pr-0">
+                <div class="form-control btn d-flex categoryLink justify-content-start" id="showDeclWithAllCateg"
+                     onmouseover="changeTextColor(true)"
+                     onmouseout="changeTextColor(false)">
+                    ВСЕ КАТЕГОРИИ
+                </div>
+                @foreach (var category in categories)
+                {
+                    <div class="form-control btn d-flex categoryLink justify-content-start" id="category_element_@category.Id"
+                         onmouseover="overCategoryBtn(@category.Id)"
+                         onmouseout="outOfCategoryBtn(@category.Id)">
+                        @category.CategoryName
+                    </div>
+                }
+                @*<form id="SearchDeclByCategForm" method="post" asp-action="RemoveDeclaration" asp-controller="Declaration">
+                        <input id="RemoveDeclarationId" type="text" name="id" hidden>
+                    </form>*@
+            </div>
+        </div>
+
+        <form id="FindCategoryPostFeedForm" method="get" asp-action="Index" asp-controller="Home" hidden>
+            <input id="SearchCategoryId" type="text" name="key">
+        </form>
+
+        <div class="card border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1">
+            <div class="card-body p-2 pr-0">
+                @foreach (var status in statuses)
+                {
+                    if ((status.Id == 1 || status.Id == 2) && !User.IsInRole("Admin"))
+                    {
+                        <div class="form-control btn d-flex justify-content-start" id="status_element_@status.Id"
+                             onmouseover="overStatusBtn(@status.Id)"
+                             onmouseout="outOfStatusBtn(@status.Id)">
+                            @status.StatusName
+                        </div>
+                    }
+                    if (User.IsInRole("Admin"))
+                    {
+                        <div class="form-control btn d-flex justify-content-start" id="status_element_@status.Id"
+                             onmouseover="overStatusBtn(@status.Id)"
+                             onmouseout="outOfStatusBtn(@status.Id)">
+                            @status.StatusName
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container float-right col col-sm-9">
+        <p>
+            @foreach (var item in Model)
+            {
+                if ((item.StatusId == 1 || item.StatusId == 2) && !User.IsInRole("Admin"))
+                {
+                    @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)
+                }
+                if (User.IsInRole("Admin"))
+                {
+                    @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)
+                }
+            }
+        </p>
+    </div>
 </div>
+
+<div id="DeclarationDeleteDialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Вы действительно хотите <br />изменить статус объявления на "Удалено"?</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="row justify-content-around">
+                    <input id="RemoveThisDeclaration" class="btn btn-danger" data-dismiss="modal" type="button" value="Да" />
+                    <input class="btn btn-dark" data-dismiss="modal" type="button" value="Нет" />
+                    <form id="RemoveDeclarationForm" method="post" asp-action="RemoveDeclaration" asp-controller="Declaration">
+                        <input id="RemoveDeclarationId" type="text" name="id" hidden>@*hidden*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeclarDeleteFromDbDlg" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">! ВНИМАНИЕ !<br />Вы действительно хотите <br />удалить объявление?</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="row justify-content-around">
+                    <input id="DeleteThisDeclarFromDb" class="btn btn-danger" data-dismiss="modal" type="button" value="Да" />
+                    <input class="btn btn-dark" data-dismiss="modal" type="button" value="Нет" />
+                    <form id="DeleteDeclarFromDbForm" method="post" asp-action="RemoveDeclarationFromDb" asp-controller="Declaration">
+                        <input id="DeleteDeclarId" type="text" name="id_db" hidden>@*hidden*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="PostOpen" asp-action="OpenDeclaration" asp-controller="Declaration" hidden>
+    <input id="PostId" type="text" name="id" />
+</form>

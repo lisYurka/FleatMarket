@@ -11,6 +11,7 @@ namespace FleatMarket.Base.Entities
         public string Title { get; set; }
         public DateTime TimeOfCreation { get; set; }
         public string Description { get; set; }
+        public double Price { get; set; }
 
         public int DeclarationStatusId { get; set; }
         [ForeignKey("DeclarationStatusId")]

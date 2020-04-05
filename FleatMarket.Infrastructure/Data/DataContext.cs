@@ -52,33 +52,37 @@ namespace FleatMarket.Infrastructure.Data
                     CategoryName = "Животные"
                 });
 
-            //model.Entity<Declaration>().HasData(
-            //    new Declaration {
-            //        CategoryId = 1,
-            //        DeclarationStatusId=1,
-            //        Description = "Не упустите момент попасть на российские Мальдивы",
-            //        Id = 1,
-            //        TimeOfCreation = DateTime.Now,
-            //        Title = "Путевка в Челябинск"
-            //    },
-            //    new Declaration
-            //    {
-            //        CategoryId = 5,
-            //        DeclarationStatusId = 1,
-            //        Description = "Заберите кота от меня подальше",
-            //        Id = 2,
-            //        TimeOfCreation = DateTime.Now,
-            //        Title = "Британец короткошерстный"
-            //    },
-            //    new Declaration
-            //    {
-            //        CategoryId = 3,
-            //        DeclarationStatusId = 2,
-            //        Description = "Увлекательное путешествие в мир волшебства",
-            //        Id = 3,
-            //        TimeOfCreation = DateTime.Now,
-            //        Title = "Книга Гарри Поттера"
-            //    });
+            model.Entity<Declaration>().HasData(
+                new Declaration
+                {
+                    CategoryId = 1,
+                    DeclarationStatusId = 1,
+                    Description = "Не упустите момент попасть на российские Мальдивы",
+                    Id = 1,
+                    TimeOfCreation = DateTime.Now,
+                    Title = "Путевка в Челябинск",
+                    Price = 799.99
+                },
+                new Declaration
+                {
+                    CategoryId = 5,
+                    DeclarationStatusId = 1,
+                    Description = "Заберите кота от меня подальше",
+                    Id = 2,
+                    TimeOfCreation = DateTime.Now,
+                    Title = "Британец короткошерстный",
+                    Price = 199.99
+                },
+                new Declaration
+                {
+                    CategoryId = 3,
+                    DeclarationStatusId = 2,
+                    Description = "Увлекательное путешествие в мир волшебства",
+                    Id = 3,
+                    TimeOfCreation = DateTime.Now,
+                    Title = "Книга Гарри Поттера",
+                    Price = 49.99
+                });
 
             model.Entity<DeclarationStatus>().HasData(
                 new DeclarationStatus

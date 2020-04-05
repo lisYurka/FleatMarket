@@ -6,5 +6,6 @@ namespace FleatMarket.Base.Interfaces
     public interface ICategoryService
     {
         IEnumerable<Category> GetAllCategories();
+        Category GetCategoryById(int id);
     }
 }

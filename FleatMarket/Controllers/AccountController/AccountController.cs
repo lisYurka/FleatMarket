@@ -92,7 +92,12 @@ namespace FleatMarket.Web.Controllers.UserController
 
             var info = await signInManager.GetExternalLoginInfoAsync();
 
-            if(info == null)
+            //foreach (var claim in info.Principal.Claims)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Type: " + claim.Type + " Value: " + claim.Value);
+            //}
+
+            if (info == null)
             {
                 ViewBag.ErrorMessage("", "Error loading login info!");
                 return View("Login", login);
@@ -108,7 +113,6 @@ namespace FleatMarket.Web.Controllers.UserController
                 var EMail = info.Principal.FindFirstValue(ClaimTypes.Email);
                 if (EMail != null)
                 {
-                    //var user = await userManager.FindByEmailAsync(EMail);
                     var user = userService.GetUserByEmail(EMail);
                     if (user == null)
                     {
@@ -116,16 +120,16 @@ namespace FleatMarket.Web.Controllers.UserController
                         user = new User
                         {
                             Email = info.Principal.FindFirstValue(ClaimTypes.Email),
-                            UserName = info.Principal.FindFirstValue(ClaimTypes.Name),
+                            UserName = info.Principal.FindFirstValue(ClaimTypes.Email),
+                            Name = info.Principal.FindFirstValue(ClaimTypes.Name),
+                            Surname = info.Principal.FindFirstValue(ClaimTypes.Surname),
                             PhoneNumber = info.Principal.FindFirstValue(ClaimTypes.MobilePhone),
                             RoleId = role.Id
                         };
 
-                        //var result = await userManager.CreateAsync(user);
-                        //if (result.Succeeded)
-                        //    await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role.Name));
-                        await userService.CreateUserAsync(user);
-                        await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role.Name));
+                        var roleClaim = new Claim(ClaimTypes.Role.ToString(), role.Name);
+                        await userManager.CreateAsync(user);
+                        await userManager.AddClaimAsync(user, roleClaim);
                     }
                     await userManager.AddLoginAsync(user, info);
                     await signInManager.SignInAsync(user, isPersistent: false);
@@ -154,7 +158,7 @@ namespace FleatMarket.Web.Controllers.UserController
                 var user = new User
                 {
                     Email = register.EMail,
-                    UserName = register.Name,
+                    UserName = register.EMail,
                     PhoneNumber = register.Phone,
                     RoleId = role.Id,
                     Name = register.Name,
@@ -181,7 +185,7 @@ namespace FleatMarket.Web.Controllers.UserController
         public async Task<IActionResult> LogOff()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Login","Account");
+            return RedirectToAction("Index","Home");
         }
     }
 }

@@ -30,7 +30,16 @@ namespace FleatMarket.Infrastructure.Repositories
             return query;
         }
 
-        public T GetWithIncludeById<T>(string id, params string[] _query) where T : class
+        public T GetWithIncludeByStringId<T>(string id, params string[] _query) where T : class
+        {
+            var allItems = dbContext.Set<T>();
+            foreach (var item in _query)
+                allItems.Include(item).ToList();
+            T result = allItems.Find(id);
+            return result;
+        }
+
+        public T GetWithIncludeById<T>(int id, params string[] _query) where T : class
         {
             var allItems = dbContext.Set<T>();
             foreach (var item in _query)
