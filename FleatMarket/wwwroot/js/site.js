@@ -476,32 +476,6 @@ function showCategoryColor() {
     }
 }
 
-function testFunc() {
-    //var userAction = $('#sendUserActionId').val();
-    //var b = document.getElementById('sendUserActionId').value;
-    //alert(b);
-    //var action = $('.sendUserActionId');
-    //action.each(function (index) {
-    //    //alert(action[index].id);
-    //    if (action[index].id != userAction) {
-    //        //alert('not');
-    //    }
-    //    else {
-    //        //alert('yes');
-    //    }
-    //});
-    //if (a == 1) {
-    //    $('#myDeclarationAction').hide();
-    //    $('#myProfileAction').load("/User/MyProfile");
-    //    $('#myProfileAction').show();
-    //}
-    //else {
-    //    $('#myProfileAction').hide();
-    //    $('#myDeclarationAction').load("/User/GetUserDeclarations");
-    //    $('#myDeclarationAction').show();
-    //}
-}
-
 document.addEventListener('DOMContentLoaded', function () {
 
     //для показа выбранной категории при редактировании

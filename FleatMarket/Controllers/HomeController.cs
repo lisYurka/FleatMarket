@@ -83,12 +83,12 @@ namespace FleatMarket.Web.Controllers
                 declarations.Add(declaration);
             });
 
-            if (isAjaxCall)
-            {
-                return PartialView("/Views/Declaration/_OneDeclaration.cshtml", GetDeclarationsOnPage(declarations, page));
-            }
+            //if (isAjaxCall)
+            //{
+            //    return PartialView("/Views/Declaration/_OneDeclaration.cshtml", GetDeclarationsOnPage(declarations, page));
+            //}
 
-            return View(GetDeclarationsOnPage(declarations, page));//View(declarations);
+            return View(declarations);//View(GetDeclarationsOnPage(declarations, page));//View(declarations);
         }
 
         [HttpGet]
