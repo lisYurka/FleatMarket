@@ -5,9 +5,10 @@
             <div class="flex-row d-flex">
                 <h5 class="card-title pt-2 pl-2 col col-8">@Model.Title</h5>
                 <span class="card-title col col-4 d-flex justify-content-end pr-2" id="statusName_@Model.Id">@Model.StatusName</span>
+                <div class="declarationStatus" id="@Model.StatusId" hidden></div>
             </div>
             <div class="flex-row d-flex">
-                <span class="text-black-50 pl-2">@Model.CategoryName</span>
+                <span id="@Model.CategoryId" class="declarationCategory text-black-50 pl-2">@Model.CategoryName</span>
             </div>
             <div class="flex-row d-flex pt-2">
                 @if (Model.CategoryName == "В дар" || (Model.Price == 0 && Model.CategoryName != "В дар"))
@@ -21,47 +22,8 @@
             </div>
             <div class="flex-row-reverse card-footer bg-white p-0 border-0 pt-3">
                 <span class="text-black-50 pl-2">@Model.AuthorMail</span>
-                <span class="text-black-50 d-flex float-right pr-2">@Model.Date</span>
+                <span class="text-black-50 d-flex declarationDate float-right pr-2" id="@Model.Date">@Model.Date</span>
             </div>
-        </div>
-        <div class="card-footer bg-white border-0 p-0">
-            @if (User.Identity.Name == Model.AuthorMail || User.IsInRole("Admin"))
-            {
-                <div class="row d-flex justify-content-end">
-                    @if (Model.StatusId != 3)
-                    {
-                        <div class="card-columns d-flex">
-                            <input type="button" id="@Model.Id" class="btn btn-warning EditDeclarationBtn" data-toggle="" data-target="#" value="Редактировать">
-                        </div>
-                    }
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <div class="card-columns d-flex">
-                            <input type="button" id="@Model.Id" class="btn btn-danger RemoveDeclFromDbBtn" data-toggle="modal" data-target="#DeclarDeleteFromDbDlg" value="Удалить">
-                        </div>
-                    }
-                    @if (Model.StatusId != 3)
-                    {
-                        <div class="card-columns d-flex">
-                            <div class="btn-group dropright">
-                                <button class="btn btn-light dropdown-toggle chooseStatusMenu" type="button" id="@Model.Id" data-toggle="dropdown">
-                                    Статус
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="chooseStatusMenu">
-                                    @if (Model.StatusId == 1)
-                                    {
-                                        <button type="button" class="dropdown-item SoldDeclarationBtn" id="@Model.Id">Продано</button>
-                                        <form id="SoldDeclarationForm" method="post" asp-action="SoldDeclaration" asp-controller="Declaration">
-                                            <input id="SoldDeclarationId" type="text" name="id" hidden>
-                                        </form>
-                                    }
-                                    <button type="button" id="@Model.Id" class="dropdown-item RemoveDeclarationBtn" data-toggle="modal" data-target="#DeclarationDeleteDialog">Удалено</button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            }
         </div>
     </div>
 </div>

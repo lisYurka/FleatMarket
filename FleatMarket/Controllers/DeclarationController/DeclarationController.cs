@@ -63,6 +63,37 @@ namespace FleatMarket.Web.Controllers.DeclarationController
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult Edit(int declarId)
+        {
+            List<CategoryViewModel> categories = new List<CategoryViewModel>();
+            categoryService.GetAllCategories().ToList().ForEach(c =>
+            {
+                CategoryViewModel category = new CategoryViewModel
+                {
+                    Id = c.Id,
+                    CategoryName = c.CategoryName
+                };
+                categories.Add(category);
+            });
+            var declaration = declarationService.GetDeclarationById(declarId);
+
+            AddDeclarationViewModel viewModel = new AddDeclarationViewModel
+            {
+                AuthorId = declaration.UserId,
+                AuthorMail = declaration.User.Email,
+                AuthorName = declaration.User.Name,
+                AuthorPhone = declaration.User.PhoneNumber,
+                CategoryId = declaration.CategoryId,
+                Description = declaration.Description,
+                Price = declaration.Price,
+                Title = declaration.Title,
+                Categories = categories,
+                Id = declaration.Id
+            };
+            return View(viewModel);
+        }
+
         [HttpPost]
         public void RemoveDeclaration(int id)
         {
@@ -108,11 +139,17 @@ namespace FleatMarket.Web.Controllers.DeclarationController
         }
 
         [HttpPost]
-        public IActionResult EditDeclaration(OneDeclarationViewModel viewModel)
+        public IActionResult UpdateDeclaration(AddDeclarationViewModel viewModel, int id_for_declar, int category)
         {
-            Declaration old_declaration = declarationService.GetDeclarationById(viewModel.Id);
+            Declaration old_declaration = declarationService.GetDeclarationById(id_for_declar);
             if (old_declaration != null)
             {
+                old_declaration.Price = viewModel.Price;
+                if (old_declaration.CategoryId != category)
+                    old_declaration.CategoryId = category;
+                old_declaration.Description = viewModel.Description;
+                old_declaration.Price = viewModel.Price;
+                old_declaration.Title = viewModel.Title;
                 declarationService.UpdateDeclaration(old_declaration);
             }
             return RedirectToAction("Index","Home");
@@ -130,10 +167,12 @@ namespace FleatMarket.Web.Controllers.DeclarationController
                 Id = declaration.Id,
                 AuthorMail = user.Email,
                 CategoryName = category.CategoryName,
+                CategoryId = category.Id,
                 Date = declaration.TimeOfCreation,
                 Description = declaration.Description,
                 Price = declaration.Price,
                 StatusName = status.StatusName,
+                StatusId = status.Id,
                 Title = declaration.Title
             };
 

@@ -1,11 +1,10 @@
 ﻿@model OneDeclarationViewModel
-    <div class="container">
-        @*  d-flex justify-content-center *@
+<div class="container">
     <div class="row d-flex" style="height:25rem;">
         <img src="~/images/google.jpg" style="width:25rem;" />
         <div class="card" style="width:25rem;">
             <div class="card-body">
-                <h3 class="card-title">@Model.Title</h3>
+                <h3 class="card-title titleDecl" id="@Model.Title">@Model.Title</h3>
                 <div class="row mt-4">
                     <div class="col-7">Статус:</div>
                     <div class="col-5">@Model.StatusName</div>
@@ -27,6 +26,16 @@
                 </div>
             </div>
         </div>
+        @if (Model.StatusId == 1 && (User.Identity.Name == Model.AuthorMail || User.IsInRole("Admin")))
+        {
+            <div class="card-columns d-flex" style="height:2.6rem;">
+                <form method="get" asp-action="Edit" asp-controller="Declaration">
+                    <input type="text" name="declarId" id="declar_Id" hidden />
+                    <input type="submit" id="@Model.Id" class="btn btn-warning EditDeclarationBtn" 
+                           onclick="sendDeclarId()" value="Редактировать" />
+                </form>
+            </div>
+        }
     </div>
     <div class="row d-flex mt-1" style="height:3rem;">
         <div class="card border-0" style="max-width:15rem;">

@@ -1,0 +1,113 @@
+﻿@model UserViewModel
+
+<div class="card" style="width:40rem;">
+    <div class="card-body p-4">
+        <h4 div class="card-title">Загрузите вашу фотографию</h4>
+        <div class="row mt-4">
+            <div class="col col-4">
+                <img src="~/images/google.jpg" style="height:10rem;width:10rem;"/>
+            </div>
+            <div class="col col-8">
+                <button type="button" class="btn btn-success pl-5 pr-5" id="downloadUserPhoto"
+                        onmouseout="changePhDwnlBtn(false)" onmouseover="changePhDwnlBtn(true)"
+                        asp-action="" asp-controller="">Выбрать фотографию</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-3" style="width:40rem;">
+    <div class="card-body p-4">
+        <h4 div class="card-title">Персональные данные</h4>
+
+        <form method="post" asp-action="UpdateUser" asp-controller="User" id="userUpdateForm">
+            <div class="row mt-4">
+                <div class="col col-6">
+                    <div class="form-group">
+                        <label for="userName" class="h6">Имя *</label>
+                        <div id="userName" class="currentData">@Model.Name</div>
+                        <div>
+                            <input type="text" class="profileInput none form-control" id="changeUserName"
+                                   name="user.Name" value=@Model.Name>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-6">
+                    <div class="form-group">
+                        <label for="userSurname" class="h6">Фамилия *</label>
+                        <div id="userSurname" class="currentData">@Model.Surname</div>
+                        <div>
+                            <input type="text" class="profileInput none form-control" id="changeUserSurname"
+                                   name="user.Surname" value=@Model.Surname>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="userMail" class="h6">E-Mail *</label>
+                        <div id="userMail" class="currentData">@Model.EMail</div>
+                        <div>
+                            <input type="email" class="profileInput none form-control" id="changeUserEMail"
+                                   name="user.EMail" value=@Model.EMail>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="userPhone" class="h6">Телефон</label>
+                        <div id="userPhone" class="currentData">@Model.Phone</div>
+                        <div>
+                            <input type="email" class="profileInput none form-control" id="changeUserEMail"
+                                   name="user.Phone" value=@Model.Phone>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col col-6">
+                    <div class="form-group">
+                        <label for="isUserActive" class="h6">Статус</label>
+                        @if (Model.IsActive)
+                        {
+                            <div id="isUserActive" class=" ">Активен</div>
+                        }
+                        @if (!Model.IsActive)
+                        {
+                            <div id="isUserActive" class=" ">Заблокирован</div>
+                        }
+                    </div>
+                </div>
+                <div class="col col-6">
+                    <div class="form-group">
+                        <label for="userRole" class="h6">Роль</label>
+                        @if (Model.Role == "Admin")
+                        {
+                            <div id="userRole" class=" ">Администратор</div>
+                        }
+                        @if (Model.Role == "User")
+                        {
+                            <div id="userRole" class=" ">Пользователь</div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-1">
+                <div class="col-6">
+                    <input type="button" id="updateUserProfileBtn" 
+                           onmouseout="changeEditUserBtn(false)" onmouseover="changeEditUserBtn(true)"
+                           class="btn btn-warning pl-4 pr-4" value="Изменить" onclick="updateUserAction()" />
+                    <input type="button" id="saveUserProfileChangesBtn" value="Сохранить" class="btn btn-success none pl-4 pr-4" />
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

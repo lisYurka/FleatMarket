@@ -1,0 +1,62 @@
+﻿@model AddDeclarationViewModel
+<div class="container">
+    <!--блок о товаре-->
+    <div class="row mt-sm-5">
+        <h3>Редактирование объявления</h3>
+    </div>
+    <form asp-action="UpdateDeclaration" asp-controller="Declaration" method="post" id="EditDeclarForm">
+        <input type="text" id="@Model.AuthorId" asp-for="AuthorId" class="declarAuthorId" hidden />
+        <div class="row mt-sm-4">
+            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+                <label for="declar_title" class="font-weight-bold">Название товара *</label>
+                <input type="text" id="declar_title" placeholder="Например, кот-засранец" asp-for="Title" class="form-control" />
+            </div>
+        </div>
+        <div class="row mt-sm-3">
+            <div class="form-group col-8 col-sm-7 col-md-6">
+                <label for="category_choose" class="font-weight-bold">Выбор категории *</label>
+                <div class="card" id="category_choose">
+                    <input type="text" id="@Model.CategoryId" class="showOldCategory" hidden data-onload="showCategoryColor()" />
+                    <div class="card-body">
+                        @Html.Partial("_CategoryList")
+                    </div>
+                    <input type="text" id="choosenCategoryId" name="category" hidden />
+                </div>
+            </div>
+        </div>
+        <div class="row mt-sm-3">
+            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+                <label for="declar_description" class="font-weight-bold">Описание *</label>
+                <textarea class="form-control" id="declar_description" asp-for="Description" rows="4"></textarea>
+            </div>
+        </div>
+        <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-md-3" />
+        <!--блок о цене-->
+        <h4 class="mt-sm-2 mb-sm-3">Цена *</h4>
+        <div class="row mt-sm-3">
+            <div class="form-group col-8 col-sm-7 col-md-6">
+                <div class="btn-group btn-group-toggle col-12 p-0 mb-2" role="group" data-toggle="buttons">
+                    <button type="button" id="pricedProduct" class="btn" onmousedown="checkForPrice()"
+                            style="background-color:#4cd4a9; color:white;border-color:#4cd4a9;">
+                        Цена
+                    </button>
+                    <button type="button" id="freeProduct" class="btn" onmousedown="checkForFree()"
+                            style="background-color:white; color:#4cd4a9; border-color:#4cd4a9;">
+                        Бесплатно
+                    </button>
+                </div>
+                <div class="form-row pl-1" id="priceInputLabel">
+                    <input class="form-control mt-3 col-8" id="inputPrice" type="text" placeholder="Например, 99.95" asp-for="Price" />
+                    <label for="inputPrice" class="text-justify col-2 text-center my-4">BYN</label>
+                </div>
+            </div>
+        </div>
+        <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-1 mb-1" />
+        <!--завершить оформление-->
+        <input type="text" id="@Model.Id" class="declarationId" hidden />
+        <input type="text" id="editDeclarationId" name="id_for_declar" hidden />
+        <div class="row mt-sm-3 col-8 col-sm-7 col-md-6">
+            <input type="submit" class="btn btn-success col-6" id="successEditDeclaration" value="Сохранить изменения" />
+        </div>
+    </form>
+</div>

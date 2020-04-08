@@ -98,3 +98,19 @@ hr {
 .OneDeclaration .card-footer:hover {
     cursor: default;
 }
+
+#downloadUserPhoto {
+    background-color: #ffffff;
+    color: #4cd4a9;
+    border-color: #4cd4a9;
+}
+
+#updateUserProfileBtn {
+    background-color: #ffffff;
+    color: #f0d037;
+    border-color: #f0d037;
+}
+
+.none {
+    display: none;
+}

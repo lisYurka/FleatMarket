@@ -1,0 +1,47 @@
+﻿@model List<OneDeclarationViewModel>
+@foreach (var item in Model)
+{
+    if (item.StatusId != 3)
+    {
+        @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)
+    <div class="declarActions" id=@item.Id>
+        <div class="border-bottom flex-row d-flex justify-content-center mt-0 mb-2 pb-3">
+            <span class="text-dark h5 pr-2 mt-1">Действия: </span>
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="card-columns d-flex">
+                    <input type="button" id="@item.Id" class="btn btn-danger RemoveDeclFromDbBtn"
+                           data-toggle="modal" data-target="#DeclarDeleteFromDbDlg" value="Удалить" onclick="deleteFromDb()" />
+                </div>
+            }
+            @if (item.StatusId != 3)
+            {
+                <div class="card-columns d-flex">
+                    <div class="btn-group dropright">
+                        <button class="btn btn-light dropdown-toggle chooseStatusMenu" type="button" id="@item.Id" data-toggle="dropdown">
+                            Статус
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="chooseStatusMenu">
+                            @if (item.StatusId == 1)
+                            {
+                                <button type="button" class="dropdown-item SoldDeclarationBtn" id="@item.Id" onclick="soldStatus()">Продано</button>
+                                <form id="SoldDeclarationForm" method="post" asp-action="SoldDeclaration" asp-controller="Declaration">
+                                    <input id="SoldDeclarationId" type="text" name="id" hidden>
+                                </form>
+                            }
+                            <button type="button" id="@item.Id" class="dropdown-item RemoveDeclarationBtn"
+                                    data-toggle="modal" data-target="#DeclarationDeleteDialog" onclick="deleteStatus()">
+                                Удалено
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    }
+}
+
+<form id="DeclarationOpen" asp-action="OpenDeclaration" asp-controller="Declaration" hidden>
+    <input id="DeclarationId" type="text" name="id" />
+</form>

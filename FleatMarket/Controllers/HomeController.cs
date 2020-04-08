@@ -15,6 +15,8 @@ namespace FleatMarket.Web.Controllers
         private readonly ICategoryService categoryService;
         private readonly IDeclarationStatusService declarStatService;
 
+        const int postOnPage = 7;
+
         public HomeController(ILogger<HomeController> _logger, IDeclarationService _declarationService,
             ICategoryService _categoryService, IDeclarationStatusService _declarStatService)
         {
@@ -24,9 +26,18 @@ namespace FleatMarket.Web.Controllers
             declarStatService = _declarStatService;
         }
 
-        [HttpGet]
-        public IActionResult Index(int key)
+        private List<OneDeclarationViewModel> GetDeclarationsOnPage(List<OneDeclarationViewModel> declars, int page = 1)
         {
+            var itemsToSkip = page * postOnPage;
+            return declars.Skip(itemsToSkip).Take(postOnPage).ToList();
+        }
+
+        [HttpGet]
+        public IActionResult Index(int? id)
+        {
+            int page = id ?? 0; 
+            bool isAjaxCall = Request.Headers["x-requested-with"] == "XMLHttpRequest";
+
             List<OneDeclarationViewModel> declarations = new List<OneDeclarationViewModel>();
             List<CategoryViewModel> categories = new List<CategoryViewModel>();
             List<DeclarationStatusViewModel> statuses = new List<DeclarationStatusViewModel>();
@@ -53,50 +64,31 @@ namespace FleatMarket.Web.Controllers
             });
             ViewBag.Statuses = statuses;
 
-            if (key == 0)
+            declarationService.GetAllDeclarations().ToList().ForEach(d =>
             {
-                declarationService.GetAllDeclarations().ToList().ForEach(d =>
+                OneDeclarationViewModel declaration = new OneDeclarationViewModel
                 {
-                    OneDeclarationViewModel declaration = new OneDeclarationViewModel
-                    {
-                        AuthorId = d.UserId,
-                        AuthorMail = d.User.Email,
-                        CategoryId = d.CategoryId,
-                        CategoryName = d.Category.CategoryName,
-                        Date = d.TimeOfCreation,
-                        Description = d.Description,
-                        Id = d.Id,
-                        StatusId = d.DeclarationStatusId,
-                        StatusName = d.DeclarationStatus.StatusName,
-                        Title = d.Title,
-                        Price = d.Price
-                    };
-                    declarations.Add(declaration);
-                });
-            }
-            else
+                    AuthorId = d.UserId,
+                    AuthorMail = d.User.Email,
+                    CategoryId = d.CategoryId,
+                    CategoryName = d.Category.CategoryName,
+                    Date = d.TimeOfCreation,
+                    Description = d.Description,
+                    Id = d.Id,
+                    StatusId = d.DeclarationStatusId,
+                    StatusName = d.DeclarationStatus.StatusName,
+                    Title = d.Title,
+                    Price = d.Price
+                };
+                declarations.Add(declaration);
+            });
+
+            if (isAjaxCall)
             {
-                var category = categoryService.GetCategoryById(key);
-                declarationService.GetAllDeclarations().Where(r => r.CategoryId == category.Id).ToList().ForEach(d =>
-                {
-                    OneDeclarationViewModel viewModel = new OneDeclarationViewModel
-                    {
-                        AuthorId = d.UserId,
-                        AuthorMail = d.User.Email,
-                        CategoryId = d.CategoryId,
-                        CategoryName = d.Category.CategoryName,
-                        Date = d.TimeOfCreation,
-                        Description = d.Description,
-                        Id = d.Id,
-                        StatusId = d.DeclarationStatusId,
-                        StatusName = d.DeclarationStatus.StatusName,
-                        Title = d.Title,
-                        Price = d.Price
-                    };
-                    declarations.Add(viewModel);
-                });
+                return PartialView("/Views/Declaration/_OneDeclaration.cshtml", GetDeclarationsOnPage(declarations, page));
             }
-            return View(declarations);
+
+            return View(GetDeclarationsOnPage(declarations, page));//View(declarations);
         }
 
         [HttpGet]

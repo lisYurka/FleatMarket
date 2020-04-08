@@ -1,0 +1,70 @@
+﻿<div class="row">
+    <div class="col col-3">
+        <div class="card align-items-center" style="width:15rem;z-index:1;">
+            <div class="card-body p-0">
+                <div class="form-group mb-0">
+                    <button type="button" id="myProfile"
+                            class="form-control d-flex justify-content-center border-0 mb-2 mt-2">
+                        Мой профиль
+                    </button>
+                    <button type="button" id="myDeclarations"
+                            class="form-control d-flex justify-content-center border-0 mb-2">
+                        Мои объявления
+                    </button>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <button type="button" id="deletedDeclarations"
+                                class="form-control d-flex justify-content-center border-0 mb-2">
+                            Удаленные пользователями объявления
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-9">
+        <div id="myProfileAction" name="showUserProfile"></div>
+        <div id="myDeclarationAction"></div>
+        <div id="deletedDeclarationAction"></div>
+        <input type="text" id="" data-load="testFunc()" hidden />
+    </div>
+</div>
+
+<div id="DeclarationDeleteDialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal-title text-center">Вы действительно хотите <br />изменить статус объявления на "Удалено"?</h4>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <div class="row justify-content-around">
+                    <input id="RemoveThisDeclaration" class="btn btn-danger mr-4" 
+                           data-dismiss="modal" type="button" value="Да" />
+                    <input class="btn btn-dark ml-4" data-dismiss="modal" type="button" value="Нет"/>
+                    <form id="RemoveDeclarationForm" method="post" asp-action="RemoveDeclaration" asp-controller="Declaration">
+                        <input id="RemoveDeclarationId" type="text" name="id" hidden>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeclarDeleteFromDbDlg" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal-title text-center">! ВНИМАНИЕ !<br />Вы действительно хотите <br />удалить объявление?</h4>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <div class="row justify-content-around">
+                    <input id="DeleteThisDeclarFromDb" class="btn btn-danger mr-4" data-dismiss="modal" type="button" value="Да" />
+                    <input class="btn btn-dark ml-4" data-dismiss="modal" type="button" value="Нет" />
+                    <form id="DeleteDeclarFromDbForm" method="post" asp-action="RemoveDeclarationFromDb" asp-controller="Declaration">
+                        <input id="DeleteDeclarId" type="text" name="id_db" hidden>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

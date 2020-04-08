@@ -31,7 +31,7 @@
         </div>
         <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-md-3" />
         <!--блок о цене-->
-        <h4 class="mt-sm-2 mb-sm-3">Цена</h4>
+        <h4 class="mt-sm-2 mb-sm-3">Цена *</h4>
         <div class="row mt-sm-3">
             <div class="form-group col-8 col-sm-7 col-md-6">
                 <div class="btn-group btn-group-toggle col-12 p-0 mb-2" role="group" data-toggle="buttons">
@@ -48,10 +48,10 @@
                     <input class="form-control mt-3 col-8" id="inputPrice" type="text" placeholder="Например, 99.95" asp-for="Price" />@*name="addDeclaration.Price"*@
                     <label for="inputPrice" class="text-justify col-2 text-center my-4">BYN</label>
                 </div>
-                <div class="custom-control custom-checkbox mt-1">
+                @*<div class="custom-control custom-checkbox mt-1">
                     <input type="checkbox" class="custom-control-input" id="isExchanged" />
                     <label class="custom-control-label" for="isExchanged" style="cursor:pointer;">Возможен обмен</label>
-                </div>
+                </div>*@
             </div>
         </div>
         <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-2 mb-md-3" />
@@ -59,13 +59,13 @@
         <h4 class="mt-sm-2 mb-sm-3">О продавце</h4>
         <div class="row mt-sm-3">
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
-                <label for="inputName">Имя</label>
+                <label for="inputName">Имя *</label>
                 <input type="text" class="form-control col-md-8 col-sm-9 col-10" id="inputUserName" asp-for="AuthorName" placeholder="Имя">@*name="addDeclaration.AuthorName"*@
             </div>
         </div>
         <div class="row mt-sm-1">
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
-                <label for="inputEMail">E-Mail</label>
+                <label for="inputEMail">E-Mail *</label>
                 <input type="email" class="form-control col-md-8 col-sm-9 col-10" id="inputUserEMail" asp-for="AuthorMail" placeholder="E-Mail">@*name="addDeclaration.AuthorMail"*@
             </div>
         </div>
