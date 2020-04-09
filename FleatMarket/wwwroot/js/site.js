@@ -319,8 +319,7 @@ function createDate(date) {
 
 //статус объявления "Продано"
 function soldStatus() {
-    var declarActions = $('.declarActions');
-
+    var soldBtn = $('.SoldDeclarationBtn');
     $('#SoldDeclarationId').val(event.target.id);
     var form = $('#SoldDeclarationForm');
     var id = $('#SoldDeclarationId').val();
@@ -331,8 +330,7 @@ function soldStatus() {
         data: form.serialize(),
         success: function () {
             status.text("Продано");
-            $(declarActions[id]).hide();
-            $('.SoldDeclarationBtn').hide();
+            $(soldBtn[id-1]).hide();
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.responseText);
@@ -571,6 +569,66 @@ function abortPhotoUpdate() {
 
     var img = $("#userAvatar").children();
     $(img).attr("src", oldPhoto);
+}
+
+//выбрать фотографию для объявления
+var oldDeclarPhoto;
+function openFileFolder() {
+    $('#openFolder').click();
+    $('#showDeclarPhoto').show();
+    $('#abortDeclarImgUpdateBtn').show();
+
+    var img = $("#declarPhoto").children();
+    oldDeclarPhoto = $(img).attr("src");
+}
+
+//загрузить выбранную фотографию для объявления
+var declarImg;
+function showDeclarPhoto() {
+    var loadPhotoInput = $('#openFolder');
+    if (loadPhotoInput.prop('files').length) {
+        var formData = new FormData();
+        formData.append('file', loadPhotoInput.prop('files')[0]);
+        $.ajax({
+            type: $('#uploadDeclarPhotoForm').attr('method'),
+            url: $('#uploadDeclarPhotoForm').attr('action'),
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (data) {
+                $('#sendImageToModel').val(data);
+                var img = $("#declarPhoto").children();
+                $(img).attr("src", data);
+                declarImg = data;
+                $(img).show();
+            },
+            error: function () { alert("Файл не отправлен!") }
+        });
+    }
+    else {
+        alert("Сперва выберите фотографию!");
+    }
+}
+
+//отмена добавления фотографии объявления(создание)
+function abortDeclarImgUploadBtn() {
+    $('#showDeclarPhoto').hide();
+    $('#abortDeclarImgUpdateBtn').hide();
+
+    var img = $("#declarPhoto").children();
+    $(img).removeAttr("src");
+    $('#sendImageToModel').val("");
+    $(img).hide();
+}
+
+//отмена добавления фотографии объявления(редактирование)
+function abortDeclarImgUpdateBtn() {
+    $('#showDeclarPhoto').hide();
+    $('#abortDeclarImgUpdateBtn').hide();
+
+    var img = $("#declarPhoto").children();
+    $(img).attr("src", oldDeclarPhoto);
+    $('#sendImageToModel').val(oldDeclarPhoto);
 }
 
 document.addEventListener('DOMContentLoaded', function () {

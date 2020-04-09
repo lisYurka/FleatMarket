@@ -4,8 +4,38 @@
     <div class="row mt-sm-5">
         <h3>Редактирование объявления</h3>
     </div>
+    <div class="row mt-sm-4">
+        <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+            <h4 class="mb-sm-3">Фотография</h4>
+            <div class="card" style="max-width:33rem;">
+                <div class="card-body">
+                    <div class="row ml-2">
+                        <form id="uploadDeclarPhotoForm" method="post" enctype="multipart/form-data"
+                              asp-action="UploadImage" asp-controller="Image">
+                            <input type="button" value="Изменить фотографию" class="btn btn-primary"
+                                   id="uploadDeclarPhoto" onclick="openFileFolder()" />
+                            <input type="file" id="openFolder" hidden />
+                        </form>
+
+                        <input type="button" class="btn btn-primary none mr-4" id="showDeclarPhoto" value="Загрузить"
+                               onclick="showDeclarPhoto()" onmouseout="" onmouseover="" />
+
+                        <input type="button" class="btn btn-secondary none mr-3" id="abortDeclarImgUpdateBtn" value="Отмена"
+                               onclick="abortDeclarImgUpdateBtn()" onmouseout="" onmouseover="" />
+
+                    </div>
+                    <div class="mt-sm-2 text-dark font-weight-normal">Используйте только реальные фото вашего товара!</div>
+                </div>
+            </div>
+            <div class="col col-4 mt-3" id="declarPhoto">
+                <img src="@Model.ImagePath" style="height:5rem;width:5rem;"/>
+            </div>
+        </div>
+    </div>
+    <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-2 mb-md-3" />
     <form asp-action="UpdateDeclaration" asp-controller="Declaration" method="post" id="EditDeclarForm">
         <input type="text" id="@Model.AuthorId" asp-for="AuthorId" class="declarAuthorId" hidden />
+        <input type="text" name="declarImgPath" value="@Model.ImagePath" id="sendImageToModel" hidden />
         <div class="row mt-sm-4">
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
                 <label for="declar_title" class="font-weight-bold">Название товара *</label>

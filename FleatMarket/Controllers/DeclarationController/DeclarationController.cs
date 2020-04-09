@@ -14,14 +14,16 @@ namespace FleatMarket.Web.Controllers.DeclarationController
         private readonly IDeclarationService declarationService;
         private readonly IDeclarationStatusService declarStatService;
         private readonly IUserService userService;
+        private readonly IImageService imageService;
 
         public DeclarationController(ICategoryService _categoryService, IDeclarationService _declarationService,
-            IDeclarationStatusService _declarStatService, IUserService _userService)
+            IDeclarationStatusService _declarStatService, IUserService _userService, IImageService _imageService)
         {
             categoryService = _categoryService;
             declarationService = _declarationService;
             declarStatService = _declarStatService;
             userService = _userService;
+            imageService = _imageService;
         }
 
         private User FindDeclarationAuthor(string mail)
@@ -89,7 +91,8 @@ namespace FleatMarket.Web.Controllers.DeclarationController
                 Price = declaration.Price,
                 Title = declaration.Title,
                 Categories = categories,
-                Id = declaration.Id
+                Id = declaration.Id,
+                ImagePath = declaration.Image.ImagePath
             };
             return View(viewModel);
         }
@@ -126,8 +129,14 @@ namespace FleatMarket.Web.Controllers.DeclarationController
         }
 
         [HttpPost]
-        public IActionResult AddDeclaration(AddDeclarationViewModel addDeclaration, int category)
+        public IActionResult AddDeclaration(AddDeclarationViewModel addDeclaration, int category, string declarImgPath)
         {
+            int imgId;
+            if (declarImgPath == null)
+                imgId = 1;
+            else
+                imgId = imageService.GetImageId(declarImgPath);
+
             if (ModelState.IsValid)
             {
                 var declaration = new Declaration
@@ -137,8 +146,9 @@ namespace FleatMarket.Web.Controllers.DeclarationController
                     Description = addDeclaration.Description,
                     TimeOfCreation = DateTime.Now,
                     Title = addDeclaration.Title,
-                    UserId = addDeclaration.AuthorId,//"2f8deb5e-7794-4224-8e34-daef110f826f"
-                    Price = addDeclaration.Price
+                    UserId = addDeclaration.AuthorId,
+                    Price = addDeclaration.Price,
+                    ImageId = imgId
                 };
                 declarationService.AddDeclaration(declaration);
             }
@@ -146,8 +156,14 @@ namespace FleatMarket.Web.Controllers.DeclarationController
         }
 
         [HttpPost]
-        public IActionResult UpdateDeclaration(AddDeclarationViewModel viewModel, int id_for_declar, int category)
+        public IActionResult UpdateDeclaration(AddDeclarationViewModel viewModel, int id_for_declar, int category, string declarImgPath)
         {
+            int imgId;
+            if (declarImgPath == null)
+                imgId = 1;
+            else
+                imgId = imageService.GetImageId(declarImgPath);
+
             Declaration old_declaration = declarationService.GetDeclarationById(id_for_declar);
             if (old_declaration != null)
             {
@@ -157,6 +173,7 @@ namespace FleatMarket.Web.Controllers.DeclarationController
                 old_declaration.Description = viewModel.Description;
                 old_declaration.Price = viewModel.Price;
                 old_declaration.Title = viewModel.Title;
+                old_declaration.ImageId = imgId;
                 declarationService.UpdateDeclaration(old_declaration);
             }
             return RedirectToAction("Index","Home");

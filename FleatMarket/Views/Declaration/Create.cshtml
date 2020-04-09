@@ -4,12 +4,42 @@
     <div class="row mt-sm-5">
         <h3>Подача объявления</h3>
     </div>
+    <div class="row mt-sm-4">
+        <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+            <h4 class="mb-sm-3">Фотография</h4>
+            <div class="card" style="max-width:33rem;">
+                <div class="card-body">
+                    <div class="row ml-2">
+                        <form id="uploadDeclarPhotoForm" method="post" enctype="multipart/form-data"
+                              asp-action="UploadImage" asp-controller="Image">
+                            <input type="button" value="Добавить фотографию" class="btn btn-primary"
+                                   id="" onclick="openFileFolder()" />
+                            <input type="file" id="openFolder" hidden />
+                        </form>
+
+                        <input type="button" class="btn btn-primary none mr-4" id="showDeclarPhoto" value="Загрузить"
+                               onclick="showDeclarPhoto()" onmouseout="" onmouseover="" />
+
+                        <input type="button" class="btn btn-secondary none mr-3" id="abortDeclarImgUpdateBtn" value="Отмена"
+                               onclick="abortDeclarImgUploadBtn()" onmouseout="" onmouseover="" />
+
+                    </div>
+                    <div class="mt-sm-2 text-dark font-weight-normal">Используйте только реальные фото вашего товара!</div>
+                </div>
+            </div>
+            <div class="col col-4 mt-3" id="declarPhoto">
+                <img src="" style="height:5rem;width:5rem;" class="none"/>
+            </div>
+        </div>
+    </div>
+    <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-2 mb-md-3" />
     <form asp-action="AddDeclaration" asp-controller="Declaration" method="post" id="CreateDeclarationForm">
         <input type="text" id="@Model.AuthorId" asp-for="AuthorId" class="declarAuthorId" hidden />
+        <input type="text" name="declarImgPath" id="sendImageToModel" hidden />
         <div class="row mt-sm-4">
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
-                <label for="declar_title" class="font-weight-normal">Название товара *</label>
-                <input type="text" id="declar_title" placeholder="Например, кот-засранец" asp-for="Title" class="form-control" />@*name="addDeclaration.Title"*@
+                <label for="declar_title" class="font-weight-bold">Название товара *</label>
+                <input type="text" id="declar_title" placeholder="Например, кот-засранец" asp-for="Title" class="form-control" />
             </div>
         </div>
         <div class="row mt-sm-3">
@@ -26,7 +56,7 @@
         <div class="row mt-sm-3">
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
                 <label for="declar_description" class="font-weight-bold">Описание *</label>
-                <textarea class="form-control" id="declar_description" asp-for="Description" rows="4"></textarea>@*name="addDeclaration.Description"*@
+                <textarea class="form-control" id="declar_description" asp-for="Description" rows="4"></textarea>
             </div>
         </div>
         <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-md-3" />
@@ -45,7 +75,7 @@
                     </button>
                 </div>
                 <div class="form-row pl-1" id="priceInputLabel">
-                    <input class="form-control mt-3 col-8" id="inputPrice" type="text" placeholder="Например, 99.95" asp-for="Price" />@*name="addDeclaration.Price"*@
+                    <input class="form-control mt-3 col-8" id="inputPrice" type="text" placeholder="Например, 99.95" asp-for="Price" />
                     <label for="inputPrice" class="text-justify col-2 text-center my-4">BYN</label>
                 </div>
                 @*<div class="custom-control custom-checkbox mt-1">
@@ -58,21 +88,21 @@
         <!--блок о продавце-->
         <h4 class="mt-sm-2 mb-sm-3">О продавце</h4>
         <div class="row mt-sm-3">
-            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+            <div class="form-group col-8 col-sm-7 col-md-6">
                 <label for="inputName">Имя *</label>
-                <input type="text" class="form-control col-md-8 col-sm-9 col-10" id="inputUserName" asp-for="AuthorName" placeholder="Имя">@*name="addDeclaration.AuthorName"*@
+                <input type="text" class="form-control col-md-8 col-sm-9 col-10" id="inputUserName" asp-for="AuthorName" placeholder="Имя">
             </div>
         </div>
         <div class="row mt-sm-1">
-            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+            <div class="form-group col-8 col-sm-7 col-md-6">
                 <label for="inputEMail">E-Mail *</label>
-                <input type="email" class="form-control col-md-8 col-sm-9 col-10" id="inputUserEMail" asp-for="AuthorMail" placeholder="E-Mail">@*name="addDeclaration.AuthorMail"*@
+                <input type="email" class="form-control col-md-8 col-sm-9 col-10" id="inputUserEMail" asp-for="AuthorMail" placeholder="E-Mail" disabled>
             </div>
         </div>
         <div class="row mt-sm-1">
-            <div class="form-group col-8 col-sm-7 col-md-6" role="group">
+            <div class="form-group col-8 col-sm-7 col-md-6">
                 <label for="inputPhone">Телефон</label>
-                <input type="tel" class="form-control col-md-8 col-sm-9 col-10" id="inputUserPhone" asp-for="AuthorPhone" placeholder="Телефон">@*name="addDeclaration.AuthorPhone"*@
+                <input type="tel" class="form-control col-md-8 col-sm-9 col-10" id="inputUserPhone" asp-for="AuthorPhone" placeholder="Телефон">
             </div>
         </div>
         <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-3" />

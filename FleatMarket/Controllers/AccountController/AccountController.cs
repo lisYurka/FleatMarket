@@ -124,7 +124,8 @@ namespace FleatMarket.Web.Controllers.UserController
                             Name = info.Principal.FindFirstValue(ClaimTypes.Name),
                             Surname = info.Principal.FindFirstValue(ClaimTypes.Surname),
                             PhoneNumber = info.Principal.FindFirstValue(ClaimTypes.MobilePhone),
-                            RoleId = role.Id
+                            RoleId = role.Id,
+                            ImageId = 2
                         };
 
                         var roleClaim = new Claim(ClaimTypes.Role.ToString(), role.Name);
@@ -162,7 +163,8 @@ namespace FleatMarket.Web.Controllers.UserController
                     PhoneNumber = register.Phone,
                     RoleId = role.Id,
                     Name = register.Name,
-                    Surname = register.Surname
+                    Surname = register.Surname,
+                    ImageId = 2
                 };
 
                 var result = await userManager.CreateAsync(user, register.Password);
