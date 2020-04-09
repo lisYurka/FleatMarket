@@ -186,6 +186,14 @@ namespace FleatMarket.Web.Controllers.DeclarationController
             var status = declarStatService.GetStatusById(declaration.DeclarationStatusId);
             var user = userService.GetUserByStringId(declaration.UserId);
 
+            UserViewModel userView = new UserViewModel
+            {
+                EMail = user.Email,
+                ImagePath = user.Image.ImagePath,
+                Name = user.Name,
+                Phone = user.PhoneNumber,
+                Surname = user.Surname
+            };
             OneDeclarationViewModel viewModel = new OneDeclarationViewModel
             {
                 Id = declaration.Id,
@@ -198,7 +206,8 @@ namespace FleatMarket.Web.Controllers.DeclarationController
                 StatusName = status.StatusName,
                 StatusId = status.Id,
                 Title = declaration.Title,
-                ImagePath = declaration.Image.ImagePath
+                ImagePath = declaration.Image.ImagePath,
+                User = userView
             };
 
             return View(viewModel);

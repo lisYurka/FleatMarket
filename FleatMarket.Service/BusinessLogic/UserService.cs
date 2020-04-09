@@ -41,7 +41,7 @@ namespace FleatMarket.Service.BusinessLogic
         {
             if (id != null)
             {
-                User user = repository.GetByStringId<User>(id);
+                User user = repository.GetWithIncludeByStringId<User>(id,"Image");
                 if (user != null)
                     return user;
                 else throw new Exception("Can't find user!");

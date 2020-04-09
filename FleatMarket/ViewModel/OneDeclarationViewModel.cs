@@ -15,9 +15,9 @@ namespace FleatMarket.Web.ViewModel
         public DateTime Date { get; set; }
         public string StatusName { get; set; }
         public int StatusId { get; set; }
-
         public double Price { get; set; }
-
         public string ImagePath { get; set; }
+
+        public UserViewModel User { get; set; }
     }
 }
