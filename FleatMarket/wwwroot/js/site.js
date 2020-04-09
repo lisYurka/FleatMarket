@@ -324,13 +324,17 @@ function soldStatus() {
     var form = $('#SoldDeclarationForm');
     var id = $('#SoldDeclarationId').val();
     var status = $('#statusName_' + id);
+    soldBtn.each(function (index) {
+        if (soldBtn[index].id == id)
+            id = index;
+    });
     $.ajax({
         type: form.attr('method'),
         url: form.attr('action'),
         data: form.serialize(),
         success: function () {
             status.text("Продано");
-            $(soldBtn[id-1]).hide();
+            $(soldBtn[id]).hide();
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.responseText);
