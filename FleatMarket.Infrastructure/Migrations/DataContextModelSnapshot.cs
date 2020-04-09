@@ -82,6 +82,9 @@ namespace FleatMarket.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ImageId")
+                        .HasColumnType("int");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -100,6 +103,8 @@ namespace FleatMarket.Infrastructure.Migrations
 
                     b.HasIndex("DeclarationStatusId");
 
+                    b.HasIndex("ImageId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Declarations");
@@ -111,8 +116,9 @@ namespace FleatMarket.Infrastructure.Migrations
                             CategoryId = 1,
                             DeclarationStatusId = 1,
                             Description = "Не упустите момент попасть на российские Мальдивы",
+                            ImageId = 1,
                             Price = 799.99000000000001,
-                            TimeOfCreation = new DateTime(2020, 4, 3, 0, 23, 46, 808, DateTimeKind.Local).AddTicks(6179),
+                            TimeOfCreation = new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(493),
                             Title = "Путевка в Челябинск"
                         },
                         new
@@ -121,8 +127,9 @@ namespace FleatMarket.Infrastructure.Migrations
                             CategoryId = 5,
                             DeclarationStatusId = 1,
                             Description = "Заберите кота от меня подальше",
+                            ImageId = 1,
                             Price = 199.99000000000001,
-                            TimeOfCreation = new DateTime(2020, 4, 3, 0, 23, 46, 809, DateTimeKind.Local).AddTicks(4602),
+                            TimeOfCreation = new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(9466),
                             Title = "Британец короткошерстный"
                         },
                         new
@@ -131,8 +138,9 @@ namespace FleatMarket.Infrastructure.Migrations
                             CategoryId = 3,
                             DeclarationStatusId = 2,
                             Description = "Увлекательное путешествие в мир волшебства",
+                            ImageId = 1,
                             Price = 49.990000000000002,
-                            TimeOfCreation = new DateTime(2020, 4, 3, 0, 23, 46, 809, DateTimeKind.Local).AddTicks(4639),
+                            TimeOfCreation = new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(9512),
                             Title = "Книга Гарри Поттера"
                         });
                 });
@@ -169,6 +177,43 @@ namespace FleatMarket.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("FleatMarket.Base.Entities.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ImageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
+
+                    b.ToTable("Image");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ImageName = "DefaultDeclarationImage",
+                            ImagePath = "/images/default_decl_image.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ImageName = "DefaultUserImage",
+                            ImagePath = "/images/default_user_image.jpg"
+                        });
+                });
+
             modelBuilder.Entity("FleatMarket.Base.Entities.Role", b =>
                 {
                     b.Property<string>("Id")
@@ -202,7 +247,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "f09540d4-95a5-4431-af41-d5cd1271ff3b",
+                            ConcurrencyStamp = "22ecc765-0f2c-47cd-8d6e-d6d3cee87aba",
                             Name = "User",
                             NormalizedName = "USER",
                             RoleName = "user"
@@ -210,7 +255,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "fe3d8555-f2dd-4e9d-9378-f7d5e8efbdb8",
+                            ConcurrencyStamp = "f9e29a19-b272-4fa8-a7a3-48a2f4c4e0c5",
                             Name = "Admin",
                             NormalizedName = "ADMIN",
                             RoleName = "admin"
@@ -235,6 +280,9 @@ namespace FleatMarket.Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("ImageId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -282,6 +330,8 @@ namespace FleatMarket.Infrastructure.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -414,13 +464,28 @@ namespace FleatMarket.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FleatMarket.Base.Entities.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId");
+
                     b.HasOne("FleatMarket.Base.Entities.User", "User")
                         .WithMany("Declarations")
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("FleatMarket.Base.Entities.Image", b =>
+                {
+                    b.HasOne("FleatMarket.Base.Entities.Image", null)
+                        .WithMany("Images")
+                        .HasForeignKey("ImageId");
+                });
+
             modelBuilder.Entity("FleatMarket.Base.Entities.User", b =>
                 {
+                    b.HasOne("FleatMarket.Base.Entities.Image", "Image")
+                        .WithMany("Users")
+                        .HasForeignKey("ImageId");
+
                     b.HasOne("FleatMarket.Base.Entities.Role", "Role")
                         .WithMany("Roles")
                         .HasForeignKey("RoleId");

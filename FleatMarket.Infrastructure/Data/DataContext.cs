@@ -61,7 +61,8 @@ namespace FleatMarket.Infrastructure.Data
                     Id = 1,
                     TimeOfCreation = DateTime.Now,
                     Title = "Путевка в Челябинск",
-                    Price = 799.99
+                    Price = 799.99,
+                    ImageId = 1
                 },
                 new Declaration
                 {
@@ -71,7 +72,8 @@ namespace FleatMarket.Infrastructure.Data
                     Id = 2,
                     TimeOfCreation = DateTime.Now,
                     Title = "Британец короткошерстный",
-                    Price = 199.99
+                    Price = 199.99,
+                    ImageId = 1
                 },
                 new Declaration
                 {
@@ -81,7 +83,22 @@ namespace FleatMarket.Infrastructure.Data
                     Id = 3,
                     TimeOfCreation = DateTime.Now,
                     Title = "Книга Гарри Поттера",
-                    Price = 49.99
+                    Price = 49.99,
+                    ImageId = 1
+                });
+
+            model.Entity<Image>().HasData(
+                new Image
+                {
+                    Id = 1,
+                    ImageName = "DefaultDeclarationImage",
+                    ImagePath = "/images/default_decl_image.jpg"
+                },
+                new Image
+                {
+                    Id = 2,
+                    ImageName = "DefaultUserImage",
+                    ImagePath = "/images/default_user_image.jpg"
                 });
 
             model.Entity<DeclarationStatus>().HasData(

@@ -28,12 +28,34 @@ function changeAllStatsColor(bool) {
 
 function changePhDwnlBtn(bool) {
     if (bool == true) {
-        document.getElementById("downloadUserPhoto").style.backgroundColor = "#4cd4a9";
-        document.getElementById("downloadUserPhoto").style.color = "#ffffff";
+        document.getElementById("uploadUserPhoto").style.backgroundColor = "#f0d037";
+        document.getElementById("uploadUserPhoto").style.color = "#ffffff";
     }
     else {
-        document.getElementById("downloadUserPhoto").style.backgroundColor = "#ffffff";
-        document.getElementById("downloadUserPhoto").style.color = "#4cd4a9";
+        document.getElementById("uploadUserPhoto").style.backgroundColor = "#ffffff";
+        document.getElementById("uploadUserPhoto").style.color = "#f0d037";
+    }
+}
+
+function uploadPhotoBtn(bool) {
+    if (bool == true) {
+        document.getElementById("showUserPhoto").style.backgroundColor = "#1a19b8";
+        document.getElementById("showUserPhoto").style.color = "#ffffff";
+    }
+    else {
+        document.getElementById("showUserPhoto").style.backgroundColor = "#ffffff";
+        document.getElementById("showUserPhoto").style.color = "#1a19b8";
+    }
+}
+
+function savePhotoBtn(bool) {
+    if (bool == true) {
+        document.getElementById("saveUserPhotoBtn").style.backgroundColor = "#0cb634";
+        document.getElementById("saveUserPhotoBtn").style.color = "#ffffff";
+    }
+    else {
+        document.getElementById("saveUserPhotoBtn").style.backgroundColor = "#ffffff";
+        document.getElementById("saveUserPhotoBtn").style.color = "#0cb634";
     }
 }
 
@@ -460,11 +482,11 @@ function sendDeclarId() {
     $('#declar_Id').val(event.target.id);
 }
 
-//показать текущую категорию в редактировании
+//показать текущую категорию в редактировании объявления
 function showCategoryColor() {
     var id = $('.showOldCategory').attr('id');
     document.getElementById("category_element_" + id).style.color = "#0ced66";
-    document.getElementById("category_element_" + id).style.backgroundColor = "#59bbf4";
+    document.getElementById("category_element_" + id).style.backgroundColor = "#e6940f";
 
     if (id == 5) {
         $('#pricedProduct').attr("disabled", true);
@@ -476,6 +498,81 @@ function showCategoryColor() {
     }
 }
 
+//выбор фотографии пользователя
+var oldPhoto;
+function openFilesFolder() {
+    $('#openFolder').click();
+    $('#showUserPhoto').show();
+    $('#abortPhotoUpdateBtn').show(); 
+
+    var img = $("#userAvatar").children();
+    oldPhoto = $(img).attr("src");
+}
+
+//загрузить выбранную фотографию пользователя
+var UserImagePhoto;
+function showUserPhoto() {
+    var loadPhotoInput = $('#openFolder');
+    if (loadPhotoInput.prop('files').length) {
+        var formData = new FormData();
+        formData.append('file', loadPhotoInput.prop('files')[0]);
+        $.ajax({
+            type: $('#uploadUserPhotoForm').attr('method'),
+            url: $('#uploadUserPhotoForm').attr('action'),
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (data) {
+                $('#sendPhotoToModel').val(data);
+                var img = $("#userAvatar").children();
+                $(img).attr("src", data);
+                UserImagePhoto = data;
+                $('#saveUserPhotoBtn').show();
+            },
+            error: function () { alert("Файл не отправлен!") }
+        });
+    }
+    else {
+        alert("Сперва выберите фотографию!");
+        $('#saveUserPhotoBtn').hide();
+    }
+}
+
+//сохранение фотографии пользователя
+function saveUserPhotoAction() {
+    if (UserImagePhoto == null) {
+        alert('Неверный формат!');
+    }
+    else {
+        var form = $('#saveUserPhotoForm');
+        $.ajax({
+            type: $(form).attr('method'),
+            url: $(form).attr('action'),
+            data: $(form).serialize(),
+            success: function () {
+                $('#showUserPhoto').hide();
+                $('#saveUserPhotoBtn').hide();
+                $('#abortPhotoUpdateBtn').hide();
+                alert("Успешно обновлено!");
+            },
+            error: function () {
+                $('#saveUserPhotoBtn').hide();
+                alert("Данные не отправлены!")
+            }
+        });
+    }
+}
+
+//отмена обновления фотографии пользователя
+function abortPhotoUpdate() {
+    $('#showUserPhoto').hide();
+    $('#saveUserPhotoBtn').hide();
+    $('#abortPhotoUpdateBtn').hide();
+
+    var img = $("#userAvatar").children();
+    $(img).attr("src", oldPhoto);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
     //для показа выбранной категории при редактировании
@@ -484,9 +581,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     //для выбора профиля или объявления
-    $('[data-load]').each(function () {
-        eval($(this).data('load'));
-    });
+    //$('[data-load]').each(function () {
+    //    eval($(this).data('load'));
+    //});
 
     //InfiniteScroll($('#LoadingPostPreview'), $('#PostPreviewScrolList'), '/Home/Index?id=', 'GET', '');
 
@@ -555,22 +652,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //выбор категории товара при создании объявления
     $('.ChooseCategory').on('click', function () {
-        var category_id = $(this).attr("id").replace("category_element_", "");
-        $('#choosenCategoryId').val(category_id);
-
-        if (category_id == 5) {
-            $('#pricedProduct').attr("disabled", true);
-            checkForFree();
-        }
-        else {
-            $('#pricedProduct').attr("disabled", false);
-            checkForPrice();
-        }
         var id_old = $('.showOldCategory').attr('id');
-        document.getElementById("category_element_" + id_old).style.backgroundColor = "#ffffff";
-        document.getElementById("category_element_" + id_old).style.color = "#000000";
-        $(".lastClicked").removeClass("lastClicked");
-        $(this).addClass("lastClicked");
+        if (id_old != "") {
+            var category_id = $(this).attr("id").replace("category_element_", "");
+            $('#choosenCategoryId').val(category_id);
+
+            if (category_id == 5) {
+                $('#pricedProduct').attr("disabled", true);
+                checkForFree();
+            }
+            else {
+                $('#pricedProduct').attr("disabled", false);
+                checkForPrice();
+            }
+            $(".lastClicked").removeClass("lastClicked");
+            $(this).addClass("lastClicked");
+            id_old = ""
+        }
+        if (id_old == "") {
+            document.getElementById("category_element_" + id_old).style.backgroundColor = "#ffffff";
+            document.getElementById("category_element_" + id_old).style.color = "#000000";
+        }
     });
 
     //поиск по категориям
@@ -631,5 +733,4 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#choosenCategoryId').val(b);
         }
     });
-
 });

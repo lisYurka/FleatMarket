@@ -53,7 +53,7 @@ namespace FleatMarket.Service.BusinessLogic
         {
             if (email != null)
             {
-                User user = repository.GetWithInclude<User>("Role").FirstOrDefault(m => m.Email == email);
+                User user = repository.GetWithInclude<User>("Role","Image").FirstOrDefault(m => m.Email == email);
                 return user;
             }
             else throw new Exception("EMail can't be null!");

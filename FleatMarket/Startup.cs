@@ -40,6 +40,7 @@ namespace FleatMarket
             services.AddTransient<IDeclarationStatusService, DeclarationStatusService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IImageService, ImageService>();
             services.AddScoped<SignInManager<User>>();
             services.AddScoped<RoleManager<Role>>();
             services.AddScoped<UserManager<User>>();

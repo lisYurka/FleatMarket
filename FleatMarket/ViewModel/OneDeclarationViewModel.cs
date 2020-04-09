@@ -17,5 +17,7 @@ namespace FleatMarket.Web.ViewModel
         public int StatusId { get; set; }
 
         public double Price { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

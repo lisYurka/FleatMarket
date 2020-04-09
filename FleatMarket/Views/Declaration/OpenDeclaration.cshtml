@@ -1,7 +1,7 @@
 ﻿@model OneDeclarationViewModel
 <div class="container">
     <div class="row d-flex" style="height:25rem;">
-        <img src="~/images/google.jpg" style="width:25rem;" />
+        <img src="@Model.ImagePath" style="width:25rem;" id="@Model.Id"/>
         <div class="card" style="width:25rem;">
             <div class="card-body">
                 <h3 class="card-title titleDecl" id="@Model.Title">@Model.Title</h3>
@@ -26,16 +26,25 @@
                 </div>
             </div>
         </div>
-        @if (Model.StatusId == 1 && (User.Identity.Name == Model.AuthorMail || User.IsInRole("Admin")))
-        {
-            <div class="card-columns d-flex" style="height:2.6rem;">
-                <form method="get" asp-action="Edit" asp-controller="Declaration">
-                    <input type="text" name="declarId" id="declar_Id" hidden />
-                    <input type="submit" id="@Model.Id" class="btn btn-warning EditDeclarationBtn" 
-                           onclick="sendDeclarId()" value="Редактировать" />
-                </form>
-            </div>
-        }
+        <div class="declarActions" id=@Model.Id>
+            @if (Model.StatusId == 1 && (User.Identity.Name == Model.AuthorMail || User.IsInRole("Admin")))
+            {
+                <div class="card-columns d-flex" style="height:2.6rem;">
+                    <form method="get" asp-action="Edit" asp-controller="Declaration">
+                        <input type="text" name="declarId" id="declar_Id" hidden />
+                        <input type="submit" id="@Model.Id" class="btn btn-warning EditDeclarationBtn"
+                               onclick="sendDeclarId()" value="Редактировать" />
+                    </form>
+                </div>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="card-columns d-flex" style="height:2.6rem;">
+                    <input type="button" id="@Model.Id" class="btn btn-danger RemoveDeclFromDbBtn"
+                           data-toggle="modal" data-target="#DeclarDeleteFromDbDlg" value="Удалить" onclick="deleteFromDb()" />
+                </div>
+            }
+        </div>
     </div>
     <div class="row d-flex mt-1" style="height:3rem;">
         <div class="card border-0" style="max-width:15rem;">
@@ -67,6 +76,25 @@
                 <div class="row">
                     <div class="col-4">Имя:</div>
                     <div class="col-8 p-0">@Model.AuthorMail</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="DeclarDeleteFromDbDlg" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal-title text-center">! ВНИМАНИЕ !<br />Вы действительно хотите <br />удалить объявление?</h4>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <div class="row justify-content-around">
+                    <input id="DeleteThisDeclarFromDb" class="btn btn-danger mr-4" data-dismiss="modal" type="button" value="Да" />
+                    <input class="btn btn-dark ml-4" data-dismiss="modal" type="button" value="Нет" />
+                    <form id="DeleteDeclarFromDbForm" method="post" asp-action="RemoveDeclarFromDb" asp-controller="Declaration">
+                        <input id="DeleteDeclarId" type="text" name="id_db" hidden>
+                    </form>
                 </div>
             </div>
         </div>

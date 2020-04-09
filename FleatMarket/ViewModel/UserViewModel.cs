@@ -14,6 +14,7 @@ namespace FleatMarket.Web.ViewModel
         public string Phone { get; set; }
         public bool IsActive { get; set; }
         public string Role { get; set; }
+        public string ImagePath { get; set; }
 
         public List<UserRoleViewModel> RoleList { get; set; }
     }

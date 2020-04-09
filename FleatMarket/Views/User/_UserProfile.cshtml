@@ -4,13 +4,31 @@
     <div class="card-body p-4">
         <h4 div class="card-title">Загрузите вашу фотографию</h4>
         <div class="row mt-4">
-            <div class="col col-4">
-                <img src="~/images/google.jpg" style="height:10rem;width:10rem;"/>
+            <div class="col col-4" id="userAvatar">
+                <img src="@Model.ImagePath" style="height:10rem;width:10rem;" />
             </div>
             <div class="col col-8">
-                <button type="button" class="btn btn-success pl-5 pr-5" id="downloadUserPhoto"
-                        onmouseout="changePhDwnlBtn(false)" onmouseover="changePhDwnlBtn(true)"
-                        asp-action="" asp-controller="">Выбрать фотографию</button>
+                <form id="uploadUserPhotoForm" method="post" enctype="multipart/form-data"
+                      asp-action="UploadImage" asp-controller="Image">
+                    <input type="button" id="uploadUserPhoto" onclick="openFilesFolder()"
+                           onmouseout="changePhDwnlBtn(false)" onmouseover="changePhDwnlBtn(true)"
+                           class="btn btn-warning pl-5 pr-5" value="Выбрать фотографию">
+                    <input type="file" id="openFolder" hidden />
+                </form>
+                <div class="row ml-1">
+                    <input type="button" class="btn btn-primary none mt-4 mr-4" id="showUserPhoto" value="Загрузить"
+                           onclick="showUserPhoto()" onmouseout="uploadPhotoBtn(false)" onmouseover="uploadPhotoBtn(true)" />
+                    <form method="post" asp-controller="User" asp-action="UpdateProfileImage" id="saveUserPhotoForm">
+                        <input type="text" name="user.ImagePath" id="sendPhotoToModel" hidden />
+                        <input type="text" name="user.Id" value="@Model.Id" hidden />
+                        <input type="button" id="saveUserPhotoBtn" value="Сохранить" class="btn btn-success none mt-4 ml-4"
+                               onclick="saveUserPhotoAction()" onmouseout="savePhotoBtn(false)" onmouseover="savePhotoBtn(true)" />
+                    </form>
+                </div>
+                <div class="row ml-1">
+                    <input type="button" class="btn btn-secondary none mt-3" id="abortPhotoUpdateBtn" value="Отмена"
+                           onclick="abortPhotoUpdate()" onmouseout="" onmouseover="" />
+                </div>
             </div>
         </div>
     </div>

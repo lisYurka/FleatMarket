@@ -24,5 +24,9 @@ namespace FleatMarket.Base.Entities
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
+
+        public int? ImageId { get; set; }
+        [ForeignKey("ImageId")]
+        public Image Image { get; set; }
     }
 }

@@ -78,7 +78,8 @@ namespace FleatMarket.Web.Controllers
                     StatusId = d.DeclarationStatusId,
                     StatusName = d.DeclarationStatus.StatusName,
                     Title = d.Title,
-                    Price = d.Price
+                    Price = d.Price,
+                    ImagePath = d.Image.ImagePath
                 };
                 declarations.Add(declaration);
             });

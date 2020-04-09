@@ -32,5 +32,9 @@ namespace FleatMarket.Base.Entities
         public Role Role { get; set; }
 
         public List<Declaration> Declarations { get; set; }
+
+        public int? ImageId { get; set; }
+        [ForeignKey("ImageId")]
+        public Image Image { get; set; }
     }
 }

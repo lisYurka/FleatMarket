@@ -17,7 +17,7 @@ namespace FleatMarket.Service.BusinessLogic
 
         public IEnumerable<Declaration> GetAllDeclarations()
         {
-            return repository.GetWithInclude<Declaration>("Category","DeclarationStatus","User");
+            return repository.GetWithInclude<Declaration>("Category","DeclarationStatus","User","Image");
         }
 
         public void RemoveDeclaration(int? id)
@@ -36,7 +36,7 @@ namespace FleatMarket.Service.BusinessLogic
             if (id == null)
                 throw new Exception("Id can't be null!");
             else
-                return repository.GetWithIncludeById<Declaration>(id.Value, "Category", "DeclarationStatus", "User");
+                return repository.GetWithIncludeById<Declaration>(id.Value, "Category", "DeclarationStatus", "User","Image");
         }
 
         public void UpdateDeclaration(Declaration d)

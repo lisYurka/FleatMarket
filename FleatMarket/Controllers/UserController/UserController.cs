@@ -12,11 +12,14 @@ namespace FleatMarket.Web.Controllers.UserController
     {
         private readonly IUserService userService;
         private readonly IDeclarationService declarationService;
+        private readonly IImageService imageService;
 
-        public UserController(IUserService _userService, IDeclarationService _declarationService)
+        public UserController(IUserService _userService, IDeclarationService _declarationService,
+            IImageService _imageService)
         {
             userService = _userService;
             declarationService = _declarationService;
+            imageService = _imageService;
         }
 
         public IActionResult UserArea(int userAction)
@@ -41,7 +44,8 @@ namespace FleatMarket.Web.Controllers.UserController
                     Price = q.Price,
                     StatusName = q.DeclarationStatus.StatusName,
                     StatusId = q.DeclarationStatusId,
-                    Title = q.Title
+                    Title = q.Title,
+                    ImagePath = q.Image.ImagePath
                 };
                 viewModel.Add(model);
             });
@@ -61,7 +65,8 @@ namespace FleatMarket.Web.Controllers.UserController
                 Name = user.Name,
                 Phone = user.PhoneNumber,
                 Role = user.Role.Name,
-                Surname = user.Surname
+                Surname = user.Surname,
+                ImagePath = user.Image.ImagePath
             };
             return PartialView("_UserProfile", viewModel);
         }
@@ -98,11 +103,21 @@ namespace FleatMarket.Web.Controllers.UserController
                     Price = d.Price,
                     StatusId = d.DeclarationStatusId,
                     StatusName = d.DeclarationStatus.StatusName,
-                    Title = d.Title
+                    Title = d.Title,
+                    ImagePath = d.Image.ImagePath
                 };
                 viewModel.Add(oneDeclaration);
             });
             return PartialView("_RemovedDeclars", viewModel);
+        }
+
+        [HttpPost]
+        public void UpdateProfileImage(UserViewModel user)
+        {
+            var u = userService.GetUserByStringId(user.Id);
+            var imageId = imageService.GetImageId(user.ImagePath);
+            u.ImageId = imageId;
+            userService.UpdateUser(u);
         }
     }
 }
