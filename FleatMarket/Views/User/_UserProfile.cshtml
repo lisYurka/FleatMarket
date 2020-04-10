@@ -1,18 +1,18 @@
 ﻿@model UserViewModel
 
-<div class="card" style="width:40rem;">
+<div class="card" style="max-width:40rem;">
     <div class="card-body p-4">
         <h4 div class="card-title">Загрузите вашу фотографию</h4>
         <div class="row mt-4">
-            <div class="col col-4" id="userAvatar">
+            <div class="col-sm-4" id="userAvatar">
                 <img src="@Model.ImagePath" style="height:10rem;width:10rem;" />
             </div>
-            <div class="col col-8">
+            <div class="col-sm-8">
                 <form id="uploadUserPhotoForm" method="post" enctype="multipart/form-data"
                       asp-action="UploadImage" asp-controller="Image">
                     <input type="button" id="uploadUserPhoto" onclick="openFilesFolder()"
                            onmouseout="changePhDwnlBtn(false)" onmouseover="changePhDwnlBtn(true)"
-                           class="btn btn-warning pl-5 pr-5" value="Выбрать фотографию">
+                           class="btn btn-warning pl-5 pr-5 mt-1" value="Выбрать фотографию">
                     <input type="file" id="openFolder" hidden />
                 </form>
                 <div class="row ml-1">
@@ -34,13 +34,13 @@
     </div>
 </div>
 
-<div class="card mt-3" style="width:40rem;">
+<div class="card mt-3" style="max-width:40rem;">
     <div class="card-body p-4">
         <h4 div class="card-title">Персональные данные</h4>
 
         <form method="post" asp-action="UpdateUser" asp-controller="User" id="userUpdateForm">
             <div class="row mt-4">
-                <div class="col col-6">
+                <div class="col-6">
                     <div class="form-group">
                         <label for="userName" class="h6">Имя *</label>
                         <div id="userName" class="currentData">@Model.Name</div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col col-6">
+                <div class="col-6">
                     <div class="form-group">
                         <label for="userSurname" class="h6">Фамилия *</label>
                         <div id="userSurname" class="currentData">@Model.Surname</div>
@@ -89,7 +89,7 @@
             </div>
 
             <div class="row mt-3">
-                <div class="col col-6">
+                <div class="col-6">
                     <div class="form-group">
                         <label for="isUserActive" class="h6">Статус</label>
                         @if (Model.IsActive)
@@ -102,7 +102,7 @@
                         }
                     </div>
                 </div>
-                <div class="col col-6">
+                <div class="col-6">
                     <div class="form-group">
                         <label for="userRole" class="h6">Роль</label>
                         @if (Model.Role == "Admin")

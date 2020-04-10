@@ -17,7 +17,7 @@ namespace FleatMarket.Service.BusinessLogic
 
         public IEnumerable<User> GetAllUsersWithRoles()
         {
-            return repository.GetWithInclude<User>("Role");
+            return repository.GetWithInclude<User>("Role","Image");
         }
 
         public User GetWithRoleByStringId(string id)

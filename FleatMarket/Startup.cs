@@ -52,7 +52,7 @@ namespace FleatMarket
                     options.ClientId = "875591813759-caesbn5n0qmu8gu2ai2ae418riaukaba.apps.googleusercontent.com";
                     options.ClientSecret = "eaI3YGrFJxBGGlo3Mehg-eM-";
 
-                    options.ClaimActions.MapJsonKey(ClaimTypes.Role.ToString(),"Admin");
+                    //options.ClaimActions.MapJsonKey(ClaimTypes.Role.ToString(),"Admin");
                 });
 
             services.AddMvc();

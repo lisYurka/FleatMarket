@@ -1,38 +1,51 @@
 ﻿@model UserViewModel
 
-<div class="card-title text-center">
+@*<div class="card-title text-center">
     <h4>Id пользователя: @Model.Id</h4>
-</div>
+</div>*@
 <div class="card-body">
-    <div class="form-group row">
-        <label for="EMail" class="col-sm-2 col-form-label">EMail</label>
-        <div class="col-sm-10" id="EMail">
-            @Model.EMail
+    <div class="row">
+        <div class="col-sm-7 pr-0">
+            <div class="form-group row">
+                <label for="EMail" class="col-sm-4 col-form-label font-weight-bold">EMail</label>
+                <div class="col-sm-8" id="EMail">
+                    @Model.EMail
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Phone" class="col-sm-4 col-form-label font-weight-bold">Телефон</label>
+                <div class="col-sm-8" id="Phone">
+                    @Model.Phone
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Role" class="col-sm-4 col-form-label font-weight-bold">Роль</label>
+                <div class="col-sm-8" id="Role">
+                    @Model.Role
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="IsActive" class="col-sm-4 col-form-label font-weight-bold">Статус</label>
+                <div class="col-sm-8" id="IsActive">
+                    @if (Model.IsActive)
+                    {
+                        <div id=@Model.Id class="BlockStatus">Активный</div>
+                    }
+                    else
+                    {
+                        <div id=@Model.Id class="BlockStatus">Заблокирован</div>
+                    }
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-center">
+                @if(User.Identity.Name == Model.EMail)
+                {
+                    <div class="col-6 border text-center bg-warning rounded-pill">Это Вы!</div>
+                }
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="Phone" class="col-sm-2 col-form-label">Телефон</label>
-        <div class="col-sm-10" id="Phone">
-            @Model.Phone
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="Role" class="col-sm-2 col-form-label">Роль</label>
-        <div class="col-sm-10" id="Role">
-            @Model.Role
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="IsActive" class="col-sm-2 col-form-label">Статус</label>
-        <div class="col-sm-10" id="IsActive">
-            @if (Model.IsActive)
-            {
-                <div id=@Model.Id class="BlockStatus">Активный</div>
-            }
-            else
-            {
-                <div id=@Model.Id class="BlockStatus">Заблокирован</div>
-            }
+        <div class="col-sm-5 pl-2">
+            <img src="@Model.ImagePath" style="width:12rem;height:12rem;" />
         </div>
     </div>
 </div>

@@ -59,6 +59,14 @@ namespace FleatMarket.Web.Controllers.UserController
                         else
                             RedirectToAction("Login", "Account");
                     }
+                    else
+                    {
+                        ViewBag.PassError = "Неверный пароль!";
+                    }
+                }
+                else
+                {
+                    ViewBag.MailError = "Пользователь с таким E-Mail не зарегистрирован!";
                 }
             }
             return View(login);
@@ -155,29 +163,37 @@ namespace FleatMarket.Web.Controllers.UserController
         {
             if (ModelState.IsValid)
             {
-                Role role = roleService.GetRoles().FirstOrDefault(r => r.Name == "User");
-                var user = new User
+                var mail = userService.GetAllUsersWithRoles().Where(u => u.Email == register.EMail).FirstOrDefault();
+                if (mail == null)
                 {
-                    Email = register.EMail,
-                    UserName = register.EMail,
-                    PhoneNumber = register.Phone,
-                    RoleId = role.Id,
-                    Name = register.Name,
-                    Surname = register.Surname,
-                    ImageId = 2
-                };
+                    Role role = roleService.GetRoles().FirstOrDefault(r => r.Name == "User");
+                    var user = new User
+                    {
+                        Email = register.EMail,
+                        UserName = register.EMail,
+                        PhoneNumber = register.Phone,
+                        RoleId = role.Id,
+                        Name = register.Name,
+                        Surname = register.Surname,
+                        ImageId = 2
+                    };
 
-                var result = await userManager.CreateAsync(user, register.Password);
+                    var result = await userManager.CreateAsync(user, register.Password);
 
-                if (result.Succeeded)
-                {
-                    await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role.Name));
-                    return RedirectToAction("Login", "Account");
+                    if (result.Succeeded)
+                    {
+                        await userManager.AddClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), role.Name));
+                        return RedirectToAction("Login", "Account");
+                    }
+                    else
+                    {
+                        foreach (var item in result.Errors)
+                            ModelState.AddModelError("", item.Description);
+                    }
                 }
                 else
                 {
-                    foreach (var item in result.Errors)
-                        ModelState.AddModelError("", item.Description);
+                    ViewBag.ErrorMail = "Такой пользователь уже существует!";
                 }
             }
             return View(register);

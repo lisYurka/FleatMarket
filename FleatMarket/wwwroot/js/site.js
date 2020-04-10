@@ -267,23 +267,6 @@ $('.UserData').on('click', 'input[name=UpdateUserButtonAction]', function () {
     });
 });
 
-//валидация регистрации(ДОДЕЛАТЬ)
-(function () {
-    'use strict';
-    window.addEventListener('load', function () {
-        var forms = document.getElementsByClassName('needs-validation');
-        var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
-})();
-
 //получаем список дат между выбранными датами
 var getDates = function (startDate, endDate) {
     var dates = [],
@@ -635,17 +618,179 @@ function abortDeclarImgUpdateBtn() {
     $('#sendImageToModel').val(oldDeclarPhoto);
 }
 
+//переключение между вкладками в упралении пользователями
+$('#myTab a').on('click', function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+})
+
+//валидация на регистрацию
+function checkRegistrForValid() {
+    var mail = $('#input_EMail').val();
+    var name = $('#inputName').val();
+    var surname = $('#inputSurname').val();
+    var phone = $('#input_Phone').val();
+    var password = $('#input_Password').val();
+
+    var emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    var isValidMail = emailPattern.test(mail);
+
+    var anyLetter = /^[A-Za-zА-Яа-яЁё]+$/;
+    var isNameValid = anyLetter.test(name);
+    var isSurnameValid = anyLetter.test(surname);
+
+    var passwordPattern = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])(?=.*[!#$%&'*+\/=?^_`{|}~.-]).*$/
+    var isPasswordValid = passwordPattern.test(password);
+
+    $('#emailError').hide();
+    $('#nameError').hide();
+    $('#surnameError').hide();
+    $('#phoneError').hide();
+    $('#passwordError').hide();
+
+    //почта
+    if (mail.length == 0) {
+        document.getElementById('emailError').innerHTML = "E-Mail не может быть пустым!";
+        $('#emailError').removeClass("text-success").addClass("text-danger");
+        $('#emailError').show();
+        return false;
+    }
+    else if (mail.length > 0 && !isValidMail) {
+        document.getElementById('emailError').innerHTML = "E-Mail имеет неверный формат!";
+        $('#emailError').removeClass("text-success").addClass("text-danger");
+        $('#emailError').show();
+        return false;
+    }
+    else {
+        document.getElementById('emailError').innerHTML = "Отлично!";
+        $('#emailError').removeClass("text-danger").addClass("text-success");
+        $('#emailError').show();
+    }
+
+    //имя
+    if (name.length < 1) {
+        document.getElementById('nameError').innerHTML = "Имя не должно быть пустым!";
+        $('#nameError').removeClass("text-success").addClass("text-danger");
+        $('#nameError').show();
+        return false;
+    }
+    else if (!isNameValid) {
+        document.getElementById('nameError').innerHTML = "Имя должно содержать только буквы!";
+        $('#nameError').removeClass("text-success").addClass("text-danger");
+        $('#nameError').show();
+        return false;
+    }
+    else {
+        document.getElementById('nameError').innerHTML = "Отлично!";
+        $('#nameError').removeClass("text-danger").addClass("text-success");
+        $('#nameError').show();
+    }
+
+    //фамилия
+    if (surname.length < 1) {
+        document.getElementById('surnameError').innerHTML = "Фамилия не должна быть пустой!";
+        $('#surnameError').removeClass("text-success").addClass("text-danger");
+        $('#surnameError').show();
+        return false;
+    }
+    else if (!isSurnameValid) {
+        document.getElementById('surnameError').innerHTML = "Фамилия должно содержать только буквы!";
+        $('#surnameError').removeClass("text-success").addClass("text-danger");
+        $('#surnameError').show();
+        return false;
+    }
+    else {
+        document.getElementById('surnameError').innerHTML = "Отлично!";
+        $('#surnameError').removeClass("text-danger").addClass("text-success");
+        $('#surnameError').show();
+    }
+
+    //телефон
+    if (phone.length > 0 && (phone.length < 7 || phone.length > 13)) {
+        document.getElementById('phoneError').innerHTML = "Проверьте количество цифр!";
+        $('#phoneError').removeClass("text-success").addClass("text-danger");
+        $('#phoneError').show();
+        return false;
+    }
+    else {
+        document.getElementById('phoneError').innerHTML = "Отлично!";
+        $('#phoneError').removeClass("text-danger").addClass("text-success");
+        $('#phoneError').show();
+    }
+
+    //пароль
+    if (password.length == 0) {
+        document.getElementById('passwordError').innerHTML = "Пароль не должен быть пустым!";
+        $('#passwordError').removeClass("text-success").addClass("text-danger");
+        $('#passwordError').show();
+        return false;
+    }
+    else if (password.length > 0 && !isPasswordValid) {
+        document.getElementById('passwordError').innerHTML = "Пароль должен содержать минимум 8 символов," +
+            "одну цифру, одну букву в нижнем и одну букву в верхнем регистрах!";
+        $('#passwordError').removeClass("text-success").addClass("text-danger");
+        $('#passwordError').show();
+        return false;
+    }
+    else {
+        document.getElementById('passwordError').innerHTML = "Отлично!";
+        $('#passwordError').removeClass("text-danger").addClass("text-success");
+        $('#passwordError').show();
+    }
+    return true;
+}
+
+//валидация авторизации
+function checkLoginForValid() {
+    var mail = $('#inputEMail').val();
+    var password = $('#inputPassword').val();
+
+    $('#eMailError').hide();
+    $('#passError').hide();
+
+    var emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    var isValidMail = emailPattern.test(mail);
+
+    //почта
+    if (mail.length == 0) {
+        document.getElementById('eMailError').innerHTML = "E-Mail не может быть пустым!";
+        $('#eMailError').removeClass("text-success").addClass("text-danger");
+        $('#eMailError').show();
+        return false;
+    }
+    else if (mail.length > 0 && !isValidMail) {
+        document.getElementById('eMailError').innerHTML = "E-Mail имеет неверный формат!";
+        $('#eMailError').removeClass("text-success").addClass("text-danger");
+        $('#eMailError').show();
+        return false;
+    }
+    else {
+        document.getElementById('eMailError').innerHTML = "Отлично!";
+        $('#eMailError').removeClass("text-danger").addClass("text-success");
+        $('#eMailError').show();
+    }
+
+    //пароль
+    if (password.length == 0) {
+        document.getElementById('passError').innerHTML = "Пароль не должен быть пустым!";
+        $('#passError').removeClass("text-success").addClass("text-danger");
+        $('#passError').show();
+        return false;
+    }
+    else {
+        document.getElementById('passError').innerHTML = "Отлично!";
+        $('#passError').removeClass("text-danger").addClass("text-success");
+        $('#passError').show();
+    }
+    return true;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
     //для показа выбранной категории при редактировании
     $('[data-onload]').each(function () {
         eval($(this).data('onload'));
     });
-
-    //для выбора профиля или объявления
-    //$('[data-load]').each(function () {
-    //    eval($(this).data('load'));
-    //});
 
     //InfiniteScroll($('#LoadingPostPreview'), $('#PostPreviewScrolList'), '/Home/Index?id=', 'GET', '');
 

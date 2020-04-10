@@ -1,6 +1,39 @@
 ﻿@model IEnumerable<UserViewModel> 
-
-<div class="container-fluid">
+<nav>
+    <div class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+        <a class="nav-item nav-link active" href="#users" role="tab" 
+           data-toggle="tab" id="usersTab" aria-controls="users" aria-selected="true">Пользователи</a>
+        <a class="nav-item nav-link" href="#admins" role="tab" 
+           data-toggle="tab" id="adminsTab" aria-controls="admins" aria-selected="false">Администраторы</a>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane active" id="users" role="tabpanel" aria-labelledby="usersTab">
+            <form id="UpdateUserForm" asp-action="UpdateUser" asp-controller="Administration" method="post">
+                @foreach (var item in Model)
+                {
+                    if (item.Role == "user")
+                    {
+                        <div class="card UserData mt-3" id="@item.Id" style="max-width:43rem;">
+                            @Html.Partial("_User", item)
+                        </div>
+                    }
+                }
+            </form>
+        </div>
+        <div class="tab-pane" id="admins" role="tabpanel" aria-labelledby="adminsTab">
+            @foreach (var item in Model)
+            {
+                if (item.Role == "admin")
+                {
+                    <div class="card UserData mt-3" id="@item.Id" style="max-width:43rem;">
+                        @Html.Partial("_User", item)
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</nav>
+@*<div class="container-fluid">
     @ViewBag.ErrorMessage
     <form id="UpdateUserForm" asp-action="UpdateUser" asp-controller="Administration" method="post">
         @foreach (var item in Model)
@@ -8,24 +41,9 @@
             <div class="card UserData" id="@item.Id" style="width:43rem;">
                 @Html.Partial("_User", item)
             </div>
-         }
-            </form>
-    @*<form asp-action="RemoveUser" asp-route-Id="@item.Id" method="post">
-        <a asp-action="EditUser" asp-route-Id="@item.Id" class="btn btn-info">Изменить</a>
-
-        <span id="deleteSpan_@item.Id" class="">
-            <a href="#" class="btn btn btn-danger"
-                onclick="confirmToRemove('@item.Id',true)">Удалить</a>
-        </span>
-
-        <span id="confirmDeleteSpan_@item.Id" class="d-none">
-            <span>Подтверждаете свои действия?</span>
-            <button type="submit" class="btn btn-danger">Да</button>
-            <a href="#" class="btn btn-primary"
-                onclick="confirmToRemove('@item.Id',false)">Нет</a>
-        </span>
-    </form>*@
-</div>
+        }
+    </form>
+</div>*@
 
 <form id="InputUser" asp-action="UpdateUserInput" asp-controller="Administration" method="post">
     <input id="InputStringId" type="text" name="id" hidden>

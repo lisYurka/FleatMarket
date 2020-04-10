@@ -15,14 +15,16 @@ namespace FleatMarket.Web.Controllers.AdministrationController
     {
         private readonly IUserService userService;
         private readonly IRoleService roleService;
+        private readonly IImageService imageService;
 
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
-        public AdministrationController(IUserService _userService,
+        public AdministrationController(IUserService _userService, IImageService _imageService,
             IRoleService _roleService, UserManager<User> _userManager, SignInManager<User> _signInManager)
         {
             userService = _userService;
             roleService = _roleService;
+            imageService = _imageService;
             userManager = _userManager;
             signInManager = _signInManager;
         }
@@ -40,7 +42,8 @@ namespace FleatMarket.Web.Controllers.AdministrationController
                     EMail = u.Email,
                     Name = u.UserName,
                     Phone = u.PhoneNumber,
-                    Role = u.Role.RoleName
+                    Role = u.Role.RoleName,
+                    ImagePath = u.Image.ImagePath
                 };
                 showUsers.Add(userViewModel);
             });
@@ -82,7 +85,8 @@ namespace FleatMarket.Web.Controllers.AdministrationController
                 Phone = user.PhoneNumber,
                 Role = user.Role.RoleName,
                 Surname = user.Surname,
-                RoleList = roles
+                RoleList = roles,
+                ImagePath = user.Image.ImagePath
             };
 
             return PartialView("_ChangeData",userViewModel);
@@ -93,6 +97,7 @@ namespace FleatMarket.Web.Controllers.AdministrationController
         {
             var role = roleService.GetRoles().Where(r => r.Id == userViewModel.Role).FirstOrDefault();
             var user = userService.GetWithRoleByStringId(userViewModel.Id);
+            var img = imageService.GetImageId(userViewModel.ImagePath);
 
             user.Email = userViewModel.EMail;
             user.IsActive = userViewModel.IsActive;
@@ -100,22 +105,23 @@ namespace FleatMarket.Web.Controllers.AdministrationController
             user.PhoneNumber = userViewModel.Phone;
             user.RoleId = userViewModel.Role;
             user.Surname = userViewModel.Surname;
+            user.ImageId = img;
 
             userViewModel.Role = role.RoleName;
 
-            //userService.UpdateUser(user);
+            userService.UpdateUser(user);
             //await userManager.UpdateAsync(user);
             //await userManager.RemoveClaimAsync(user, new ClaimsIdentity(User.Identity).FindFirst(ClaimTypes.Role.ToString()));
-            var claims = await userManager.GetClaimsAsync(user);
-            var roleClaim = claims.Where(c => c.Type == ClaimTypes.Role.ToString()).FirstOrDefault();
-            if(roleClaim != null)
-            {
-                var result = await userManager.RemoveClaimAsync(user, roleClaim);
-                if (result.Succeeded)
-                {
+            //var claims = await userManager.GetClaimsAsync(user);
+            //var roleClaim = claims.Where(c => c.Type == ClaimTypes.Role.ToString()).FirstOrDefault();
+            //if(roleClaim != null)
+            //{
+            //    var result = await userManager.RemoveClaimAsync(user, roleClaim);
+            //    if (result.Succeeded)
+            //    {
 
-                }
-            }
+            //    }
+            //}
             //await userManager.RemoveClaimAsync(user, new ClaimsIdentity(User.Identity).FindFirst(ClaimTypes.Role.ToString())); 
             //await userManager.ReplaceClaimAsync(user, claim: new Claim(ClaimTypes.Role.ToString(), user.Role.Name), new Claim(ClaimTypes.Role.ToString(), role.RoleName));
             return PartialView("_User", userViewModel);
