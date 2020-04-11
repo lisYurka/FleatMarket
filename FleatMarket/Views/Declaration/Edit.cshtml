@@ -33,25 +33,27 @@
         </div>
     </div>
     <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-2 mb-md-3" />
-    <form asp-action="UpdateDeclaration" asp-controller="Declaration" method="post" id="EditDeclarForm">
+    <form asp-action="UpdateDeclaration" asp-controller="Declaration" method="post" id="EditDeclarForm" onsubmit="return checkNewDeckarForValid()">
         <input type="text" id="@Model.AuthorId" asp-for="AuthorId" class="declarAuthorId" hidden />
         <input type="text" name="declarImgPath" value="@Model.ImagePath" id="sendImageToModel" hidden />
         <div class="row mt-sm-4">
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
                 <label for="declar_title" class="font-weight-bold">Название товара *</label>
-                <input type="text" id="declar_title" placeholder="Например, кот-засранец" asp-for="Title" class="form-control" />
+                <input type="text" id="declar_title" placeholder="Например, кот-засранец" asp-for="Title" class="form-control" aria-describedby="declTitleError" />
+                <small id="declTitleError" class="text-danger"></small>
             </div>
         </div>
         <div class="row mt-sm-3">
             <div class="form-group col-8 col-sm-7 col-md-6">
                 <label for="category_choose" class="font-weight-bold">Выбор категории *</label>
-                <div class="card" id="category_choose">
+                <div class="card" id="category_choose" aria-describedby="declarCategoryError">
                     <input type="text" id="@Model.CategoryId" class="showOldCategory" hidden data-onload="showCategoryColor()" />
                     <div class="card-body">
                         @Html.Partial("_CategoryList")
                     </div>
                     <input type="text" id="choosenCategoryId" name="category" hidden />
                 </div>
+                <small id="declarCategoryError" class="text-danger"></small>
             </div>
         </div>
         <div class="row d-flex justify-content-start ml-5">
@@ -71,7 +73,8 @@
         <div class="row mt-sm-3">
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
                 <label for="declar_description" class="font-weight-bold">Описание *</label>
-                <textarea class="form-control" id="declar_description" asp-for="Description" rows="4"></textarea>
+                <textarea class="form-control" id="declar_description" asp-for="Description" rows="4" aria-describedby="declDescrError"></textarea>
+                <small id="declDescrError" class="text-danger"></small>
             </div>
         </div>
         <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-md-3" />
@@ -90,8 +93,9 @@
                     </button>
                 </div>
                 <div class="form-row pl-1" id="priceInputLabel">
-                    <input class="form-control mt-3 col-8" id="inputPrice" type="text" placeholder="Например, 99.95" asp-for="Price" />
+                    <input class="form-control mt-3 col-8" id="inputPrice" type="text" placeholder="Например, 99.95" asp-for="Price" aria-describedby="declarPriceError" />
                     <label for="inputPrice" class="text-justify col-2 text-center my-4">BYN</label>
+                    <small id="declarPriceError" class="text-danger"></small>
                 </div>
             </div>
         </div>

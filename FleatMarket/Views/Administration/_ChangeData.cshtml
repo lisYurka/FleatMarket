@@ -18,19 +18,22 @@
 <div class="form-group row">
     <label for="Name" class="col-sm-2 col-form-label">Имя</label>
     <div class="col-sm-10" id="Name">
-        <input class="form-control" type="text" id="adminChangeUserName" placeholder="Name" name="userViewModel.Name" value=@Model.Name />
+        <input class="form-control" type="text" id="adminChangeUserName" placeholder="Name" name="userViewModel.Name" value=@Model.Name  aria-describedby="usernameError"/>
+        <small id="usernameError" class="text-danger"></small>
     </div>
 </div>
 <div class="form-group row">
     <label for="Surname" class="col-sm-2 col-form-label">Фамилия</label>
     <div class="col-sm-10" id="Surname">
-        <input class="form-control" type="text" id="adminChangeUserSurname" placeholder="Surname" name="userViewModel.Surname" value=@Model.Surname />
+        <input class="form-control" type="text" id="adminChangeUserSurname" placeholder="Surname" name="userViewModel.Surname" value=@Model.Surname aria-describedby="usersurnameError"/>
+        <small id="usersurnameError" class="text-danger"></small>
     </div>
 </div>
 <div class="form-group row">
     <label for="Phone" class="col-sm-2 col-form-label">Телефон</label>
     <div class="col-sm-10" id="Phone">
-        <input class="form-control" type="text" id="adminChangeUserPhone" placeholder="Phone" name="userViewModel.Phone" value=@Model.Phone />
+        <input class="form-control" type="text" id="adminChangeUserPhone" placeholder="Phone" name="userViewModel.Phone" value=@Model.Phone aria-describedby="userphoneError"/>
+        <small id="userphoneError" class="text-danger"></small>
     </div>
 </div>
 

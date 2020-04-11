@@ -208,15 +208,19 @@ $('.UserData').on('click', '.DeleteUserButton', function () {
     });
 });
 
-//кнопка "Подтвердить"(при изменении юзера) ДОДЕЛАТЬ ВАЛИДАЦИЮ
+//кнопка "Подтвердить"(при изменении юзера), функция валидации ниже(за 800 строкой и дальше смотри)
 $('.UserData').on('click', 'input[name=UpdateUserButtonAction]', function () {
     var string = $('.UserData');
     var loaderArr = $("div[name=RemoveLoader]");
     var delButtons = $('.DeleteUserButton');
     var changeButtons = $('.ChangeUserButton');
     var blockButtons = $('.BlockUserButton');
-    var regEx = /^[[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
     var item;
+
+    $('#usernameError').hide();
+    $('#usersurnameError').hide();
+    $('#userphoneError').hide();
+
     string.each(function (index) {
         if (string[index].id == event.target.id)
             item = index;
@@ -229,36 +233,17 @@ $('.UserData').on('click', 'input[name=UpdateUserButtonAction]', function () {
             $(loaderArr[item]).show();
         },
         success: function (data) {
-            var adminChangeUserMail = $('#adminChangeUserMail').val();
-            var adminChangeUserName = $('#adminChangeUserName').val();
-            var adminChangeUserSurname = $('#adminChangeUserSurname').val();
-            var adminChangeUserPhone = $('#adminChangeUserPhone').val();
-            
-            $(".error").remove();
-
-            var validEmail = regEx.test(adminChangeUserMail);
-
-            if (adminChangeUserMail.length < 1) {
-                $('#adminChangeUserMail').after('<span class="error"><div id="colorRed">Проверьте правильность заполнения поля "EMail"</div></span>');
-            }
-            if (adminChangeUserName.length < 1) {
-                $('#adminChangeUserName').after('<span class="error"><br /><div id="colorRed">Проверьте правильность заполнения поля "Имя"</div></span>');
-            }
-            if (adminChangeUserSurname.length < 1) {
-                $('#adminChangeUserSurname').after('<span class="error"><br /><div id="colorRed">Проверьте правильность заполнения поля "Фамилия"</div></span>');
-            }
-            if (adminChangeUserPhone.length < 1) {
-                $('#adminChangeUserPhone').after('<span class="error"><div id="colorRed">Проверьте правильность заполнения поля "Телефон"</div></span>');
-            }
-            else if (!validEmail) {
-                $('#adminChangeUserMail').after('<span class="error"><div id="colorRed">Проверьте правильность заполнения поля "EMail"</div></span>');
-            }
-            else {
+            var test = checkEditUserAdminValid();
+            if (test) {
                 $(string[item]).html(data);
                 $(loaderArr[item]).hide();
                 delButtons.show();
                 changeButtons.show();
                 blockButtons.show();
+
+                $('#usernameError').hide();
+                $('#usersurnameError').hide();
+                $('#userphoneError').hide();
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -383,7 +368,7 @@ function deleteFromDb() {
     });
 }
 
-//редактирование инфы пользователя
+//редактирование инфы пользователя в личном кабинете
 function updateUserAction() {
     var currentData = $('.currentData');
     var profileInput = $('.profileInput');
@@ -396,21 +381,30 @@ function updateUserAction() {
     profileInput.show();
     saveUserProfileChangesBtn.show();
 
+    $('#userNameError').hide();
+    $('#userSurnameError').hide();
+    $('#userPhoneError').hide();
+
     saveUserProfileChangesBtn.on('click', function () {
         $.ajax({
             type: form.attr('method'),
             url: form.attr('action'),
             data: form.serialize(),
             success: function () {
+                var test = checkPersAreaForValid();
+                if (test) {
+                    for (var i = 0; i < currentData.length; i++) {
+                        $(currentData[i]).text($(profileInput[i]).val());
+                    }
+                    saveUserProfileChangesBtn.hide();
+                    profileInput.hide();
+                    updateUserProfileBtn.show();
+                    currentData.show();
 
-                for (var i = 0; i < currentData.length; i++) {
-                    $(currentData[i]).text($(profileInput[i]).val());
+                    $('#userNameError').hide();
+                    $('#userSurnameError').hide();
+                    $('#userPhoneError').hide();
                 }
-
-                saveUserProfileChangesBtn.hide();
-                profileInput.hide();
-                updateUserProfileBtn.show();
-                currentData.show();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.responseText);
@@ -639,6 +633,9 @@ function checkRegistrForValid() {
     var isNameValid = anyLetter.test(name);
     var isSurnameValid = anyLetter.test(surname);
 
+    var onlyNumbers = /^\d+$/
+    var isPhoneValid = onlyNumbers.test(phone);
+
     var passwordPattern = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z])(?=.*[!#$%&'*+\/=?^_`{|}~.-]).*$/
     var isPasswordValid = passwordPattern.test(password);
 
@@ -712,6 +709,12 @@ function checkRegistrForValid() {
         $('#phoneError').show();
         return false;
     }
+    else if (phone.length > 0 && !isPhoneValid) {
+        document.getElementById('phoneError').innerHTML = "Телефон должен содержать только цифры!";
+        $('#phoneError').removeClass("text-success").addClass("text-danger");
+        $('#phoneError').show();
+        return false;
+    }
     else {
         document.getElementById('phoneError').innerHTML = "Отлично!";
         $('#phoneError').removeClass("text-danger").addClass("text-success");
@@ -781,6 +784,229 @@ function checkLoginForValid() {
         document.getElementById('passError').innerHTML = "Отлично!";
         $('#passError').removeClass("text-danger").addClass("text-success");
         $('#passError').show();
+    }
+    return true;
+}
+
+// валидация создания объявления
+function checkNewDeckarForValid() {
+    var title = $('#declar_title').val();
+    var category = $('#choosenCategoryId').val();
+    var description = $('#declar_description').val(); 
+    var price = $('#inputPrice').val();
+
+    var pricePattern = /^\d+(,\d{2})?$/;
+    var isPriceValid = pricePattern.test(price);
+
+    $('#declTitleError').hide();
+    $('#declarCategoryError').hide();
+    $('#declDescrError').hide(); 
+    $('#declarPriceError').hide();
+
+    //название
+    if (title.length == 0) {
+        document.getElementById('declTitleError').innerHTML = "Название не должно быть пустым!";
+        $('#declTitleError').removeClass('text-success').addClass('text-danger');
+        $('#declTitleError').show();
+        return false;
+    }
+    else {
+        document.getElementById('declTitleError').innerHTML = "Отлично!";
+        $('#declTitleError').removeClass('text-danger').addClass('text-success');
+        $('#declTitleError').show();
+    }
+
+    //категория выбрана
+    if (category == "") {
+        document.getElementById('declarCategoryError').innerHTML = "Категория не выбрана!";
+        $('#declarCategoryError').removeClass('text-success').addClass('text-danger');
+        $('#declarCategoryError').show();
+        return false;
+    }
+    else {
+        document.getElementById('declarCategoryError').innerHTML = "Отлично!";
+        $('#declarCategoryError').removeClass('text-danger').addClass('text-success');
+        $('#declarCategoryError').show();
+    }
+
+    //описание
+    if (description.length == 0) {
+        document.getElementById('declDescrError').innerHTML = "Описание не должно быть пустым!";
+        $('#declDescrError').removeClass('text-success').addClass('text-danger');
+        $('#declDescrError').show();
+        return false;
+    }
+    else {
+        document.getElementById('declDescrError').innerHTML = "Отлично!";
+        $('#declDescrError').removeClass('text-danger').addClass('text-success');
+        $('#declDescrError').show();
+    }
+
+    //цена
+    if (!isPriceValid) {
+        document.getElementById('declarPriceError').innerHTML = "Пример правильного заполнения: 49,99 (запятая-разделитель)";
+        $('#declarPriceError').removeClass('text-success').addClass('text-danger');
+        $('#declarPriceError').show();
+        return false;
+    }
+    else {
+        document.getElementById('declarPriceError').innerHTML = "Отлично!";
+        $('#declarPriceError').removeClass('text-danger').addClass('text-success');
+        $('#declarPriceError').show();
+    }
+
+    return true;
+}
+
+// валидация пользователя при изменении в личном кабинете
+function checkPersAreaForValid() {
+    var name = $('#changeUserName').val();
+    var surname = $('#changeUserSurname').val();
+    var phone = $('#changeUserPhone').val();
+
+    $('#userNameError').hide();
+    $('#userSurnameError').hide();
+    $('#userPhoneError').hide();
+
+    var anyLetter = /^[A-Za-zА-Яа-яЁё]+$/;
+    var isNameValid = anyLetter.test(name);
+    var isSurnameValid = anyLetter.test(surname);
+
+    var onlyNumbers = /^\d*$/
+    var isPhoneValid = onlyNumbers.test(phone);
+
+    //имя
+    if (name.length < 1) {
+        document.getElementById('userNameError').innerHTML = "Имя не должно быть пустым!";
+        $('#userNameError').removeClass("text-success").addClass("text-danger");
+        $('#userNameError').show();
+        return false;
+    }
+    else if (!isNameValid) {
+        document.getElementById('userNameError').innerHTML = "Имя должно содержать только буквы!";
+        $('#userNameError').removeClass("text-success").addClass("text-danger");
+        $('#userNameError').show();
+        return false;
+    }
+    else {
+        document.getElementById('userNameError').innerHTML = "Отлично!";
+        $('#userNameError').removeClass("text-danger").addClass("text-success");
+        $('#userNameError').show();
+    }
+
+    //фамилия
+    if (surname.length < 1) {
+        document.getElementById('userSurnameError').innerHTML = "Фамилия не должна быть пустой!";
+        $('#userSurnameError').removeClass("text-success").addClass("text-danger");
+        $('#userSurnameError').show();
+        return false;
+    }
+    else if (!isSurnameValid) {
+        document.getElementById('userSurnameError').innerHTML = "Фамилия должно содержать только буквы!";
+        $('#userSurnameError').removeClass("text-success").addClass("text-danger");
+        $('#userSurnameError').show();
+        return false;
+    }
+    else {
+        document.getElementById('userSurnameError').innerHTML = "Отлично!";
+        $('#userSurnameError').removeClass("text-danger").addClass("text-success");
+        $('#userSurnameError').show();
+    }
+
+    //телефон
+    if (phone.length > 0 && (phone.length < 7 || phone.length > 13)) {
+        document.getElementById('userPhoneError').innerHTML = "Проверьте количество цифр!";
+        $('#userPhoneError').removeClass("text-success").addClass("text-danger");
+        $('#userPhoneError').show();
+        return false;
+    }
+    else if (phone.length > 0 && !isPhoneValid) {
+        document.getElementById('userPhoneError').innerHTML = "Телефон должен содержать только цифры!";
+        $('#userPhoneError').removeClass("text-success").addClass("text-danger");
+        $('#userPhoneError').show();
+        return false;
+    }
+    else {
+        document.getElementById('userPhoneError').innerHTML = "Отлично!";
+        $('#userPhoneError').removeClass("text-danger").addClass("text-success");
+        $('#userPhoneError').show();
+    }
+    return true;
+}
+
+//валидация пользователя при изменении админом
+function checkEditUserAdminValid() {
+
+    var name = $('#adminChangeUserName').val();
+    var surname = $('#adminChangeUserSurname').val();
+    var phone = $('#adminChangeUserPhone').val();
+
+    $('#usernameError').hide();
+    $('#usersurnameError').hide();
+    $('#userphoneError').hide();
+
+    var anyLetter = /^[A-Za-zА-Яа-яЁё]+$/;
+    var isNameValid = anyLetter.test(name);
+    var isSurnameValid = anyLetter.test(surname);
+
+    var onlyNumbers = /^\d*$/
+    var isPhoneValid = onlyNumbers.test(phone);
+
+    //имя
+    if (name.length < 1) {
+        document.getElementById('usernameError').innerHTML = "Имя не должно быть пустым!";
+        $('#usernameError').removeClass("text-success").addClass("text-danger");
+        $('#usernameError').show();
+        return false;
+    }
+    else if (!isNameValid) {
+        document.getElementById('usernameError').innerHTML = "Имя должно содержать только буквы!";
+        $('#usernameError').removeClass("text-success").addClass("text-danger");
+        $('#usernameError').show();
+        return false;
+    }
+    else {
+        document.getElementById('usernameError').innerHTML = "Отлично!";
+        $('#usernameError').removeClass("text-danger").addClass("text-success");
+        $('#usernameError').show();
+    }
+
+    //фамилия
+    if (surname.length < 1) {
+        document.getElementById('usersurnameError').innerHTML = "Фамилия не должна быть пустой!";
+        $('#usersurnameError').removeClass("text-success").addClass("text-danger");
+        $('#usersurnameError').show();
+        return false;
+    }
+    else if (!isSurnameValid) {
+        document.getElementById('usersurnameError').innerHTML = "Фамилия должно содержать только буквы!";
+        $('#usersurnameError').removeClass("text-success").addClass("text-danger");
+        $('#usersurnameError').show();
+        return false;
+    }
+    else {
+        document.getElementById('usersurnameError').innerHTML = "Отлично!";
+        $('#usersurnameError').removeClass("text-danger").addClass("text-success");
+        $('#usersurnameError').show();
+    }
+
+    //телефон
+    if (phone.length > 0 && (phone.length < 7 || phone.length > 13)) {
+        document.getElementById('userphoneError').innerHTML = "Проверьте количество цифр!";
+        $('#userphoneError').removeClass("text-success").addClass("text-danger");
+        $('#userphoneError').show();
+        return false;
+    }
+    else if (phone.length > 0 && !isPhoneValid) {
+        document.getElementById('userphoneError').innerHTML = "Телефон должен содержать только цифры!";
+        $('#userphoneError').removeClass("text-success").addClass("text-danger");
+        $('#userphoneError').show();
+        return false;
+    }
+    else {
+        document.getElementById('userphoneError').innerHTML = "Отлично!";
+        $('#userphoneError').removeClass("text-danger").addClass("text-success");
+        $('#userphoneError').show();
     }
     return true;
 }

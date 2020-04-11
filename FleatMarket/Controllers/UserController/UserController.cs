@@ -75,11 +75,9 @@ namespace FleatMarket.Web.Controllers.UserController
         public void UpdateUser(UserViewModel user)
         {
             var u = userService.GetUserByEmail(User.Identity.Name);
-            u.Email = user.EMail;
             u.PhoneNumber = user.Phone;
             u.Name = user.Name;
             u.Surname = user.Surname;
-
             userService.UpdateUser(u);
         }
 

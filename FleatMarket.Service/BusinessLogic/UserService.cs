@@ -74,15 +74,10 @@ namespace FleatMarket.Service.BusinessLogic
             if (user != null)
             {
                 var email_count = repository.GetAll<User>().Count(item => item.Email == user.Email);
-                var phone_count = repository.GetAll<User>().Count(item => item.PhoneNumber == user.PhoneNumber);
                 if (email_count == 1)
                 {
-                    if (phone_count == 1)
-                    {
-                        repository.Update(user);
-                        return true;
-                    }
-                    else return false;
+                    repository.Update(user);
+                    return true;
                 }
                 else return false;
             }

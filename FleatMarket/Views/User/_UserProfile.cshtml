@@ -46,7 +46,8 @@
                         <div id="userName" class="currentData">@Model.Name</div>
                         <div>
                             <input type="text" class="profileInput none form-control" id="changeUserName"
-                                   name="user.Name" value=@Model.Name>
+                                   name="user.Name" value=@Model.Name aria-describedby="userNameError">
+                            <small id="userNameError" class="text-danger"></small>
                         </div>
                     </div>
                 </div>
@@ -56,7 +57,8 @@
                         <div id="userSurname" class="currentData">@Model.Surname</div>
                         <div>
                             <input type="text" class="profileInput none form-control" id="changeUserSurname"
-                                   name="user.Surname" value=@Model.Surname>
+                                   name="user.Surname" value=@Model.Surname aria-describedby="userSurnameError">
+                            <small id="userSurnameError" class="text-danger"></small>
                         </div>
                     </div>
                 </div>
@@ -65,12 +67,8 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="userMail" class="h6">E-Mail *</label>
-                        <div id="userMail" class="currentData">@Model.EMail</div>
-                        <div>
-                            <input type="email" class="profileInput none form-control" id="changeUserEMail"
-                                   name="user.EMail" value=@Model.EMail>
-                        </div>
+                        <label for="userMail" class="h6">E-Mail</label>
+                        <div id="userMail">@Model.EMail</div>
                     </div>
                 </div>
             </div>
@@ -79,10 +77,18 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="userPhone" class="h6">Телефон</label>
-                        <div id="userPhone" class="currentData">@Model.Phone</div>
+                        @if (Model.Phone == null)
+                        {
+                            <div id="userPhone" class="currentData">Не указан</div>
+                        }
+                        @if (Model.Phone != null)
+                        {
+                            <div id="userPhone" class="currentData">@Model.Phone</div>
+                        }
                         <div>
-                            <input type="email" class="profileInput none form-control" id="changeUserEMail"
-                                   name="user.Phone" value=@Model.Phone>
+                            <input type="text" class="profileInput none form-control" id="changeUserPhone"
+                                   name="user.Phone" value=@Model.Phone aria-describedby="userPhoneError">
+                            <small id="userPhoneError" class="text-danger"></small>
                         </div>
                     </div>
                 </div>

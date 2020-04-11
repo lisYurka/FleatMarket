@@ -33,17 +33,6 @@
         </div>
     </div>
 </nav>
-@*<div class="container-fluid">
-    @ViewBag.ErrorMessage
-    <form id="UpdateUserForm" asp-action="UpdateUser" asp-controller="Administration" method="post">
-        @foreach (var item in Model)
-        {
-            <div class="card UserData" id="@item.Id" style="width:43rem;">
-                @Html.Partial("_User", item)
-            </div>
-        }
-    </form>
-</div>*@
 
 <form id="InputUser" asp-action="UpdateUserInput" asp-controller="Administration" method="post">
     <input id="InputStringId" type="text" name="id" hidden>

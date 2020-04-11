@@ -60,14 +60,10 @@ namespace FleatMarket.Web.Controllers.UserController
                             RedirectToAction("Login", "Account");
                     }
                     else
-                    {
                         ViewBag.PassError = "Неверный пароль!";
-                    }
                 }
                 else
-                {
                     ViewBag.MailError = "Пользователь с таким E-Mail не зарегистрирован!";
-                }
             }
             return View(login);
         }
@@ -94,7 +90,7 @@ namespace FleatMarket.Web.Controllers.UserController
 
             if (error != null)
             {
-                ViewBag.ErrorMessage("", $"Error from external provider - {error}");
+                ViewBag.ErrorMessage = $"Error from external provider - {error}";
                 return View("Login",login);
             }
 
@@ -107,7 +103,7 @@ namespace FleatMarket.Web.Controllers.UserController
 
             if (info == null)
             {
-                ViewBag.ErrorMessage("", "Error loading login info!");
+                ViewBag.ErrorMessage = "Error loading login info!";
                 return View("Login", login);
             }
 

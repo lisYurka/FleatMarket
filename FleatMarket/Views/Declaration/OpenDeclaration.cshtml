@@ -74,7 +74,14 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-4 p-0">Телефон:</div>
-                            <div class="col-8 p-0">@Model.User.Phone</div>
+                            @if (Model.User.Phone == null)
+                            {
+                                <div class="col-8 p-0">Не указан</div>
+                            }
+                            @if (Model.User.Phone != null)
+                            {
+                                <div class="col-8 p-0">@Model.User.Phone</div>
+                            }
                         </div>
                         <div class="row mt-2">
                             <div class="col-4 p-0">Имя:</div>
