@@ -14,16 +14,18 @@ namespace FleatMarket.Web.Controllers
         private readonly IDeclarationService declarationService;
         private readonly ICategoryService categoryService;
         private readonly IDeclarationStatusService declarStatService;
+        private readonly IUserService userService;
 
         const int postOnPage = 7;
 
         public HomeController(ILogger<HomeController> _logger, IDeclarationService _declarationService,
-            ICategoryService _categoryService, IDeclarationStatusService _declarStatService)
+            ICategoryService _categoryService, IDeclarationStatusService _declarStatService, IUserService _userService)
         {
             logger = _logger;
             declarationService = _declarationService;
             categoryService = _categoryService;
             declarStatService = _declarStatService;
+            userService = _userService;
         }
 
         private List<OneDeclarationViewModel> GetDeclarationsOnPage(List<OneDeclarationViewModel> declars, int page = 1)

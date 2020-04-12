@@ -16,6 +16,8 @@ namespace FleatMarket.Web.ViewModel
         public string Role { get; set; }
         public string ImagePath { get; set; }
 
+        public string LastEditTime { get; set; }
+
         public List<UserRoleViewModel> RoleList { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FleatMarket.Infrastructure.Migrations
 {
-    public partial class init : Migration
+    public partial class initcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -112,6 +112,8 @@ namespace FleatMarket.Infrastructure.Migrations
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
+                    LastEditDate = table.Column<string>(nullable: true),
+                    RegistrationDate = table.Column<string>(nullable: true),
                     RoleId = table.Column<string>(nullable: true),
                     ImageId = table.Column<int>(nullable: true)
                 },
@@ -266,8 +268,8 @@ namespace FleatMarket.Infrastructure.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName", "RoleName" },
                 values: new object[,]
                 {
-                    { "1", "22ecc765-0f2c-47cd-8d6e-d6d3cee87aba", "User", "USER", "user" },
-                    { "2", "f9e29a19-b272-4fa8-a7a3-48a2f4c4e0c5", "Admin", "ADMIN", "admin" }
+                    { "1", "918497b5-e448-41ff-bdcf-464a14c456ba", "User", "USER", "user" },
+                    { "2", "229dd271-93f9-47a4-b644-4d866444a51b", "Admin", "ADMIN", "admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -305,17 +307,17 @@ namespace FleatMarket.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Declarations",
                 columns: new[] { "Id", "CategoryId", "DeclarationStatusId", "Description", "ImageId", "Price", "TimeOfCreation", "Title", "UserId" },
-                values: new object[] { 1, 1, 1, "Не упустите момент попасть на российские Мальдивы", 1, 799.99000000000001, new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(493), "Путевка в Челябинск", null });
+                values: new object[] { 1, 1, 1, "Не упустите момент попасть на российские Мальдивы", 1, 799.99000000000001, new DateTime(2020, 4, 12, 16, 0, 12, 988, DateTimeKind.Local).AddTicks(7527), "Путевка в Челябинск", null });
 
             migrationBuilder.InsertData(
                 table: "Declarations",
                 columns: new[] { "Id", "CategoryId", "DeclarationStatusId", "Description", "ImageId", "Price", "TimeOfCreation", "Title", "UserId" },
-                values: new object[] { 2, 5, 1, "Заберите кота от меня подальше", 1, 199.99000000000001, new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(9466), "Британец короткошерстный", null });
+                values: new object[] { 2, 5, 1, "Заберите кота от меня подальше", 1, 199.99000000000001, new DateTime(2020, 4, 12, 16, 0, 12, 989, DateTimeKind.Local).AddTicks(6388), "Британец короткошерстный", null });
 
             migrationBuilder.InsertData(
                 table: "Declarations",
                 columns: new[] { "Id", "CategoryId", "DeclarationStatusId", "Description", "ImageId", "Price", "TimeOfCreation", "Title", "UserId" },
-                values: new object[] { 3, 3, 2, "Увлекательное путешествие в мир волшебства", 1, 49.990000000000002, new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(9512), "Книга Гарри Поттера", null });
+                values: new object[] { 3, 3, 2, "Увлекательное путешествие в мир волшебства", 1, 49.990000000000002, new DateTime(2020, 4, 12, 16, 0, 12, 989, DateTimeKind.Local).AddTicks(6434), "Книга Гарри Поттера", null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

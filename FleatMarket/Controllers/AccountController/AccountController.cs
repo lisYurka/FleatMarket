@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using FleatMarket.Base.Entities;
 using System.Security.Claims;
+using System;
 
 namespace FleatMarket.Web.Controllers.UserController
 {
@@ -129,7 +130,9 @@ namespace FleatMarket.Web.Controllers.UserController
                             Surname = info.Principal.FindFirstValue(ClaimTypes.Surname),
                             PhoneNumber = info.Principal.FindFirstValue(ClaimTypes.MobilePhone),
                             RoleId = role.Id,
-                            ImageId = 2
+                            ImageId = 2,
+                            LastEditDate = DateTime.Now.ToString(),
+                            RegistrationDate = DateTime.Now.ToString()
                         };
 
                         var roleClaim = new Claim(ClaimTypes.Role.ToString(), role.Name);
@@ -171,7 +174,9 @@ namespace FleatMarket.Web.Controllers.UserController
                         RoleId = role.Id,
                         Name = register.Name,
                         Surname = register.Surname,
-                        ImageId = 2
+                        ImageId = 2,
+                        LastEditDate = DateTime.Now.ToString(),
+                        RegistrationDate = DateTime.Now.ToString()
                     };
 
                     var result = await userManager.CreateAsync(user, register.Password);

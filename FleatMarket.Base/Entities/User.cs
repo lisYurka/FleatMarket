@@ -26,6 +26,8 @@ namespace FleatMarket.Base.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public bool IsActive { get; set; } = true;
+        public string LastEditDate { get; set; }
+        public string RegistrationDate { get; set; }
 
         public string RoleId { get; set; }
         [ForeignKey("RoleId")]

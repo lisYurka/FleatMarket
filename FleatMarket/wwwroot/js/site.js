@@ -386,6 +386,27 @@ function updateUserAction() {
     $('#userPhoneError').hide();
 
     saveUserProfileChangesBtn.on('click', function () {
+
+        var data = new Date();
+        var hour = data.getHours();
+        var minute = data.getMinutes();
+        var seconds = data.getSeconds();
+
+        if (minute < 10)
+            minute = "0" + minute;
+        if (seconds < 10)
+            seconds = "0" + seconds;
+        var year = data.getFullYear();
+        var month = data.getMonth() + 1;
+        if (month < 10)
+            month = "0" + month;
+        var day = data.getDate();
+        if (day < 10)
+            day = "0" + day;
+
+        var fullDate = day + "." + month + "." + year + " " + hour + ":" + minute + ":" + seconds;
+        $('#lastUserEditDate').val(fullDate);
+
         $.ajax({
             type: form.attr('method'),
             url: form.attr('action'),
@@ -396,6 +417,7 @@ function updateUserAction() {
                     for (var i = 0; i < currentData.length; i++) {
                         $(currentData[i]).text($(profileInput[i]).val());
                     }
+
                     saveUserProfileChangesBtn.hide();
                     profileInput.hide();
                     updateUserProfileBtn.show();
@@ -1023,6 +1045,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //мои объявления
     $('#myDeclarations').on('click', function () {
         $('#myProfileAction').hide();
+        $('#userPersonalAreaCard').hide();
         $('#deletedDeclarationAction').hide();
         $('#myDeclarationAction').load("/User/GetUserDeclarations");
         $('#myDeclarationAction').show();
@@ -1031,13 +1054,16 @@ document.addEventListener('DOMContentLoaded', function () {
     //мой профиль
     $('#myProfile').on('click', function () {
         $('#myDeclarationAction').hide();
+        $('#userPersonalAreaCard').hide();
         $('#deletedDeclarationAction').hide();
         $('#myProfileAction').load("/User/MyProfile");
         $('#myProfileAction').show();
     });
 
+    //удаленные пользователями объявления
     $('#deletedDeclarations').on('click', function () {
         $('#myProfileAction').hide();
+        $('#userPersonalAreaCard').hide();
         $('#myDeclarationAction').hide();
         $('#deletedDeclarationAction').load("/User/RemovedDeclarations");
         $('#deletedDeclarationAction').show();

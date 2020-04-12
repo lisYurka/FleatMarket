@@ -123,9 +123,11 @@
                 </div>
             </div>
 
+            <input type="text" id="lastUserEditDate" name="user.LastEditTime" hidden/>
+
             <div class="row mt-1">
                 <div class="col-6">
-                    <input type="button" id="updateUserProfileBtn" 
+                    <input type="button" id="updateUserProfileBtn"
                            onmouseout="changeEditUserBtn(false)" onmouseover="changeEditUserBtn(true)"
                            class="btn btn-warning pl-4 pr-4" value="Изменить" onclick="updateUserAction()" />
                     <input type="button" id="saveUserProfileChangesBtn" value="Сохранить" class="btn btn-success none pl-4 pr-4" />

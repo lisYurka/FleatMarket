@@ -22,9 +22,21 @@ namespace FleatMarket.Web.Controllers.UserController
             imageService = _imageService;
         }
 
-        public IActionResult UserArea(int userAction)
+        public IActionResult UserArea()
         {
-            return View(userAction);
+            var userDeclarations = declarationService.GetAllDeclarations().Where(d => d.User.Email == User.Identity.Name);
+            var currentUser = userService.GetUserByEmail(User.Identity.Name);
+            var soldDeclarats = userDeclarations.Count(d => d.DeclarationStatusId == 2);
+            PersonalAreaViewModel model = new PersonalAreaViewModel
+            {
+                ImagePath = currentUser.Image.ImagePath,
+                AllDeclarationsCount = userDeclarations.Count(),
+                UserName = currentUser.Name,
+                SoldDeclarationsCount = soldDeclarats,
+                LastDateOfEdit = currentUser.LastEditDate,
+                RegistrationDate = currentUser.RegistrationDate
+            };
+            return View(model);
         }
 
         [HttpGet]
@@ -75,6 +87,7 @@ namespace FleatMarket.Web.Controllers.UserController
         public void UpdateUser(UserViewModel user)
         {
             var u = userService.GetUserByEmail(User.Identity.Name);
+            u.LastEditDate = user.LastEditTime;
             u.PhoneNumber = user.Phone;
             u.Name = user.Name;
             u.Surname = user.Surname;

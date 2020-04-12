@@ -118,7 +118,7 @@ namespace FleatMarket.Infrastructure.Migrations
                             Description = "Не упустите момент попасть на российские Мальдивы",
                             ImageId = 1,
                             Price = 799.99000000000001,
-                            TimeOfCreation = new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(493),
+                            TimeOfCreation = new DateTime(2020, 4, 12, 16, 0, 12, 988, DateTimeKind.Local).AddTicks(7527),
                             Title = "Путевка в Челябинск"
                         },
                         new
@@ -129,7 +129,7 @@ namespace FleatMarket.Infrastructure.Migrations
                             Description = "Заберите кота от меня подальше",
                             ImageId = 1,
                             Price = 199.99000000000001,
-                            TimeOfCreation = new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(9466),
+                            TimeOfCreation = new DateTime(2020, 4, 12, 16, 0, 12, 989, DateTimeKind.Local).AddTicks(6388),
                             Title = "Британец короткошерстный"
                         },
                         new
@@ -140,7 +140,7 @@ namespace FleatMarket.Infrastructure.Migrations
                             Description = "Увлекательное путешествие в мир волшебства",
                             ImageId = 1,
                             Price = 49.990000000000002,
-                            TimeOfCreation = new DateTime(2020, 4, 9, 0, 9, 23, 152, DateTimeKind.Local).AddTicks(9512),
+                            TimeOfCreation = new DateTime(2020, 4, 12, 16, 0, 12, 989, DateTimeKind.Local).AddTicks(6434),
                             Title = "Книга Гарри Поттера"
                         });
                 });
@@ -247,7 +247,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "22ecc765-0f2c-47cd-8d6e-d6d3cee87aba",
+                            ConcurrencyStamp = "918497b5-e448-41ff-bdcf-464a14c456ba",
                             Name = "User",
                             NormalizedName = "USER",
                             RoleName = "user"
@@ -255,7 +255,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "f9e29a19-b272-4fa8-a7a3-48a2f4c4e0c5",
+                            ConcurrencyStamp = "229dd271-93f9-47a4-b644-4d866444a51b",
                             Name = "Admin",
                             NormalizedName = "ADMIN",
                             RoleName = "admin"
@@ -287,6 +287,9 @@ namespace FleatMarket.Infrastructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<string>("LastEditDate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -312,6 +315,9 @@ namespace FleatMarket.Infrastructure.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("RegistrationDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");

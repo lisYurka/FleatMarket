@@ -2,13 +2,14 @@
 @{
     List<CategoryViewModel> categories = ViewBag.Categories;
     List<DeclarationStatusViewModel> statuses = ViewBag.Statuses;
+    var isActive = ViewBag.UserStatus;
 }
 <div class="container">
     <div class="container float-left col col-sm-3">
         @*<span class="text-dark d-flex justify-content-center pb-2">ПОИСК</span>*@
-        <div class="card border-left-0 border-right-0 rounded-0" style="width:15rem;z-index:1">
+        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0" style="width:15rem;z-index:1">
             <div class="card-body p-2 pr-0">
-                <div class="form-control btn d-flex categoryLink justify-content-start" id="showDeclWithAllCateg"
+                <div class="form-control btn d-flex categoryLink float-left" id="showDeclWithAllCateg"
                      onmouseover="changeAllCategColor(true)"
                      onmouseout="changeAllCategColor(false)">
                     ВСЕ КАТЕГОРИИ
@@ -24,9 +25,9 @@
             </div>
         </div>
 
-        <div class="card border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1">
+        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1">
             <div class="card-body p-2 pr-0">
-                <div class="form-control btn d-flex statusLink justify-content-start" id="showDeclWithAllStats"
+                <div class="form-control btn d-flex statusLink float-left" id="showDeclWithAllStats"
                      onmouseover="changeAllStatsColor(true)"
                      onmouseout="changeAllStatsColor(false)">
                     ВСЕ СТАТУСЫ
@@ -53,16 +54,16 @@
             </div>
         </div>
 
-        <div class="card border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1">
+        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1">
             <div class="card-body p-2 pr-0">
                 <div class="col-form-label d-flex justify-content-center pb-0" aria-describedby="exampleDateInput">
                     Выберите дату
                 </div>
-                <small id="exampleDateInput" class="form-text text-black-50 d-flex justify-content-center pb-1">Например, 04.02.2020 </small>
+                <small id="exampleDateInput" class="form-text text-black-50 d-flex float-left pb-1">Например, 04.02.2020 </small>
 
-                <input type="date" class="form-control firstDateToSearch" id=""/>
+                <input type="date" class="form-control firstDateToSearch" id="" />
                 <span class="d-flex justify-content-center"> - </span>
-                <input type="date" class="form-control secondDateToSearch" id=""/>
+                <input type="date" class="form-control secondDateToSearch" id="" />
 
                 <input type="submit" class="form-control btn btn-primary mt-2" id="searchByDate" value="Найти" />
             </div>
