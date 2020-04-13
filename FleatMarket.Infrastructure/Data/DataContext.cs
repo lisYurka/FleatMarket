@@ -52,40 +52,55 @@ namespace FleatMarket.Infrastructure.Data
                     CategoryName = "Животные"
                 });
 
-            model.Entity<Declaration>().HasData(
-                new Declaration
-                {
-                    CategoryId = 1,
-                    DeclarationStatusId = 1,
-                    Description = "Не упустите момент попасть на российские Мальдивы",
-                    Id = 1,
-                    TimeOfCreation = DateTime.Now,
-                    Title = "Путевка в Челябинск",
-                    Price = 799.99,
-                    ImageId = 1
-                },
-                new Declaration
-                {
-                    CategoryId = 5,
-                    DeclarationStatusId = 1,
-                    Description = "Заберите кота от меня подальше",
-                    Id = 2,
-                    TimeOfCreation = DateTime.Now,
-                    Title = "Британец короткошерстный",
-                    Price = 199.99,
-                    ImageId = 1
-                },
-                new Declaration
-                {
-                    CategoryId = 3,
-                    DeclarationStatusId = 2,
-                    Description = "Увлекательное путешествие в мир волшебства",
-                    Id = 3,
-                    TimeOfCreation = DateTime.Now,
-                    Title = "Книга Гарри Поттера",
-                    Price = 49.99,
-                    ImageId = 1
-                });
+            //model.Entity<User>().HasData(
+            //    new User
+            //    {
+            //        Email = "admin@mail.ru",
+            //        ConcurrencyStamp = Guid.NewGuid().ToString(),
+            //        ImageId = 2,
+            //        LastEditDate = DateTime.Now.ToString(),
+            //        Name = "Vasya",
+            //        PhoneNumber = "1234567890",
+            //        RegistrationDate = DateTime.Now.ToString(),
+            //        RoleId = "2",
+            //        Surname = "Pupkin",
+            //        UserName = "admin@mail.ru"
+            //    });
+
+            //model.Entity<Declaration>().HasData(
+            //    new Declaration
+            //    {
+            //        CategoryId = 1,
+            //        DeclarationStatusId = 1,
+            //        Description = "Не упустите момент попасть на российские Мальдивы",
+            //        Id = 1,
+            //        TimeOfCreation = DateTime.Now,
+            //        Title = "Путевка в Челябинск",
+            //        Price = 799.99,
+            //        ImageId = 1
+            //    },
+            //    new Declaration
+            //    {
+            //        CategoryId = 5,
+            //        DeclarationStatusId = 1,
+            //        Description = "Заберите кота от меня подальше",
+            //        Id = 2,
+            //        TimeOfCreation = DateTime.Now,
+            //        Title = "Британец короткошерстный",
+            //        Price = 199.99,
+            //        ImageId = 1
+            //    },
+            //    new Declaration
+            //    {
+            //        CategoryId = 3,
+            //        DeclarationStatusId = 2,
+            //        Description = "Увлекательное путешествие в мир волшебства",
+            //        Id = 3,
+            //        TimeOfCreation = DateTime.Now,
+            //        Title = "Книга Гарри Поттера",
+            //        Price = 49.99,
+            //        ImageId = 1
+            //    });
 
             model.Entity<Image>().HasData(
                 new Image

@@ -106,7 +106,7 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <div class="row justify-content-around">
-                    <input id="DeleteThisDeclarFromDb" class="btn btn-danger mr-4" data-dismiss="modal" type="button" value="Да" />
+                    <input id="DeleteThisDeclarFromDb" class="btn btn-danger mr-4" data-dismiss="modal" type="button" value="Да" onclick="testRemove()"/>
                     <input class="btn btn-dark ml-4" data-dismiss="modal" type="button" value="Нет" />
                     <form id="DeleteDeclarFromDbForm" method="post" asp-action="RemoveDeclarationFromDb" asp-controller="Declaration">
                         <input id="DeleteDeclarId" type="text" name="id_db" hidden>

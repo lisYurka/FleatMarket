@@ -113,13 +113,6 @@ namespace FleatMarket.Web.Controllers.DeclarationController
         }
 
         [HttpPost]
-        public IActionResult RemoveDeclarFromDb(int id_db)
-        {
-            declarationService.RemoveDeclaration(id_db);
-            return Redirect("/Home/Index");
-        }
-
-        [HttpPost]
         public void SoldDeclaration(int id)
         {
             var status = declarStatService.GetAllStats().Single(s => s.StatusName == "Продано");

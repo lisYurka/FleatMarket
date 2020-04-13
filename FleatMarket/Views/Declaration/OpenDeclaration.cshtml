@@ -7,7 +7,7 @@
                 <h3 class="card-title titleDecl" id="@Model.Title">@Model.Title</h3>
                 <div class="row mt-4">
                     <div class="col-7">Статус:</div>
-                    <div class="col-5">@Model.StatusName</div>
+                    <div class="col-5" id="deletedStatusName">@Model.StatusName</div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-7">Цена:</div>
@@ -102,9 +102,9 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <div class="row justify-content-around">
-                    <input id="DeleteThisDeclarFromDb" class="btn btn-danger mr-4" data-dismiss="modal" type="button" value="Да" />
+                    <input id="DeleteThisDeclarFromDb" class="btn btn-danger mr-4" data-dismiss="modal" type="submit" value="Да" onclick="testRemove2()"/> @* onclick="testDelete()"*@
                     <input class="btn btn-dark ml-4" data-dismiss="modal" type="button" value="Нет" />
-                    <form id="DeleteDeclarFromDbForm" method="post" asp-action="RemoveDeclarFromDb" asp-controller="Declaration">
+                    <form id="DeleteDeclarFromDbForm" method="post" asp-action="RemoveDeclarationFromDb" asp-controller="Declaration">
                         <input id="DeleteDeclarId" type="text" name="id_db" hidden>
                     </form>
                 </div>

@@ -342,29 +342,61 @@ function deleteStatus() {
 
 //удаление объявления из базы данных(для админа)
 function deleteFromDb() {
+    $('#DeleteDeclarId').val(event.target.id);
+}
+
+function testRemove(bool) {
     var declarActions = $('.declarActions');
 
-    $('#DeleteDeclarId').val(event.target.id);
-    $('#DeleteThisDeclarFromDb').on('click', function () {
-        var form = $('#DeleteDeclarFromDbForm');
+    var form = $('#DeleteDeclarFromDbForm');
+    if (bool == true) {
+        var id = $('#RemoveDeclarationId').val();
+    }
+    else {
         var id = $('#DeleteDeclarId').val();
-        var partialPost = $('.OneDeclaration');
-        partialPost.each(function (index) {
-            if (partialPost[index].id == id)
-                id = index;
-        });
-        $.ajax({
-            type: form.attr('method'),
-            url: form.attr('action'),
-            data: form.serialize(),
-            success: function () {
-                $(declarActions[id]).hide();
-                $(partialPost[id]).remove();
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.responseText);
-            }
-        });
+    }
+    var partialPost = $('.OneDeclaration');
+    partialPost.each(function (index) {
+        if (partialPost[index].id == id)
+            id = index;
+    });
+    $.ajax({
+        type: form.attr('method'),
+        url: form.attr('action'),
+        data: form.serialize(),
+        success: function () {
+            $(declarActions[id]).hide();
+            $(partialPost[id]).hide();
+            alert('here ' + id);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.responseText);
+        }
+    });
+}
+
+function testRemove2() {
+    var form = $('#DeleteDeclarFromDbForm');
+    var id = $('#DeleteDeclarId').val();
+    var partialPost = $('.OneDeclaration');
+    partialPost.each(function (index) {
+        if (partialPost[index].id == id)
+            id = index;
+    });
+    $.ajax({
+        type: form.attr('method'),
+        url: form.attr('action'),
+        data: form.serialize(),
+        success: function () {
+            $(partialPost[id]).hide();
+            $('.RemoveDeclFromDbBtn').hide();
+            $('.EditDeclarationBtn').hide();
+            document.getElementById('deletedStatusName').innerHTML = "Удалено навсегда!";
+            document.getElementById('deletedStatusName').style.color = "red";
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.responseText);
+        }
     });
 }
 

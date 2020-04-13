@@ -108,41 +108,6 @@ namespace FleatMarket.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Declarations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            DeclarationStatusId = 1,
-                            Description = "Не упустите момент попасть на российские Мальдивы",
-                            ImageId = 1,
-                            Price = 799.99000000000001,
-                            TimeOfCreation = new DateTime(2020, 4, 12, 16, 0, 12, 988, DateTimeKind.Local).AddTicks(7527),
-                            Title = "Путевка в Челябинск"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 5,
-                            DeclarationStatusId = 1,
-                            Description = "Заберите кота от меня подальше",
-                            ImageId = 1,
-                            Price = 199.99000000000001,
-                            TimeOfCreation = new DateTime(2020, 4, 12, 16, 0, 12, 989, DateTimeKind.Local).AddTicks(6388),
-                            Title = "Британец короткошерстный"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 3,
-                            DeclarationStatusId = 2,
-                            Description = "Увлекательное путешествие в мир волшебства",
-                            ImageId = 1,
-                            Price = 49.990000000000002,
-                            TimeOfCreation = new DateTime(2020, 4, 12, 16, 0, 12, 989, DateTimeKind.Local).AddTicks(6434),
-                            Title = "Книга Гарри Поттера"
-                        });
                 });
 
             modelBuilder.Entity("FleatMarket.Base.Entities.DeclarationStatus", b =>
@@ -247,7 +212,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "918497b5-e448-41ff-bdcf-464a14c456ba",
+                            ConcurrencyStamp = "58ad7b78-2cd3-4d31-a28b-32a08ef79418",
                             Name = "User",
                             NormalizedName = "USER",
                             RoleName = "user"
@@ -255,7 +220,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "229dd271-93f9-47a4-b644-4d866444a51b",
+                            ConcurrencyStamp = "923e1b63-ccf0-419b-ae24-e61307916101",
                             Name = "Admin",
                             NormalizedName = "ADMIN",
                             RoleName = "admin"
