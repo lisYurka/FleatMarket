@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-center">
-                @if(User.Identity.Name == Model.EMail)
+                @if (User.Identity.Name == Model.EMail)
                 {
                     <div class="col-6 border text-center bg-warning rounded-pill">Это Вы!</div>
                 }
@@ -62,16 +62,15 @@
     </div>
 </div>
 
-@if(Model.Role == "user") { 
+@if(Model.Role != "admin") { 
 <div class="card-footer cardShow">
     <div class="form-inline">
         <div>
             <input id=@Model.Id class="DeleteUserButton btn btn-danger mb-1" type="button" value="Удалить" />
-            <div name="RemoveLoader" style="display:none" id=@Model.Id class="spinner-border ml-5" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
         </div>
-        <div><input id="@Model.Id" class="ChangeUserButton btn btn-warning mb-1" type="button" value="Изменить данные"></div>
+        <div>
+        <input id="@Model.Id" class="ChangeUserButton btn btn-warning mb-1" type="button" value="Изменить данные">
+        </div>
         <div>
             <input id="@Model.Id" class="BlockUserButton btn btn-warning mb-1" type="button" value="Изменить статус">
         </div>

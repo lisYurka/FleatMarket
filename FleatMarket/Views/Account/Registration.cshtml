@@ -5,33 +5,35 @@
             <div class="card shadow p-3 mb-3 mt-5 bg-white rounded" style="width: 21rem;">
                 <div class="card-body">
                     <h4 class="card-title text-md-left">Регистрация</h4>
-                    <form asp-controller="Account" asp-action="Registration" method="post" novalidate id="registrForm" onsubmit="return checkRegistrForValid()">
+                    <form asp-controller="Account" asp-action="Registration" method="post" id="registrForm">
+                        <div class="validation" asp-validation-summary="ModelOnly"></div>
                         <div class="form-group">
                             <label for="input_EMail" style="font-size:0.8em;">Электронная почта *</label>
-                            <input type="email" id="input_EMail" required placeholder="E-Mail" class="form-control" asp-for="EMail" aria-describedby="emailError" />
-                            <small id="emailError" class="text-danger">@ViewBag.ErrorMail</small>
+                            <input type="email" id="input_EMail" placeholder="E-Mail" class="form-control" asp-for="EMail" aria-describedby="emailError" />
+                            <span id="emailError" asp-validation-for="EMail"></span>
                         </div>
                         <div class="form-group">
                             <label for="inputName" style="font-size:0.8em;">Имя *</label>
-                            <input type="text" id="inputName" required placeholder="Name" class="form-control" asp-for="Name" aria-describedby="nameError" />
-                            <small id="nameError" class="text-danger none">Имя не должно быть пустым!</small>
+                            <input type="text" id="inputName" placeholder="Name" class="form-control" asp-for="Name" aria-describedby="nameError" />
+                            <span id="nameError" asp-validation-for="Name"></span>
                         </div>
                         <div class="form-group">
                             <label for="inputSurname" style="font-size:0.8em;">Фамилия *</label>
-                            <input type="text" id="inputSurname" required placeholder="Surname" class="form-control" asp-for="Surname" aria-describedby="surnameError" />
-                            <small id="surnameError" class="text-danger none">Фамилия не должна быть пустой!</small>
+                            <input type="text" id="inputSurname" placeholder="Surname" class="form-control" asp-for="Surname" aria-describedby="surnameError" />
+                            <span id="surnameError" asp-validation-for="Surname"></span>
                         </div>
                         <div class="form-group">
                             <label for="input_Phone" style="font-size:0.8em;">Телефон (не обязательно)</label>
-                            <input type="tel" id="input_Phone" required placeholder="Phone" class="form-control" asp-for="Phone" aria-describedby="phoneError" />
-                            <small id="phoneError" class="text-danger none">Телефон не должен быть пустым!</small>
+                            <input type="tel" id="input_Phone" placeholder="Phone" class="form-control" asp-for="Phone" aria-describedby="phoneError" />
+                            <span id="phoneError" asp-validation-for="Phone"></span>
                         </div>
                         <div class="form-group">
                             <label for="input_Password" style="font-size:0.8em;">Пароль *</label>
-                            <input type="password" id="input_Password" required placeholder="Password" class="form-control" asp-for="Password" aria-describedby="passwordError" />
-                            <small id="passwordError" class="text-danger none">Пароль не должен быть пустым!</small>
+                            <input type="password" id="input_Password" placeholder="Password" class="form-control" asp-for="Password" aria-describedby="passwordError" />
+                            <span id="passwordError" asp-validation-for="Password"></span>
                         </div>
-                        <input type="submit" class="btn btn-secondary btn-login text-white" value="Зарегистрироваться"/>@*submit*@
+                        <div class="field-validation-error">@ViewBag.ErrorEMail</div>
+                        <input type="submit" class="btn btn-secondary btn-login text-white" value="Зарегистрироваться" />
                     </form>
                 </div>
             </div>

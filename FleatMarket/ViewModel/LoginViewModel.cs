@@ -1,19 +1,17 @@
-﻿using FleatMarket.Base.Entities;
-using Microsoft.AspNetCore.Authentication;
-using System;
+﻿using Microsoft.AspNetCore.Authentication;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FleatMarket.Web.ViewModel
 {
     public class LoginViewModel
     {
-        [Required,DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "E-Mail не должен быть пустым!")]
+        [RegularExpression(@"^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$", ErrorMessage = "E-Mail имеет неверный формат!")]
         public string EMail { get; set; }
 
-        [Required,DataType(DataType.Password)]
+        [Required(ErrorMessage = "Пароль не должен быть пустым!")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         //public bool RememberUser { get; set; }

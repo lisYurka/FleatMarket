@@ -10,10 +10,10 @@ using Microsoft.Extensions.Hosting;
 using FleatMarket.Service.BusinessLogic;
 using FleatMarket.Base.Entities;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using System.Security.Claims;
+using System;
+using System.IO;
+using Microsoft.Extensions.Logging;
+using FleatMarket.Web.Logging;
 
 namespace FleatMarket
 {
@@ -29,8 +29,7 @@ namespace FleatMarket
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("MarketDb"))
-                .EnableSensitiveDataLogging()
+                options.UseSqlServer(Configuration.GetConnectionString("MarketDb"))//.EnableSensitiveDataLogging()
                 );
 
             services.AddScoped<DbContext, DataContext>();
@@ -51,16 +50,27 @@ namespace FleatMarket
                 {
                     options.ClientId = "875591813759-caesbn5n0qmu8gu2ai2ae418riaukaba.apps.googleusercontent.com";
                     options.ClientSecret = "eaI3YGrFJxBGGlo3Mehg-eM-";
-
-                    //options.ClaimActions.MapJsonKey(ClaimTypes.Role.ToString(),"Admin");
                 });
 
+            services.Configure<IdentityOptions>(o => {
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequiredLength = 8;
+                o.Password.RequireDigit = true;
+                o.Password.RequireLowercase = true;
+                o.Password.RequireUppercase = true;
+            });
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddMvc();
             services.AddControllersWithViews();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            //логгирование
+            string DateForLog = DateTime.Now.ToString("dd.MM.yyyy");
+            loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory()+"/LogFiles/", $"{DateForLog}.txt"));
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

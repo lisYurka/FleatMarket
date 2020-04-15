@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace FleatMarket.Web.Controllers
 {
@@ -16,7 +17,7 @@ namespace FleatMarket.Web.Controllers
         private readonly IDeclarationStatusService declarStatService;
         private readonly IUserService userService;
 
-        const int postOnPage = 7;
+        public IConfiguration Configuration { get; set; }
 
         public HomeController(ILogger<HomeController> _logger, IDeclarationService _declarationService,
             ICategoryService _categoryService, IDeclarationStatusService _declarStatService, IUserService _userService)
@@ -30,6 +31,7 @@ namespace FleatMarket.Web.Controllers
 
         private List<OneDeclarationViewModel> GetDeclarationsOnPage(List<OneDeclarationViewModel> declars, int page = 1)
         {
+            int postOnPage = Int16.Parse(Configuration["postOnPage"]);
             var itemsToSkip = page * postOnPage;
             return declars.Skip(itemsToSkip).Take(postOnPage).ToList();
         }

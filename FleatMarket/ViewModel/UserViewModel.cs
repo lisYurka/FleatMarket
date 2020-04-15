@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FleatMarket.Web.ViewModel
 {
@@ -15,7 +12,6 @@ namespace FleatMarket.Web.ViewModel
         public bool IsActive { get; set; }
         public string Role { get; set; }
         public string ImagePath { get; set; }
-
         public string LastEditTime { get; set; }
 
         public List<UserRoleViewModel> RoleList { get; set; }

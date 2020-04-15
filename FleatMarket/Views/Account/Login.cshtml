@@ -5,16 +5,19 @@
             <div class="card shadow p-3 mb-3 mt-5 bg-white rounded" style="width: 21rem;">
                 <div class="card-body">
                     <h4 class="card-title text-md-left">Вход</h4>
-                    <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@Model.ReturnUrl" novalidate onsubmit="return checkLoginForValid()">
+                    <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@Model.ReturnUrl" > @* onsubmit="return checkLoginForValid()" *@
+                        <div class="validation" asp-validation-summary="ModelOnly"></div>
                         <div class="form-group">
                             <label for="inputEMail" style="font-size:0.8em;">Электронная почта</label>
-                            <input type="email" id="inputEMail" required placeholder="E-Mail" class="form-control" asp-for="EMail" aria-describedby="eMailError"/>
-                            <small id="eMailError" class="text-danger">@ViewBag.MailError</small>
+                            <input type="email" id="inputEMail" placeholder="E-Mail" class="form-control" asp-for="EMail" aria-describedby="eMailError" />
+                            <span id="eMailError" asp-validation-for="EMail"></span>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword" style="font-size:0.8em;">Пароль</label>
-                            <input type="password" id="inputPassword" required placeholder="Password" class="form-control" asp-for="Password" aria-describedby="passError"/>
-                            <small id="passError" class="text-danger">@ViewBag.PassError</small>
+                            <input type="password" id="inputPassword" placeholder="Password" class="form-control" asp-for="Password" aria-describedby="passError" />
+                            <span id="passError" asp-validation-for="Password"></span>
+                            <div class="field-validation-error">@ViewBag.MailError</div>
+                            <div class="field-validation-error">@ViewBag.PassError</div>
                         </div>
                         <input type="submit" class="btn btn-secondary btn-login disabled text-white" value="Войти" />
                     </form>

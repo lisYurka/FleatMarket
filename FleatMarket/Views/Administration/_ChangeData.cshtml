@@ -19,21 +19,21 @@
     <label for="Name" class="col-sm-2 col-form-label">Имя</label>
     <div class="col-sm-10" id="Name">
         <input class="form-control" type="text" id="adminChangeUserName" placeholder="Name" name="userViewModel.Name" value=@Model.Name  aria-describedby="usernameError"/>
-        <small id="usernameError" class="text-danger"></small>
+        <span id="usernameError" class="field-validation-error"></span>
     </div>
 </div>
 <div class="form-group row">
     <label for="Surname" class="col-sm-2 col-form-label">Фамилия</label>
     <div class="col-sm-10" id="Surname">
         <input class="form-control" type="text" id="adminChangeUserSurname" placeholder="Surname" name="userViewModel.Surname" value=@Model.Surname aria-describedby="usersurnameError"/>
-        <small id="usersurnameError" class="text-danger"></small>
+        <span id="usersurnameError" class="field-validation-error"></span>
     </div>
 </div>
 <div class="form-group row">
     <label for="Phone" class="col-sm-2 col-form-label">Телефон</label>
     <div class="col-sm-10" id="Phone">
         <input class="form-control" type="text" id="adminChangeUserPhone" placeholder="Phone" name="userViewModel.Phone" value=@Model.Phone aria-describedby="userphoneError"/>
-        <small id="userphoneError" class="text-danger"></small>
+        <span id="userphoneError" class="field-validation-error"></span>
     </div>
 </div>
 
@@ -74,7 +74,11 @@
 
 <div class="form-group row">
     <input class="ml-5 btn btn-success" id=@Model.Id name="UpdateUserButtonAction" type="button" value="Подтвердить">
-    <div name="RemoveLoader" style="display:none" id=@Model.Id class="spinner-border ml-5" role="status">
-        <span class="sr-only">Loading...</span>
+    <div class="spinner-box ml-4" name="RemoveLoader" style="display:none" id=@Model.Id role="status">
+        <div class="pulse-container">
+            <div class="pulse-bubble pulse-bubble-1"></div>
+            <div class="pulse-bubble pulse-bubble-2"></div>
+            <div class="pulse-bubble pulse-bubble-3"></div>
+        </div>
     </div>
 </div>

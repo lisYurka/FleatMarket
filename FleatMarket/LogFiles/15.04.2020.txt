@@ -1,0 +1,210 @@
+[15.04.2020 11:29:55] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 11:29:55] --> Hosting environment: Development
+[15.04.2020 11:29:55] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 11:30:00] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 11:30:17] --> User with id '362701f4-6412-4501-8536-88e11b821840' changed mobile number from '1235678901' to '123567890'.
+[15.04.2020 11:30:17] --> User with id '362701f4-6412-4501-8536-88e11b821840' changed own name from 'Иван' to 'Ivan'.
+[15.04.2020 11:30:23] --> User with id '362701f4-6412-4501-8536-88e11b821840' changed profile photo.
+[15.04.2020 11:30:27] --> User 'liskovich06051999@gmail.com' logged out.
+[15.04.2020 11:30:36] --> Invalid password for user 2d4d2b07-973d-4a7a-81d5-4538d97002dc.
+[15.04.2020 11:30:36] --> User 2d4d2b07-973d-4a7a-81d5-4538d97002dc failed to provide the correct password.
+[15.04.2020 11:30:41] --> User with id '2d4d2b07-973d-4a7a-81d5-4538d97002dc' logged in.
+[15.04.2020 11:30:55] --> Admin admin@mail.ru changed surname of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Иванов' to 'Ivanov'.
+[15.04.2020 11:31:06] --> Admin admin@mail.ru removed declaration 'ervrfv' with id 9 from database.
+[15.04.2020 16:33:15] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 16:33:15] --> Hosting environment: Development
+[15.04.2020 16:33:15] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 16:44:57] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 16:44:57] --> Hosting environment: Development
+[15.04.2020 16:44:57] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 16:45:30] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 16:45:30] --> Hosting environment: Development
+[15.04.2020 16:45:30] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 17:35:26] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 17:35:26] --> Hosting environment: Development
+[15.04.2020 17:35:26] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 17:40:02] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 17:40:02] --> Hosting environment: Development
+[15.04.2020 17:40:02] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 17:40:07] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 17:50:59] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 17:50:59] --> Hosting environment: Development
+[15.04.2020 17:50:59] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 17:51:05] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 17:51:24] --> User 'liskovich06051999@gmail.com' changed category from '6' to '2' in declaration with id '4'.
+[15.04.2020 17:51:33] --> User 'liskovich06051999@gmail.com' changed category from '2' to '4' in declaration with id '4'.
+[15.04.2020 17:59:20] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 17:59:20] --> Hosting environment: Development
+[15.04.2020 17:59:20] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:06:32] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:06:32] --> Hosting environment: Development
+[15.04.2020 18:06:32] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:06:38] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 18:08:12] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:08:12] --> Hosting environment: Development
+[15.04.2020 18:08:12] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:11:33] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:11:33] --> Hosting environment: Development
+[15.04.2020 18:11:33] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:14:04] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:14:04] --> Hosting environment: Development
+[15.04.2020 18:14:04] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:14:18] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:14:21] --> Admin 'admin@mail.ru' removed declaration 'cat Vasya' with id = 4 from database.
+[15.04.2020 18:16:24] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:16:24] --> Hosting environment: Development
+[15.04.2020 18:16:24] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:16:56] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 18:17:00] --> User 'liskovich06051999@gmail.com' changed declaration's status from 'Открыто' to 'Продано'.
+[15.04.2020 18:17:05] --> User 'liskovich06051999@gmail.com' changed declaration's status from 'Продано' to 'Удалено'.
+[15.04.2020 18:17:07] --> User 'liskovich06051999@gmail.com' logged out.
+[15.04.2020 18:17:14] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:17:22] --> Admin 'admin@mail.ru' removed declaration 'cat' with id = 6 from database.
+[15.04.2020 18:17:32] --> User 'admin@mail.ru' changed profile photo.
+[15.04.2020 18:17:36] --> User 'admin@mail.ru' changed mobile number from '1234567890' to '12345678904'.
+[15.04.2020 18:28:35] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:28:35] --> Hosting environment: Development
+[15.04.2020 18:28:35] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:28:50] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:29:42] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:29:42] --> Hosting environment: Development
+[15.04.2020 18:29:42] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:29:51] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:31:37] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:31:37] --> Hosting environment: Development
+[15.04.2020 18:31:37] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:31:47] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:32:12] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:32:12] --> Hosting environment: Development
+[15.04.2020 18:32:12] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:32:22] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:35:22] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:35:22] --> Hosting environment: Development
+[15.04.2020 18:35:22] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:35:29] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 18:35:31] --> User 'liskovich06051999@gmail.com' logged out.
+[15.04.2020 18:35:38] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:37:53] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:37:53] --> Hosting environment: Development
+[15.04.2020 18:37:53] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:38:02] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:39:26] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:39:26] --> Hosting environment: Development
+[15.04.2020 18:39:26] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:39:31] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 18:39:32] --> User 'liskovich06051999@gmail.com' logged out.
+[15.04.2020 18:39:38] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:39:44] --> Admin 'admin@mail.ru' changed name of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Ivan' to ''.
+[15.04.2020 18:39:47] --> Admin 'admin@mail.ru' changed surname of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Ivanov' to ''.
+[15.04.2020 18:39:51] --> Admin 'admin@mail.ru' changed name of user with id '362701f4-6412-4501-8536-88e11b821840' from '' to 'иван'.
+[15.04.2020 18:39:51] --> Admin 'admin@mail.ru' changed surname of user with id '362701f4-6412-4501-8536-88e11b821840' from '' to 'Иванов'.
+[15.04.2020 18:40:07] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:10] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:13] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:13] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:13] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:14] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:14] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:14] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:14] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:14] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:15] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:15] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:15] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:15] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:15] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:15] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:15] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:15] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:16] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Активный' to 'Заблокирован'.
+[15.04.2020 18:40:16] --> Admin 'admin@mail.ru' changed activity of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Заблокирован' to 'Активный'.
+[15.04.2020 18:40:47] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:40:47] --> Hosting environment: Development
+[15.04.2020 18:40:47] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:40:55] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:40:59] --> Admin 'admin@mail.ru' changed name of user with id '362701f4-6412-4501-8536-88e11b821840' from 'иван' to ''.
+[15.04.2020 18:41:08] --> Admin 'admin@mail.ru' changed name of user with id '362701f4-6412-4501-8536-88e11b821840' from '' to 'Ivka2'.
+[15.04.2020 18:41:09] --> Admin 'admin@mail.ru' changed name of user with id '362701f4-6412-4501-8536-88e11b821840' from 'Ivka2' to 'Ivka'.
+[15.04.2020 18:51:04] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:51:04] --> Hosting environment: Development
+[15.04.2020 18:51:04] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:51:41] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:51:41] --> Hosting environment: Development
+[15.04.2020 18:51:41] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:51:50] --> User 'admin@mail.ru' logged in.
+[15.04.2020 18:52:13] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:52:13] --> Hosting environment: Development
+[15.04.2020 18:52:13] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:52:31] --> An unhandled exception has occurred while executing the request.
+[15.04.2020 18:52:46] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:52:46] --> Hosting environment: Development
+[15.04.2020 18:52:46] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:53:15] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:53:15] --> Hosting environment: Development
+[15.04.2020 18:53:15] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:53:24] --> An unhandled exception has occurred while executing the request.
+[15.04.2020 18:54:48] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:54:48] --> Hosting environment: Development
+[15.04.2020 18:54:48] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:55:46] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 18:55:46] --> Hosting environment: Development
+[15.04.2020 18:55:46] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 18:55:56] --> User 'admin@mail.ru' logged in.
+[15.04.2020 20:09:16] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 20:09:16] --> Hosting environment: Development
+[15.04.2020 20:09:16] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 20:09:25] --> Invalid password for user 2d4d2b07-973d-4a7a-81d5-4538d97002dc.
+[15.04.2020 20:09:25] --> User 2d4d2b07-973d-4a7a-81d5-4538d97002dc failed to provide the correct password.
+[15.04.2020 20:09:49] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 20:09:49] --> Hosting environment: Development
+[15.04.2020 20:09:49] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 20:09:53] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 20:09:56] --> User 'liskovich06051999@gmail.com' logged out.
+[15.04.2020 20:09:59] --> Invalid password for user 73ffa81f-14d1-482f-b7dc-87bb26468f9a.
+[15.04.2020 20:09:59] --> User 73ffa81f-14d1-482f-b7dc-87bb26468f9a failed to provide the correct password.
+[15.04.2020 20:51:14] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 20:51:14] --> Hosting environment: Development
+[15.04.2020 20:51:14] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 20:51:14] --> Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+UPDATE [AspNetRoles] SET [ConcurrencyStamp] = N'ffbe8984-b1eb-410a-9c7b-f94a0803e0fe'
+WHERE [Id] = N'1';
+SELECT @@ROWCOUNT;
+[15.04.2020 20:52:27] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 20:52:27] --> Hosting environment: Development
+[15.04.2020 20:52:27] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 20:52:38] --> User 'admin@mail.ru' logged in.
+[15.04.2020 21:01:26] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 21:01:26] --> Hosting environment: Development
+[15.04.2020 21:01:26] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 21:01:36] --> User 'admin@mail.ru' logged in.
+[15.04.2020 21:04:08] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 21:04:08] --> Hosting environment: Development
+[15.04.2020 21:04:08] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 21:04:18] --> User 'admin@mail.ru' logged in.
+[15.04.2020 21:06:45] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 21:06:45] --> Hosting environment: Development
+[15.04.2020 21:06:45] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 21:06:55] --> User 'admin@mail.ru' logged in.
+[15.04.2020 21:10:19] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 21:10:19] --> Hosting environment: Development
+[15.04.2020 21:10:19] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 21:10:31] --> User 'admin@mail.ru' logged in.
+[15.04.2020 21:10:49] --> User 'admin@mail.ru' add new declaration with title 'cat'.
+[15.04.2020 21:11:49] --> User 'admin@mail.ru' changed price from 0 BYN to 345 BYN in declaration with id '1'.
+[15.04.2020 21:11:49] --> User 'admin@mail.ru' changed category from '6' to '3' in declaration with id '1'.
+[15.04.2020 21:11:49] --> User 'admin@mail.ru' changed title from 'cat' to 'cat2' in declaration with id '1'.
+[15.04.2020 21:11:49] --> User 'admin@mail.ru' changed image in declaration with id '1'.
+[15.04.2020 21:12:06] --> User 'admin@mail.ru' changed declaration's status from 'Открыто' to 'Продано'.
+[15.04.2020 21:12:08] --> User 'admin@mail.ru' changed declaration's status from 'Продано' to 'Удалено'.
+[15.04.2020 21:12:11] --> Admin 'admin@mail.ru' removed declaration 'cat2' with id = 1 from database.
+[15.04.2020 21:12:25] --> User 'admin@mail.ru' changed profile photo.
+[15.04.2020 21:12:30] --> User 'admin@mail.ru' changed mobile number from '' to '43554656'.
+[15.04.2020 21:14:58] --> Application started. Press Ctrl+C to shut down.
+[15.04.2020 21:14:58] --> Hosting environment: Development
+[15.04.2020 21:14:58] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[15.04.2020 21:15:15] --> User 'liskovich06051999@gmail.com' has been registered.
+[15.04.2020 21:15:15] --> User 'liskovich06051999@gmail.com' logged in.
+[15.04.2020 21:15:17] --> User 'liskovich06051999@gmail.com' logged out.
+[15.04.2020 21:15:44] --> User 'qq@mail.ru' has been registered.
+[15.04.2020 21:15:49] --> User 'qq@mail.ru' logged in.
+[15.04.2020 21:15:54] --> User 'qq@mail.ru' logged out.

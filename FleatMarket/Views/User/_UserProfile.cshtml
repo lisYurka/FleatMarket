@@ -11,18 +11,23 @@
                 <form id="uploadUserPhotoForm" method="post" enctype="multipart/form-data"
                       asp-action="UploadImage" asp-controller="Image">
                     <input type="button" id="uploadUserPhoto" onclick="openFilesFolder()"
-                           onmouseout="changePhDwnlBtn(false)" onmouseover="changePhDwnlBtn(true)"
+                           onmouseout="returnBtnColor('uploadUserPhoto','#f0d037')" 
+                           onmouseover="changeBtnColor('uploadUserPhoto','#f0d037')"
                            class="btn btn-warning pl-5 pr-5 mt-1" value="Выбрать фотографию">
                     <input type="file" id="openFolder" hidden />
                 </form>
                 <div class="row ml-1">
                     <input type="button" class="btn btn-primary none mt-4 mr-4" id="showUserPhoto" value="Загрузить"
-                           onclick="showUserPhoto()" onmouseout="uploadPhotoBtn(false)" onmouseover="uploadPhotoBtn(true)" />
+                           onclick="showUserPhoto()" 
+                           onmouseout="changeBtnColor('showUserPhoto','#1a19b8')" 
+                           onmouseover="returnBtnColor('showUserPhoto','#1a19b8')" />
                     <form method="post" asp-controller="User" asp-action="UpdateProfileImage" id="saveUserPhotoForm">
                         <input type="text" name="user.ImagePath" id="sendPhotoToModel" hidden />
                         <input type="text" name="user.Id" value="@Model.Id" hidden />
                         <input type="button" id="saveUserPhotoBtn" value="Сохранить" class="btn btn-success none mt-4 ml-4"
-                               onclick="saveUserPhotoAction()" onmouseout="savePhotoBtn(false)" onmouseover="savePhotoBtn(true)" />
+                               onclick="saveUserPhotoAction()"
+                               onmouseout="returnBtnColor('saveUserPhotoBtn','#0cb634')"
+                               onmouseover="changeBtnColor('saveUserPhotoBtn','#0cb634')" />
                     </form>
                 </div>
                 <div class="row ml-1">
@@ -39,6 +44,7 @@
         <h4 div class="card-title">Персональные данные</h4>
 
         <form method="post" asp-action="UpdateUser" asp-controller="User" id="userUpdateForm">
+            <input type="text" name="user.Id" value="@Model.Id" hidden />
             <div class="row mt-4">
                 <div class="col-6">
                     <div class="form-group">
@@ -47,7 +53,7 @@
                         <div>
                             <input type="text" class="profileInput none form-control" id="changeUserName"
                                    name="user.Name" value=@Model.Name aria-describedby="userNameError">
-                            <small id="userNameError" class="text-danger"></small>
+                            <span id="userNameError" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -58,7 +64,7 @@
                         <div>
                             <input type="text" class="profileInput none form-control" id="changeUserSurname"
                                    name="user.Surname" value=@Model.Surname aria-describedby="userSurnameError">
-                            <small id="userSurnameError" class="text-danger"></small>
+                            <span id="userSurnameError" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -88,7 +94,7 @@
                         <div>
                             <input type="text" class="profileInput none form-control" id="changeUserPhone"
                                    name="user.Phone" value=@Model.Phone aria-describedby="userPhoneError">
-                            <small id="userPhoneError" class="text-danger"></small>
+                            <span id="userPhoneError" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -123,12 +129,13 @@
                 </div>
             </div>
 
-            <input type="text" id="lastUserEditDate" name="user.LastEditTime" hidden/>
+            <input type="text" id="lastUserEditDate" name="user.LastEditTime" hidden />
 
             <div class="row mt-1">
                 <div class="col-6">
                     <input type="button" id="updateUserProfileBtn"
-                           onmouseout="changeEditUserBtn(false)" onmouseover="changeEditUserBtn(true)"
+                           onmouseout="returnBtnColor('updateUserProfileBtn','#f0d037')" 
+                           onmouseover="changeBtnColor('updateUserProfileBtn','#f0d037')"
                            class="btn btn-warning pl-4 pr-4" value="Изменить" onclick="updateUserAction()" />
                     <input type="button" id="saveUserProfileChangesBtn" value="Сохранить" class="btn btn-success none pl-4 pr-4" />
                 </div>
@@ -137,3 +144,5 @@
 
     </div>
 </div>
+
+<script src="~/js/user_profile.js" asp-append-version="true"></script>

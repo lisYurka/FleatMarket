@@ -6,19 +6,22 @@
         <div class="card-body p-0">
             <div class="form-group mb-0">
                 <button type="button" id="myProfile"
-                        class="form-control d-flex justify-content-center border-0 mb-2 mt-2">
+                        class="form-control d-flex justify-content-center border-0 mb-2 mt-2"
+                        onclick="myProfile()">
                     Мой профиль
                 </button>
                 <hr class="p-0 m-0"/>
                 <button type="button" id="myDeclarations"
-                        class="form-control d-flex justify-content-center border-0 mb-2">
+                        class="form-control d-flex justify-content-center border-0 mb-2"
+                        onclick="myAds()">
                     Мои объявления
                 </button>
                 @if (User.IsInRole("Admin"))
                 {
                     <hr class="p-0 m-0"/>
                     <button type="button" id="deletedDeclarations" style="height:4rem;"
-                            class="form-control d-flex justify-content-center border-0 mb-2">
+                            class="form-control d-flex justify-content-center border-0 mb-2"
+                            onclick="removedByUsersAds()">
                         Удаленные пользователями объявления
                     </button>
                 }
@@ -116,3 +119,5 @@
         </div>
     </div>
 </div>
+
+<script src="~/js/user_area.js" asp-append-version="true"></script>

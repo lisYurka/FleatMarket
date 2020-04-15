@@ -40,7 +40,7 @@
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
                 <label for="declar_title" class="font-weight-bold">Название товара *</label>
                 <input type="text" id="declar_title" placeholder="Например, кот-засранец" asp-for="Title" class="form-control" aria-describedby="declTitleError" />
-                <small id="declTitleError" class="text-danger"></small>
+                <span id="declTitleError" class="text-danger"></span>
             </div>
         </div>
         <div class="row mt-sm-3">
@@ -53,7 +53,7 @@
                     </div>
                     <input type="text" id="choosenCategoryId" name="category" hidden />
                 </div>
-                <small id="declarCategoryError" class="text-danger"></small>
+                <span id="declarCategoryError" class="text-danger"></span>
             </div>
         </div>
         <div class="row d-flex justify-content-start ml-5">
@@ -74,7 +74,7 @@
             <div class="form-group col-8 col-sm-7 col-md-6" role="group">
                 <label for="declar_description" class="font-weight-bold">Описание *</label>
                 <textarea class="form-control" id="declar_description" asp-for="Description" rows="4" aria-describedby="declDescrError"></textarea>
-                <small id="declDescrError" class="text-danger"></small>
+                <span id="declDescrError" class="text-danger"></span>
             </div>
         </div>
         <hr class="col-8 col-sm-7 col-md-6 m-0 mt-md-3 mb-md-3" />
@@ -95,7 +95,7 @@
                 <div class="form-row pl-1" id="priceInputLabel">
                     <input class="form-control mt-3 col-8" id="inputPrice" type="text" placeholder="Например, 99.95" asp-for="Price" aria-describedby="declarPriceError" />
                     <label for="inputPrice" class="text-justify col-2 text-center my-4">BYN</label>
-                    <small id="declarPriceError" class="text-danger"></small>
+                    <span id="declarPriceError" class="text-danger mt-4"></span>
                 </div>
             </div>
         </div>
@@ -104,7 +104,9 @@
         <input type="text" id="@Model.Id" class="declarationId" hidden />
         <input type="text" id="editDeclarationId" name="id_for_declar" hidden />
         <div class="row mt-sm-3 col-8 col-sm-7 col-md-6">
-            <input type="submit" class="btn btn-success col-6" id="successEditDeclaration" value="Сохранить изменения" />
+            <input type="submit" class="btn btn-success col-6" id="successEditDeclaration" value="Сохранить изменения" onclick="saveAdAchanges()"/>
         </div>
     </form>
 </div>
+
+<script src="~/js/edit_ad.js" asp-append-version="true"></script>

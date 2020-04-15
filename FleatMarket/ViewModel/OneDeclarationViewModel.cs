@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-
 namespace FleatMarket.Web.ViewModel
 {
     public class OneDeclarationViewModel

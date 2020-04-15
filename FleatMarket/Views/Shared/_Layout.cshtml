@@ -42,7 +42,7 @@
                                             </form>
                                         }
                                         <form method="get" asp-controller="User" asp-action="UserArea">
-                                            <input type="submit" id="userProfile" value="Мой кабинет" class="btn dropdown-item" onclick="userProfileBtn()" />
+                                            <input type="submit" id="userProfile" value="Мой кабинет" class="btn dropdown-item" /> @*onclick="userProfileBtn()"*@
                                         </form>
 
                                         <form method="post" asp-controller="Account" asp-action="Logoff">

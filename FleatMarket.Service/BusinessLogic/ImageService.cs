@@ -1,8 +1,6 @@
 ﻿using FleatMarket.Base.Entities;
 using FleatMarket.Base.Interfaces;
 using System.Linq;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FleatMarket.Service.BusinessLogic
 {
