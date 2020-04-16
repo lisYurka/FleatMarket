@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using FleatMarket.Base.Entities;
 using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,15 +16,17 @@ namespace FleatMarket.Web.Controllers
         private readonly IUserService userService;
         private readonly IDeclarationService declarationService;
         private readonly IImageService imageService;
+        private readonly UserManager<User> userManager;
         private readonly ILogger<UserController> logger;
 
         public UserController(IUserService _userService, IDeclarationService _declarationService,
-            IImageService _imageService, ILogger<UserController> _logger)
+            IImageService _imageService, ILogger<UserController> _logger, UserManager<User> _userManager)
         {
             userService = _userService;
             declarationService = _declarationService;
             imageService = _imageService;
             logger = _logger;
+            userManager = _userManager;
         }
 
         [Authorize]
@@ -148,6 +153,33 @@ namespace FleatMarket.Web.Controllers
 
             u.ImageId = imageId;
             userService.UpdateUser(u);
+        }
+
+        [HttpPost]
+        public async Task ChangePassword(UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.FindByEmailAsync(User.Identity.Name);
+                if (user != null)
+                {
+                    var passwordValidator = HttpContext.RequestServices.GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
+                    var passwordHasher = HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
+
+                    var result = await passwordValidator.ValidateAsync(userManager, user, model.ChangePassword.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        user.PasswordHash = passwordHasher.HashPassword(user, model.ChangePassword.NewPassword);
+                        await userManager.UpdateAsync(user);
+                    }
+                    else
+                    {
+                        foreach (var item in result.Errors)
+                            ModelState.AddModelError("", item.Description);
+                    }
+                }
+                else ModelState.AddModelError("", "Пользователь не найден!");
+            }
         }
     }
 }

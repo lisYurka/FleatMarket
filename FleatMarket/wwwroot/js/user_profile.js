@@ -79,13 +79,13 @@ function updateUserAction() {
             day = "0" + day;
         var fullDate = day + "." + month + "." + year + " " + hour + ":" + minute + ":" + seconds;
         $('#lastUserEditDate').val(fullDate);
-        $.ajax({
-            type: form.attr('method'),
-            url: form.attr('action'),
-            data: form.serialize(),
-            success: function () {
-                var test = checkPersAreaForValid();
-                if (test) {
+        var test = checkPersAreaForValid();
+        if (test) {
+            $.ajax({
+                type: form.attr('method'),
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function () {
                     for (var i = 0; i < currentData.length; i++) {
                         $(currentData[i]).text($(profileInput[i]).val());
                     }
@@ -96,13 +96,50 @@ function updateUserAction() {
                     $('#userNameError').hide();
                     $('#userSurnameError').hide();
                     $('#userPhoneError').hide();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
                 }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.responseText);
-            }
-        });
+            });
+        }
     });
+}
+
+function showUpdatePass() {
+    var form = $('#updateUserPassForm');
+    //var passwordInput = $('.passwordInput');
+    $('#showUpdatePassBtn').hide();
+    $('.passString').show();
+    $('#updatePassBtn').show();
+    $('#abortEditPassword').show();
+    $('#updatePassBtn').on('click', function () {
+        var check = checkPassForValid();
+        if (check) {
+            $.ajax({
+                type: form.attr('method'),
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function () {
+                    $('.passString').hide();
+                    $('#updatePassBtn').hide();
+                    $('#showUpdatePassBtn').show();
+                    $('#abortEditPassword').hide();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    });
+}
+
+function abortEditPass() {
+    $('.passString').hide();
+    $('#updatePassBtn').hide();
+    $('#showUpdatePassBtn').show();
+    $('#abortEditPassword').hide();
+    $('#newPassword').val("");
+    $('#confirmNewPass').val("");
 }
 
 //загрузить выбранную фотографию пользователя
@@ -132,6 +169,60 @@ function showUserPhoto() {
         alert("Сперва выберите фотографию!");
         $('#saveUserPhotoBtn').hide();
     }
+}
+
+function checkPassForValid() {
+    var new_pass = $('#newPassword').val();
+    var confirmed = $('#confirmNewPass').val();
+    $('#newPasswordError').hide();
+    $('#confirmNewPassError').hide();
+    var passPattern = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+    var isPassValid = passPattern.test(new_pass);
+    var flag = true;
+    if (new_pass.length == 0) {
+        document.getElementById('newPasswordError').innerHTML = "Новый пароль не должен быть пустым!";
+        $('#newPasswordError').removeClass("text-success").addClass("text-danger");
+        document.getElementById('newPassword').style.borderColor = "#e12d2d";
+        $('#newPasswordError').show();
+        flag = false;
+    }
+    else if (!isPassValid) {
+        document.getElementById('newPasswordError').innerHTML = "Пароль должен содержать минимум 8 символов," +
+            "одну цифру, одну букву в нижнем и одну букву в верхнем регистрах!";
+        $('#newPasswordError').removeClass("text-success").addClass("text-danger");
+        document.getElementById('newPassword').style.borderColor = "#e12d2d";
+        $('#newPasswordError').show();
+        flag = false;
+    }
+    else {
+        document.getElementById('newPasswordError').innerHTML = "Отлично!";
+        $('#newPasswordError').removeClass("text-danger").addClass("text-success");
+        document.getElementById('newPassword').style.borderColor = "#30da49";
+        $('#newPasswordError').show();
+    }
+    //повторить пароль
+    if (confirmed.length == 0) {
+        document.getElementById('confirmNewPassError').innerHTML = "Это поле не должно быть пустым!";
+        $('#confirmNewPassError').removeClass("text-success").addClass("text-danger");
+        document.getElementById('confirmNewPass').style.borderColor = "#e12d2d";
+        $('#confirmNewPassError').show();
+        flag = false;
+    }
+    else if (confirmed != new_pass) {
+        document.getElementById('confirmNewPassError').innerHTML = "Неверно повторен пароль!";
+        $('#confirmNewPassError').removeClass("text-success").addClass("text-danger");
+        document.getElementById('confirmNewPass').style.borderColor = "#e12d2d";
+        $('#confirmNewPassError').show();
+        flag = false;
+    }
+    else {
+        document.getElementById('confirmNewPassError').innerHTML = "Отлично!";
+        $('#confirmNewPassError').removeClass("text-danger").addClass("text-success");
+        document.getElementById('confirmNewPass').style.borderColor = "#30da49";
+        $('#confirmNewPassError').show();
+    }
+    if (flag == true) return true;
+    else return false;
 }
 
 // валидация пользователя при изменении в личном кабинете

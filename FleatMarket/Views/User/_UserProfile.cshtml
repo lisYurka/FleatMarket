@@ -145,4 +145,45 @@
     </div>
 </div>
 
+
+<div class="card mt-3 mb-5" style="max-width:40rem;">
+    <div class="card-body p-4">
+        <h4 div class="card-title">Смена пароля</h4>
+
+        <form method="post" asp-action="ChangePassword" asp-controller="User" id="updateUserPassForm">
+            <div class="row mt-3 passString none">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="newPassword" class="h6">Новый пароль</label>
+                        <input type="password" class="passwordInput form-control" id="newPassword" asp-for="ChangePassword.NewPassword"
+                                aria-describedby="newPasswordError" />
+                        <span id="newPasswordError" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3 passString none">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="confirmNewPass" class="h6">Повторите пароль</label>
+                        <input type="password" class="passwordInput form-control" id="confirmNewPass" asp-for="ChangePassword.ConfirmPassword"
+                                aria-describedby="confirmNewPassError" />
+                        <span id="confirmNewPassError" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-6">
+                    <input type="button" id="showUpdatePassBtn"
+                           onmouseout="returnBtnColor('showUpdatePassBtn','#f0d037')"
+                           onmouseover="changeBtnColor('showUpdatePassBtn','#f0d037')"
+                           class="btn btn-warning pl-4 pr-4" value="Изменить" onclick="showUpdatePass()" />
+                    <input type="button" id="updatePassBtn" value="Сохранить" class="btn btn-success none pl-4 pr-4" />
+                    <input type="button" id="abortEditPassword" value="Отмена" class="btn btn-secondary none ml-4 pl-4 pr-4" onclick="abortEditPass()"/>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
 <script src="~/js/user_profile.js" asp-append-version="true"></script>

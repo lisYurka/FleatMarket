@@ -15,5 +15,6 @@ namespace FleatMarket.Web.ViewModel
         public string LastEditTime { get; set; }
 
         public List<UserRoleViewModel> RoleList { get; set; }
+        public ChangePasswordViewModel ChangePassword { get; set; }
     }
 }
