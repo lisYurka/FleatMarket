@@ -7,6 +7,22 @@ function returnBtnColor(id,color) {
     document.getElementById(id).style.backgroundColor = "#ffffff";
     document.getElementById(id).style.color = color;
 }
+function overElementInChoose(id) {
+    document.getElementById(id).style.cursor = "pointer";
+    document.getElementById(id).style.backgroundColor = "#e1e5eb";
+}
+function outOfElementInChoose(id) {
+    document.getElementById(id).style.backgroundColor = "#edeef0";
+}
+
+//для каждого элемента при поиске по категориям или статусам 
+function overElementInSearch(id, color) {
+    document.getElementById(id).style.color = color;
+    document.getElementById(id).style.cursor = "pointer";
+}
+function outOfElementInSearch(id) {
+    document.getElementById(id).style.color = "#000000";
+}
 
 //менять цвет, если выбрана стоимость или фри для продукта(создание/редактирование)
 function checkForFree() {

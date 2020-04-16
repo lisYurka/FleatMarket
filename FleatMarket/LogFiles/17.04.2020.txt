@@ -1,0 +1,87 @@
+[17.04.2020 0:05:20] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:05:20] --> Hosting environment: Development
+[17.04.2020 0:05:20] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:06:23] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:06:23] --> Hosting environment: Development
+[17.04.2020 0:06:23] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:12:47] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:12:47] --> Hosting environment: Development
+[17.04.2020 0:12:47] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:13:10] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:13:10] --> Hosting environment: Development
+[17.04.2020 0:13:10] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:14:02] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:14:02] --> Hosting environment: Development
+[17.04.2020 0:14:02] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:17:57] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:17:57] --> Hosting environment: Development
+[17.04.2020 0:17:57] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:19:01] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:19:01] --> Hosting environment: Development
+[17.04.2020 0:19:01] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:20:14] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:20:14] --> Hosting environment: Development
+[17.04.2020 0:20:14] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:22:29] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:22:29] --> Hosting environment: Development
+[17.04.2020 0:22:29] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:22:52] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:22:52] --> Hosting environment: Development
+[17.04.2020 0:22:52] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:25:05] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:25:05] --> Hosting environment: Development
+[17.04.2020 0:25:05] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:25:54] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:25:54] --> Hosting environment: Development
+[17.04.2020 0:25:54] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:33:22] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:33:22] --> Hosting environment: Development
+[17.04.2020 0:33:22] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:33:31] --> Invalid password for user 0249efac-9ca1-437b-bc35-05d50369ce88.
+[17.04.2020 0:33:31] --> User 0249efac-9ca1-437b-bc35-05d50369ce88 failed to provide the correct password.
+[17.04.2020 0:33:38] --> User 'admin@mail.ru' logged in.
+[17.04.2020 0:35:11] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:35:11] --> Hosting environment: Development
+[17.04.2020 0:35:11] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:35:21] --> User 'admin@mail.ru' logged in.
+[17.04.2020 0:36:08] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:36:08] --> Hosting environment: Development
+[17.04.2020 0:36:08] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:36:16] --> User 'admin@mail.ru' logged in.
+[17.04.2020 0:36:32] --> User 'admin@mail.ru' add new declaration with title 'yh'.
+[17.04.2020 0:36:40] --> User 'admin@mail.ru' changed declaration's status from 'Открыто' to 'Продано'.
+[17.04.2020 0:36:42] --> User 'admin@mail.ru' changed declaration's status from 'Продано' to 'Удалено'.
+[17.04.2020 0:37:40] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:37:40] --> Hosting environment: Development
+[17.04.2020 0:37:40] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:37:48] --> User 'admin@mail.ru' logged in.
+[17.04.2020 0:37:59] --> Admin 'admin@mail.ru' removed declaration 'yh' with id = 5 from database.
+[17.04.2020 0:40:45] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:40:45] --> Hosting environment: Development
+[17.04.2020 0:40:45] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:42:26] --> User 'liskovich06051999@gmail.com' logged in.
+[17.04.2020 0:42:34] --> User 'liskovich06051999@gmail.com' logged out.
+[17.04.2020 0:42:41] --> User 'admin@mail.ru' logged in.
+[17.04.2020 0:42:56] --> User 'admin@mail.ru' add new declaration with title 'ewdgv'.
+[17.04.2020 0:43:03] --> User 'admin@mail.ru' changed declaration's status from 'Открыто' to 'Продано'.
+[17.04.2020 0:43:05] --> User 'admin@mail.ru' changed declaration's status from 'Продано' to 'Удалено'.
+[17.04.2020 0:48:07] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 0:48:07] --> Hosting environment: Development
+[17.04.2020 0:48:07] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 0:48:13] --> User 'liskovich06051999@gmail.com' logged in.
+[17.04.2020 0:48:19] --> User 'liskovich06051999@gmail.com' logged out.
+[17.04.2020 0:48:25] --> Invalid password for user 0249efac-9ca1-437b-bc35-05d50369ce88.
+[17.04.2020 0:48:25] --> User 0249efac-9ca1-437b-bc35-05d50369ce88 failed to provide the correct password.
+[17.04.2020 0:48:31] --> User 'admin@mail.ru' logged in.
+[17.04.2020 0:48:38] --> Admin 'admin@mail.ru' removed declaration 'yhnjn' with id = 4 from database.
+[17.04.2020 0:48:39] --> Admin 'admin@mail.ru' removed declaration 'ewdgv' with id = 6 from database.
+[17.04.2020 0:50:18] --> User 'admin@mail.ru' add new declaration with title 'wrsgv'.
+[17.04.2020 0:50:24] --> User 'admin@mail.ru' changed declaration's status from 'Открыто' to 'Продано'.
+[17.04.2020 0:50:30] --> User 'admin@mail.ru' changed declaration's status from 'Продано' to 'Удалено'.
+[17.04.2020 1:11:33] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 1:11:33] --> Hosting environment: Development
+[17.04.2020 1:11:33] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[17.04.2020 1:12:20] --> User 'admin@mail.ru' logged in.
+[17.04.2020 1:14:43] --> Application started. Press Ctrl+C to shut down.
+[17.04.2020 1:14:43] --> Hosting environment: Development
+[17.04.2020 1:14:43] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket

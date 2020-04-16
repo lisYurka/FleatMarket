@@ -1,10 +1,10 @@
 ﻿@model List<OneDeclarationViewModel>
-
+    <div id="hiddenText" class="text-center font-weight-normal h3 mt-3">@ViewBag.Nthng</div>
 @foreach (var item in Model)
 {
     @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)
     <div class="declarActions" id=@item.Id>
-        <div class="border-bottom flex-row d-flex justify-content-center mt-0 mb-2 pb-3">
+        <div class="border-bottom flex-row d-flex justify-content-center mt-0 mb-2 pb-3" style="max-width:40rem;">
             <span class="text-dark h5 pr-2 mt-1">Действие: </span>
             <div class="card-columns d-flex">
                 <input type="button" id="@item.Id" class="btn btn-danger RemoveDeclFromDbBtn"

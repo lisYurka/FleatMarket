@@ -7,29 +7,29 @@
 <div class="container">
     <div class="container float-left col col-sm-3">
         @*<span class="text-dark d-flex justify-content-center pb-2">ПОИСК</span>*@
-        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0" style="width:15rem;z-index:1">
+        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0" style="width:15rem;z-index:1;background-color:#edeef0;">
             <div class="card-body p-2 pr-0">
                 <div class="form-control btn d-flex categoryLink float-left" id="showDeclWithAllCateg"
-                     onmouseover="changeColorInSearch('showDeclWithAllCateg','#0ced66')"
-                     onmouseout="returnColorInSearch('showDeclWithAllCateg')">
+                     onmouseover="overElementInChoose('showDeclWithAllCateg')"
+                     onmouseout="outOfElementInChoose('showDeclWithAllCateg')">
                     ВСЕ КАТЕГОРИИ
                 </div>
                 @foreach (var category in categories)
                 {
                     <div class="form-control btn d-flex categoryLink justify-content-start" id="category_element_@category.Id"
-                         onmouseover="overElementInSearch('category_element_@category.Id','#0ced66')"
-                         onmouseout="outOfElementInSearch('category_element_@category.Id')">
+                         onmouseover="overElementInChoose('category_element_@category.Id')"
+                         onmouseout="outOfElementInChoose('category_element_@category.Id')">
                         @category.CategoryName
                     </div>
                 }
             </div>
         </div>
 
-        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1">
+        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1;background-color:#edeef0;">
             <div class="card-body p-2 pr-0">
                 <div class="form-control btn d-flex statusLink float-left" id="showDeclWithAllStats"
-                     onmouseover="changeColorInSearch('showDeclWithAllStats', '#faa405')"
-                     onmouseout="returnColorInSearch('showDeclWithAllStats')">
+                     onmouseover="overElementInChoose('showDeclWithAllStats')"
+                     onmouseout="outOfElementInChoose('showDeclWithAllStats')">
                     ВСЕ СТАТУСЫ
                 </div>
                 @foreach (var status in statuses)
@@ -37,16 +37,16 @@
                     if ((status.Id == 1 || status.Id == 2) && !User.IsInRole("Admin"))
                     {
                         <div class="form-control btn d-flex justify-content-start statusLink" id="status_element_@status.Id"
-                             onmouseover="overElementInSearch('status_element_@status.Id','#faa405')"
-                             onmouseout="outOfElementInSearch('status_element_@status.Id')">
+                             onmouseover="overElementInChoose('status_element_@status.Id')"
+                             onmouseout="outOfElementInChoose('status_element_@status.Id')">
                             @status.StatusName
                         </div>
                     }
                     if (User.IsInRole("Admin"))
                     {
                         <div class="form-control btn d-flex justify-content-start statusLink" id="status_element_@status.Id"
-                             onmouseover="overElementInSearch('status_element_@status.Id','#faa405')"
-                             onmouseout="outOfElementInSearch('status_element_@status.Id')">
+                             onmouseover="overElementInChoose('status_element_@status.Id','#faa405')"
+                             onmouseout="outOfElementInChoose('status_element_@status.Id')">
                             @status.StatusName
                         </div>
                     }
@@ -54,12 +54,12 @@
             </div>
         </div>
 
-        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1">
+        <div class="card navbar-collapse collapse d-sm-inline-flex border-left-0 border-right-0 rounded-0 mt-2" style="width:15rem;z-index:1;background-color:#edeef0;">
             <div class="card-body p-2 pr-0">
                 <div class="col-form-label d-flex justify-content-center pb-0" aria-describedby="exampleDateInput">
                     Выберите дату
                 </div>
-                <small id="exampleDateInput" class="form-text text-black-50 d-flex float-left pb-1">Например, 04.02.2020 </small>
+                <small id="exampleDateInput" class="form-text text-black-50 d-flex float-left pl-2 pb-1">Например, 04.02.2020 - 05.02.2020 </small>
 
                 <input type="date" class="form-control firstDateToSearch" id="" />
                 <span class="d-flex justify-content-center"> - </span>
@@ -72,15 +72,22 @@
 
     <div class="container float-right col col-sm-9">
         <div class="PostPreviewScrolList">
+            <div id="hiddenText" class="none text-center font-weight-normal h3 mt-3">Ничего не найдено</div>
             @foreach (var item in Model)
             {
-                @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)
+                if (User.IsInRole("Admin") && item.StatusName == "Удалено")
+                {
+                    @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)
+                }
+                if (item.StatusName != "Удалено")
+                {
+                    @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)
+                }
             }
         </div>
         @*<div id="LoadingPostPreview">
             <div class="text-center">
                 <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
                 </div>
             </div>
         </div>*@

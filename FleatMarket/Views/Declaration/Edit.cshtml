@@ -12,12 +12,12 @@
                     <div class="row ml-2">
                         <form id="uploadDeclarPhotoForm" method="post" enctype="multipart/form-data"
                               asp-action="UploadImage" asp-controller="Image">
-                            <input type="button" value="Изменить фотографию" class="btn btn-primary"
+                            <input type="button" value="Изменить фотографию" class="btn btn-warning"
                                    id="uploadDeclarPhoto" onclick="openFileFolder()" />
                             <input type="file" id="openFolder" hidden />
                         </form>
 
-                        <input type="button" class="btn btn-primary none mr-4" id="showDeclarPhoto" value="Загрузить"
+                        <input type="button" class="btn btn-primary none ml-3 mr-3" id="showDeclarPhoto" value="Загрузить"
                                onclick="showDeclarPhoto()" onmouseout="" onmouseover="" />
 
                         <input type="button" class="btn btn-secondary none mr-3" id="abortDeclarImgUpdateBtn" value="Отмена"

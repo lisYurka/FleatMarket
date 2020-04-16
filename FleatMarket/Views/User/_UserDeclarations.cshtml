@@ -1,11 +1,12 @@
 ﻿@model List<OneDeclarationViewModel>
+<div id="hiddenText" class="text-center font-weight-normal h3 mt-3">@ViewBag.Nothing</div>
 @foreach (var item in Model)
 {
     if (item.StatusId != 3)
     {
         @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)
     <div class="declarActions" id=@item.Id>
-        <div class="border-bottom flex-row d-flex justify-content-center mt-0 mb-2 pb-3">
+        <div class="border-bottom flex-row d-flex justify-content-center mt-0 mb-2 pb-3" style="max-width:40rem;">
             <span class="text-dark h5 pr-2 mt-1">Действия: </span>
             @if (User.IsInRole("Admin"))
             {

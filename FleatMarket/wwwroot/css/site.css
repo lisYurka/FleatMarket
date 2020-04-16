@@ -59,8 +59,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #edeef0;
 }
 .footer {
   position: absolute;
@@ -90,6 +91,10 @@ hr {
     background-color: #59bbf4;
 }
 
+.lastClick {
+    background-color: #59bbf4;
+}
+
 .OneDeclaration:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     cursor:pointer;
@@ -105,7 +110,12 @@ hr {
     border-color: #4cd4a9;
 }
 
-#updateUserProfileBtn {
+#updateUserProfileBtn,
+#showUpdatePassBtn,
+#uploadUserPhoto,
+.EditDeclarationBtn,
+#openImagesFolder,
+#uploadDeclarPhoto {
     background-color: #ffffff;
     color: #f0d037;
     border-color: #f0d037;

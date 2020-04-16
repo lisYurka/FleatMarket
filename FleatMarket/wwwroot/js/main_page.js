@@ -1,24 +1,4 @@
-﻿//для "Все категории" и "Все статусы"
-function changeColorInSearch(id, color) {
-    document.getElementById(id).style.fontWeight = "bold";
-    document.getElementById(id).style.color = color;
-    document.getElementById(id).style.cursor = "pointer";
-}
-function returnColorInSearch(id) {
-    document.getElementById(id).style.fontWeight = "normal";
-    document.getElementById(id).style.color = "#000000";
-}
-
-//для каждого элемента при поиске по категориям или статусам 
-function overElementInSearch(id, color) {
-    document.getElementById(id).style.color = color;
-    document.getElementById(id).style.cursor = "pointer";
-}
-function outOfElementInSearch(id) {
-    document.getElementById(id).style.color = "#000000";
-}
-
-//получаем список дат между выбранными датами
+﻿//получаем список дат между выбранными датами
 var getDates = function (startDate, endDate) {
     var dates = [],
         currentDate = startDate,
@@ -71,6 +51,8 @@ function searchByDate() {
         var dates = getDates(new Date(firstDateToSearch), new Date(secondDateToSearch));
         var declarationDates = $('.declarationDate');
         var declaration = $('.OneDeclaration');
+
+        var count = 0;
         declarationDates.each(function (index) {
             var date = $(declarationDates[index]).attr('id').split(" ")[0];//дата обявления(без времени)
             var declarationDate = createDate(date);
@@ -79,9 +61,17 @@ function searchByDate() {
             dates.forEach(function (date) {
                 if (date.getTime() == declarationDate.getTime()) {
                     $(declaration[index]).show();
+                    count += 1;
                 }
             });
         });
+        if (count == 0) {
+            $('#hiddenText').show();
+        }
+        if (count != 0) {
+            $('#hiddenText').hide();
+        }
+        count = 0;
     }
 }
 
@@ -133,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $('.categoryLink').on('click', function () {
         var id = $(this).attr('id').replace('category_element_', '');
 
+        var count = 0;
         var declaration = $('.OneDeclaration');
         var partialDeclarCategory = $('.declarationCategory');
         partialDeclarCategory.each(function (index) {
@@ -141,8 +132,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             else {
                 $(declaration[index]).show();
+                count += 1;
             }
         });
+        if (count == 0) {
+            $('#hiddenText').show();
+        }
+        if (count != 0 || id == "showDeclWithAllCateg") {
+            $('#hiddenText').hide();
+        }
+        count = 0;
     });
 
     //если нажато "Все категории"
@@ -158,14 +157,24 @@ document.addEventListener('DOMContentLoaded', function () {
         var id = $(this).attr('id').replace('status_element_', '');
         var declaration = $('.OneDeclaration');
         var partialDeclarCategory = $('.declarationStatus');
+
+        var count = 0;
         partialDeclarCategory.each(function (index) {
             if (partialDeclarCategory[index].id != id) {
                 $(declaration[index]).hide();
             }
             else {
                 $(declaration[index]).show();
+                count += 1;
             }
         });
+        if (count == 0) {
+            $('#hiddenText').show();
+        }
+        if (count != 0 || id == "showDeclWithAllStats") {
+            $('#hiddenText').hide();
+        }
+        count = 0;
     });
 
     //если нажато "Все статусы"

@@ -1,28 +1,38 @@
 ﻿@model PersonalAreaViewModel
 <div class="container col col-sm-3 float-left">
     <div class="card border-0 align-items-center navbar-collapse 
-         collapse d-md-inline-flex border-bottom border-top rounded-0" 
-         style="width:15rem;z-index:1;">
+         collapse d-md-inline-flex border-bottom border-top rounded" 
+         style="width:15rem;z-index:1;background-color:#edeef0;">
         <div class="card-body p-0">
             <div class="form-group mb-0">
                 <button type="button" id="myProfile"
                         class="form-control d-flex justify-content-center border-0 mb-2 mt-2"
-                        onclick="myProfile()">
-                    Мой профиль
+                        onclick="myProfile()" style="background-color:#edeef0;"
+                        onmouseout="outOfElementInChoose('myProfile')"
+                        onmouseover="overElementInChoose('myProfile')">
+                    <div class="col-1"><i class="fa fa-address-card-o pt-1" aria-hidden="true"></i></div>
+                    <div class="col-11 d-flex justify-content-start">Мой профиль</div>
                 </button>
                 <hr class="p-0 m-0"/>
                 <button type="button" id="myDeclarations"
                         class="form-control d-flex justify-content-center border-0 mb-2"
-                        onclick="myAds()">
-                    Мои объявления
+                        onclick="myAds()" style="background-color:#edeef0;"
+                        onmouseout="outOfElementInChoose('myDeclarations')"
+                        onmouseover="overElementInChoose('myDeclarations')">
+                    <div class="col-1"><i class="fa fa-newspaper-o pt-1" aria-hidden="true"></i></div>
+                    <div class="col-11 d-flex justify-content-start">Мои объявления</div>
                 </button>
                 @if (User.IsInRole("Admin"))
                 {
                     <hr class="p-0 m-0"/>
-                    <button type="button" id="deletedDeclarations" style="height:4rem;"
+                    <button type="button" id="deletedDeclarations"
+                            style="background-color:#edeef0;"
                             class="form-control d-flex justify-content-center border-0 mb-2"
-                            onclick="removedByUsersAds()">
-                        Удаленные пользователями объявления
+                            onclick="removedByUsersAds()"
+                            onmouseout="outOfElementInChoose('deletedDeclarations')"
+                            onmouseover="overElementInChoose('deletedDeclarations')">
+                        <div class="col-1"><i class="fa fa-trash-o pt-1" aria-hidden="true"></i></div>
+                        <div class="col-11 d-flex justify-content-start">"Удалено"</div>
                     </button>
                 }
             </div>
@@ -38,7 +48,7 @@
                 <div class="h3 text-uppercase pl-2">@Model.UserName</div>
             </div>
             <div class="row d-flex justify-content-center mt-3">
-                <img src="@Model.ImagePath" class="rounded" style="height:10rem;width:13rem;" />
+                <img src="@Model.ImagePath" class="rounded" style="height: 10rem;width: 13rem;" />
             </div>
             <div class="h4 mt-4 mb-4 pl-3">Подробная информация</div>
             <div class="row pl-3 d-flex justify-content-center">

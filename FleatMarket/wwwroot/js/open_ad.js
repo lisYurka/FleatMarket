@@ -19,5 +19,6 @@ function testRemove2() {
 
 //передать id объявления для его редактирования
 function sendDeclarId() {
-    $('#declar_Id').val(event.target.id);
+    var id = $('.EditDeclarationBtn').attr("id").replace("editDeclBtn_","");
+    $('#declar_Id').val(id);
 }

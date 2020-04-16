@@ -53,7 +53,8 @@ namespace FleatMarket.Web.Controllers
         {
             var user = userService.GetUserByEmail(User.Identity.Name);
             List<OneDeclarationViewModel> viewModel = new List<OneDeclarationViewModel>();
-            var declarations = declarationService.GetAllDeclarations().Where(d => d.UserId == user.Id).ToList();
+            var declarations = declarationService.GetAllDeclarations().Where(d => d.UserId == user.Id && 
+                (d.DeclarationStatusId == 1 || d.DeclarationStatusId == 2)).ToList();
             declarations.ForEach(q => {
                 OneDeclarationViewModel model = new OneDeclarationViewModel
                 {
@@ -70,7 +71,10 @@ namespace FleatMarket.Web.Controllers
                 };
                 viewModel.Add(model);
             });
-
+            if (viewModel.Count == 0)
+                ViewBag.Nothing = "Ничего не найдено!";
+            else
+                ViewBag.Nothing = "";
             return PartialView("_UserDeclarations", viewModel);
         }
 
@@ -138,7 +142,11 @@ namespace FleatMarket.Web.Controllers
                     ImagePath = d.Image.ImagePath
                 };
                 viewModel.Add(oneDeclaration);
-            });
+            }); 
+            if (viewModel.Count == 0)
+                ViewBag.Nthng = "Ничего не найдено!";
+            else
+                ViewBag.Nthng = "";
             return PartialView("_RemovedDeclars", viewModel);
         }
 
