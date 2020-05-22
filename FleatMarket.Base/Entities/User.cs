@@ -11,12 +11,14 @@ namespace FleatMarket.Base.Entities
         public bool IsActive { get; set; } = true;
         public string LastEditDate { get; set; }
         public string RegistrationDate { get; set; }
+        public int NotifCount { get; set; } = 0;
 
         public string RoleId { get; set; }
         [ForeignKey("RoleId")]
         public Role Role { get; set; }
 
         public List<Declaration> Declarations { get; set; }
+        public List<Notification> Notifications { get; set; }
 
         public int? ImageId { get; set; }
         [ForeignKey("ImageId")]

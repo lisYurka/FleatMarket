@@ -1,0 +1,27 @@
+[20.04.2020 12:50:52] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 12:50:52] --> Hosting environment: Development
+[20.04.2020 12:50:52] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[20.04.2020 12:53:07] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 12:53:07] --> Hosting environment: Development
+[20.04.2020 12:53:07] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[20.04.2020 12:54:40] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 12:54:40] --> Hosting environment: Development
+[20.04.2020 12:54:40] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[20.04.2020 20:31:21] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 20:31:21] --> Hosting environment: Development
+[20.04.2020 20:31:21] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[20.04.2020 20:49:49] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 20:49:49] --> Hosting environment: Development
+[20.04.2020 20:49:49] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[20.04.2020 22:59:44] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 22:59:44] --> Hosting environment: Development
+[20.04.2020 22:59:44] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[20.04.2020 23:00:12] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 23:00:12] --> Hosting environment: Development
+[20.04.2020 23:00:12] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[20.04.2020 23:01:30] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 23:01:30] --> Hosting environment: Development
+[20.04.2020 23:01:30] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[20.04.2020 23:04:04] --> Application started. Press Ctrl+C to shut down.
+[20.04.2020 23:04:04] --> Hosting environment: Development
+[20.04.2020 23:04:04] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket

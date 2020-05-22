@@ -112,5 +112,26 @@ namespace FleatMarket.Service.BusinessLogic
                 return true;
             else return false;
         }
+
+        public List<Notification> GetUserNotifs(string mail)
+        {
+            var user = GetUserByEmail(mail);
+            if (user != null)
+            {
+                var notifs = repository.GetAll<Notification>().Where(u => u.UserId == user.Id).ToList();
+                return notifs;
+            }
+            else return null;
+        }
+
+        public int GetUserNonReadNotifsCount(string mail)
+        {
+            var user = GetUserByEmail(mail);
+            if (user != null)
+            {
+                return repository.GetAll<Notification>().Where(u => u.UserId == user.Id && u.IsRead == false).Count();
+            }
+            else throw new Exception("User can't be null!");
+        }
     }
 }

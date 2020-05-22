@@ -37,6 +37,7 @@ namespace FleatMarket
             services.AddTransient<IUserService,UserService>();
             services.AddTransient<IDeclarationService, DeclarationService>();
             services.AddTransient<IDeclarationStatusService, DeclarationStatusService>();
+            services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IImageService, ImageService>();

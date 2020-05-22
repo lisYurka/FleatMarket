@@ -1,0 +1,91 @@
+[03.05.2020 17:43:20] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 17:43:20] --> Hosting environment: Development
+[03.05.2020 17:43:20] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 17:47:29] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 17:47:29] --> Hosting environment: Development
+[03.05.2020 17:47:29] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 17:47:32] --> User 'admin@mail.ru' logged out.
+[03.05.2020 17:47:35] --> User 'liskovich06051999@gmail.com' has been registered.
+[03.05.2020 17:47:35] --> User 'liskovich06051999@gmail.com' logged in.
+[03.05.2020 17:47:41] --> User 'liskovich06051999@gmail.com' logged out.
+[03.05.2020 17:47:47] --> Invalid password for user d53acfbb-9f33-48ef-ba6f-df17d5b2c1f1.
+[03.05.2020 17:47:47] --> User d53acfbb-9f33-48ef-ba6f-df17d5b2c1f1 failed to provide the correct password.
+[03.05.2020 17:47:54] --> User 'admin@mail.ru' logged in.
+[03.05.2020 17:49:04] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 17:49:04] --> Hosting environment: Development
+[03.05.2020 17:49:04] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 17:49:41] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 17:49:41] --> Hosting environment: Development
+[03.05.2020 17:49:41] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 17:50:58] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 17:50:58] --> Hosting environment: Development
+[03.05.2020 17:50:58] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 17:51:16] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 17:51:16] --> Hosting environment: Development
+[03.05.2020 17:51:16] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 17:59:30] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 17:59:30] --> Hosting environment: Development
+[03.05.2020 17:59:30] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:01:29] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:01:29] --> Hosting environment: Development
+[03.05.2020 18:01:29] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:05:09] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:05:09] --> Hosting environment: Development
+[03.05.2020 18:05:09] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:05:45] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:05:45] --> Hosting environment: Development
+[03.05.2020 18:05:45] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:06:42] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:06:42] --> Hosting environment: Development
+[03.05.2020 18:06:42] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:09:27] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:09:27] --> Hosting environment: Development
+[03.05.2020 18:09:27] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:10:36] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:10:36] --> Hosting environment: Development
+[03.05.2020 18:10:36] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:11:42] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:11:42] --> Hosting environment: Development
+[03.05.2020 18:11:42] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:12:05] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:12:05] --> Hosting environment: Development
+[03.05.2020 18:12:05] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:16:09] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:16:09] --> Hosting environment: Development
+[03.05.2020 18:16:09] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:38:01] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:38:01] --> Hosting environment: Development
+[03.05.2020 18:38:01] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:42:17] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:42:17] --> Hosting environment: Development
+[03.05.2020 18:42:17] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:44:44] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:44:44] --> Hosting environment: Development
+[03.05.2020 18:44:44] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:45:43] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:45:43] --> Hosting environment: Development
+[03.05.2020 18:45:43] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:46:12] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:46:12] --> Hosting environment: Development
+[03.05.2020 18:46:12] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:51:51] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:51:51] --> Hosting environment: Development
+[03.05.2020 18:51:51] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 18:52:52] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 18:52:52] --> Hosting environment: Development
+[03.05.2020 18:52:52] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 19:19:34] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 19:19:34] --> Hosting environment: Development
+[03.05.2020 19:19:34] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 19:19:47] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 19:19:47] --> Hosting environment: Development
+[03.05.2020 19:19:47] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 19:36:13] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 19:36:13] --> Hosting environment: Development
+[03.05.2020 19:36:13] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 19:36:43] --> User 'admin@mail.ru' add new declaration with title 'building'.
+[03.05.2020 21:34:28] --> Application started. Press Ctrl+C to shut down.
+[03.05.2020 21:34:28] --> Hosting environment: Development
+[03.05.2020 21:34:28] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[03.05.2020 21:34:40] --> User 'admin@mail.ru' logged in.
+[03.05.2020 21:34:58] --> User 'admin@mail.ru' add new declaration with title 'forest'.

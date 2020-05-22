@@ -6,6 +6,8 @@ using FleatMarket.Base.Interfaces;
 using FleatMarket.Web.ViewModel;
 using System;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
+using System.IO;
 
 namespace FleatMarket.Web.Controllers
 {
@@ -68,7 +70,7 @@ namespace FleatMarket.Web.Controllers
             });
             ViewBag.Statuses = statuses;
 
-            declarationService.GetAllDeclarations().ToList().ForEach(d =>
+            declarationService.GetAllDeclarations().OrderByDescending(d => d.TimeOfCreation).ToList().ForEach(d =>
             {
                 OneDeclarationViewModel declaration = new OneDeclarationViewModel
                 {
@@ -87,12 +89,10 @@ namespace FleatMarket.Web.Controllers
                 };
                 declarations.Add(declaration);
             });
-
             //if (isAjaxCall)
             //{
             //    return PartialView("/Views/Declaration/_OneDeclaration.cshtml", GetDeclarationsOnPage(declarations, page));
             //}
-
             return View(declarations);//View(GetDeclarationsOnPage(declarations, page));//View(declarations);
         }
 

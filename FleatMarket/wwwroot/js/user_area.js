@@ -24,6 +24,7 @@
 
 function myProfile() {
     $('#myDeclarationAction').hide();
+    $('#myNotifsAction').hide();
     $('#userPersonalAreaCard').hide();
     $('#deletedDeclarationAction').hide();
     $('#myProfileAction').load("/User/MyProfile");
@@ -34,6 +35,7 @@ function myProfile() {
 function myAds() {
     $('#myProfileAction').hide();
     $('#userPersonalAreaCard').hide();
+    $('#myNotifsAction').hide();
     $('#deletedDeclarationAction').hide();
     $('#myDeclarationAction').load("/User/GetUserDeclarations");
     $('#myDeclarationAction').show();
@@ -42,7 +44,17 @@ function myAds() {
 function removedByUsersAds() {
     $('#myProfileAction').hide();
     $('#userPersonalAreaCard').hide();
+    $('#myNotifsAction').hide();
     $('#myDeclarationAction').hide();
     $('#deletedDeclarationAction').load("/User/RemovedDeclarations");
     $('#deletedDeclarationAction').show();
+}
+
+function myNotifs() {
+    $('#myProfileAction').hide();
+    $('#userPersonalAreaCard').hide();
+    $('#myDeclarationAction').hide();
+    $('#deletedDeclarationAction').hide();
+    $('#myNotifsAction').load("/User/MyNotifications");
+    $('#myNotifsAction').show();
 }

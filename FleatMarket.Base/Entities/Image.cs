@@ -12,6 +12,6 @@ namespace FleatMarket.Base.Entities
         public string ImageName { get; set; }
 
         public List<User> Users { get; set; }
-        public List<Image> Images { get; set; }
+        public List<Declaration> Declarations { get; set; }
     }
 }

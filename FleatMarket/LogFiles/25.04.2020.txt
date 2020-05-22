@@ -1,0 +1,6 @@
+[25.04.2020 9:06:06] --> Application started. Press Ctrl+C to shut down.
+[25.04.2020 9:06:06] --> Hosting environment: Development
+[25.04.2020 9:06:06] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[25.04.2020 9:07:08] --> Application started. Press Ctrl+C to shut down.
+[25.04.2020 9:07:08] --> Hosting environment: Development
+[25.04.2020 9:07:08] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket

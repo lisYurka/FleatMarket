@@ -149,9 +149,6 @@ namespace FleatMarket.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ImageId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
@@ -159,8 +156,6 @@ namespace FleatMarket.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ImageId");
 
                     b.ToTable("Image");
 
@@ -177,6 +172,29 @@ namespace FleatMarket.Infrastructure.Migrations
                             ImageName = "DefaultUserImage",
                             ImagePath = "/images/default_user_image.jpg"
                         });
+                });
+
+            modelBuilder.Entity("FleatMarket.Base.Entities.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notification");
                 });
 
             modelBuilder.Entity("FleatMarket.Base.Entities.Role", b =>
@@ -212,7 +230,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "22a75bc3-a838-4808-a61b-774f2917e5c3",
+                            ConcurrencyStamp = "849672c0-32ce-417b-83e8-78637f5b893e",
                             Name = "User",
                             NormalizedName = "USER",
                             RoleName = "user"
@@ -220,7 +238,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "3eeef1a2-fae5-4ef2-8e36-2270e1b01700",
+                            ConcurrencyStamp = "6941c43e-ad73-43f9-96a9-511a7e43a3fb",
                             Name = "Admin",
                             NormalizedName = "ADMIN",
                             RoleName = "admin"
@@ -271,6 +289,9 @@ namespace FleatMarket.Infrastructure.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
+
+                    b.Property<int>("NotifCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -436,7 +457,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("FleatMarket.Base.Entities.Image", "Image")
-                        .WithMany()
+                        .WithMany("Declarations")
                         .HasForeignKey("ImageId");
 
                     b.HasOne("FleatMarket.Base.Entities.User", "User")
@@ -444,11 +465,11 @@ namespace FleatMarket.Infrastructure.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("FleatMarket.Base.Entities.Image", b =>
+            modelBuilder.Entity("FleatMarket.Base.Entities.Notification", b =>
                 {
-                    b.HasOne("FleatMarket.Base.Entities.Image", null)
-                        .WithMany("Images")
-                        .HasForeignKey("ImageId");
+                    b.HasOne("FleatMarket.Base.Entities.User", "Users")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("FleatMarket.Base.Entities.User", b =>

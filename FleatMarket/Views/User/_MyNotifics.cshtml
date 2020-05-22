@@ -1,0 +1,25 @@
+﻿@model List<NotificationViewModel>
+
+<div class="row">
+    <input class="btn btn-secondary ml-2" type="button" value="Выделить всё" id="chooseAllNotifsBtn" onclick="chooseAllNotifs()" />
+    <form method="post" id="readNotifForm" asp-action="ReadNotif" asp-controller="User">
+        <input type="text" name="notifId" id="sendNotifIdToAction" hidden/>
+        <input class="btn btn-primary" type="button" value="Прочитать" id="readNotifBtn" onclick="readNotif()" />
+    </form>
+</div>
+@foreach (var item in Model)
+{
+    <div class="card m-0 notifCard" 
+         onmouseout="hideCheckBox('@item.Id')" 
+         onmouseover="showCheckBox('@item.Id')" 
+         id="notifCard_@item.Id">
+        <div class="card-body bg-white p-0 pl-2">
+            <div class="form-check">
+                <input class="form-check-input none showCheck mt-2" type="checkbox" id="checkBox_@item.Id" onchange="toggleCheckBox(this,'@item.Id')"/>
+                <label class="form-check-label text-left h6 mt-2" for="checkBox_@item.Id">@item.Message</label>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/js/user_notifs.js" asp-append-version="true"></script>

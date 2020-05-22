@@ -1,0 +1,104 @@
+[29.04.2020 0:19:42] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 0:19:42] --> Hosting environment: Development
+[29.04.2020 0:19:42] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 0:19:55] --> User 'liskovich06051999@gmail.com' add new declaration with title 'cat'.
+[29.04.2020 0:21:04] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 0:21:04] --> Hosting environment: Development
+[29.04.2020 0:21:04] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 0:21:43] --> User 'liskovich06051999@gmail.com' add new declaration with title 'building'.
+[29.04.2020 0:22:26] --> User 'liskovich06051999@gmail.com' add new declaration with title 'gray cat'.
+[29.04.2020 1:47:27] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 1:47:27] --> Hosting environment: Development
+[29.04.2020 1:47:27] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 1:47:42] --> User 'liskovich06051999@gmail.com' add new declaration with title 'fgrhg'.
+[29.04.2020 1:48:14] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 1:48:14] --> Hosting environment: Development
+[29.04.2020 1:48:14] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 1:48:55] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 1:48:55] --> Hosting environment: Development
+[29.04.2020 1:48:55] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 1:49:56] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 1:49:56] --> Hosting environment: Development
+[29.04.2020 1:49:56] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 1:51:11] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 1:51:11] --> Hosting environment: Development
+[29.04.2020 1:51:11] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 1:51:45] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 1:51:45] --> Hosting environment: Development
+[29.04.2020 1:51:45] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 1:52:18] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 1:52:18] --> Hosting environment: Development
+[29.04.2020 1:52:18] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 1:57:39] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 1:57:39] --> Hosting environment: Development
+[29.04.2020 1:57:39] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 1:57:50] --> User 'liskovich06051999@gmail.com' add new declaration with title 'cat'.
+[29.04.2020 1:58:11] --> User 'liskovich06051999@gmail.com' add new declaration with title 'rweg'.
+[29.04.2020 1:58:33] --> User 'liskovich06051999@gmail.com' add new declaration with title 'ulica'.
+[29.04.2020 8:35:23] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 8:35:23] --> Hosting environment: Development
+[29.04.2020 8:35:23] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 8:35:26] --> User 'liskovich06051999@gmail.com' logged out.
+[29.04.2020 8:35:35] --> User 'admin@mail.ru' logged in.
+[29.04.2020 11:11:24] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 11:11:24] --> Hosting environment: Development
+[29.04.2020 11:11:24] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 11:12:03] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 11:12:03] --> Hosting environment: Development
+[29.04.2020 11:12:03] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 11:13:10] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 11:13:10] --> Hosting environment: Development
+[29.04.2020 11:13:10] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 11:14:20] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 11:14:20] --> Hosting environment: Development
+[29.04.2020 11:14:20] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 11:14:58] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 11:14:58] --> Hosting environment: Development
+[29.04.2020 11:14:58] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 11:16:26] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 11:16:26] --> Hosting environment: Development
+[29.04.2020 11:16:26] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 12:30:03] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 12:30:03] --> Hosting environment: Development
+[29.04.2020 12:30:03] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 12:31:39] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 12:31:39] --> Hosting environment: Development
+[29.04.2020 12:31:39] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 12:32:27] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 12:32:27] --> Hosting environment: Development
+[29.04.2020 12:32:27] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:23:31] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:23:31] --> Hosting environment: Development
+[29.04.2020 14:23:31] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:23:55] --> User 'admin@mail.ru' add new declaration with title 'book'.
+[29.04.2020 14:24:15] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:24:15] --> Hosting environment: Development
+[29.04.2020 14:24:15] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:24:38] --> User 'admin@mail.ru' add new declaration with title 'elon'.
+[29.04.2020 14:26:03] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:26:03] --> Hosting environment: Development
+[29.04.2020 14:26:03] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:26:28] --> User 'admin@mail.ru' add new declaration with title 'cant hurt me'.
+[29.04.2020 14:26:59] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:26:59] --> Hosting environment: Development
+[29.04.2020 14:26:59] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:28:11] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:28:11] --> Hosting environment: Development
+[29.04.2020 14:28:11] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:28:28] --> User 'admin@mail.ru' add new declaration with title 'gvb g'.
+[29.04.2020 14:37:03] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:37:03] --> Hosting environment: Development
+[29.04.2020 14:37:03] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:39:03] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:39:03] --> Hosting environment: Development
+[29.04.2020 14:39:03] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:40:00] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:40:00] --> Hosting environment: Development
+[29.04.2020 14:40:00] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:42:38] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:42:38] --> Hosting environment: Development
+[29.04.2020 14:42:38] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:44:23] --> Application started. Press Ctrl+C to shut down.
+[29.04.2020 14:44:23] --> Hosting environment: Development
+[29.04.2020 14:44:23] --> Content root path: C:\Users\CatYura\source\repos\FleatMarket\FleatMarket
+[29.04.2020 14:44:40] --> User 'admin@mail.ru' add new declaration with title 'zip file'.

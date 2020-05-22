@@ -16,7 +16,8 @@ namespace FleatMarket.Base.Interfaces
         string GetUserRole(string id);
         bool IsInRole(string userId, string roleName);
         User GetUserByEmail(string email);
-
+        List<Notification> GetUserNotifs(string mail);
+        int GetUserNonReadNotifsCount(string mail);
 
         Task CreateUserAsync(User user);
     }

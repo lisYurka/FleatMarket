@@ -1,4 +1,5 @@
 ﻿@model PersonalAreaViewModel
+
 <div class="container col col-sm-3 float-left">
     <div class="card border-0 align-items-center navbar-collapse 
          collapse d-md-inline-flex border-bottom border-top rounded" 
@@ -6,28 +7,40 @@
         <div class="card-body p-0">
             <div class="form-group mb-0">
                 <button type="button" id="myProfile"
-                        class="form-control d-flex justify-content-center border-0 mb-2 mt-2"
+                        class="form-control d-flex justify-content-center border-0 mt-2"
                         onclick="myProfile()" style="background-color:#edeef0;"
                         onmouseout="outOfElementInChoose('myProfile')"
                         onmouseover="overElementInChoose('myProfile')">
                     <div class="col-1"><i class="fa fa-address-card-o pt-1" aria-hidden="true"></i></div>
                     <div class="col-11 d-flex justify-content-start">Мой профиль</div>
                 </button>
-                <hr class="p-0 m-0"/>
+                <hr class="p-0 m-0" />
                 <button type="button" id="myDeclarations"
-                        class="form-control d-flex justify-content-center border-0 mb-2"
+                        class="form-control d-flex justify-content-center border-0"
                         onclick="myAds()" style="background-color:#edeef0;"
                         onmouseout="outOfElementInChoose('myDeclarations')"
                         onmouseover="overElementInChoose('myDeclarations')">
                     <div class="col-1"><i class="fa fa-newspaper-o pt-1" aria-hidden="true"></i></div>
                     <div class="col-11 d-flex justify-content-start">Мои объявления</div>
                 </button>
+                <hr class="p-0 m-0" />
+                <button type="button" id="myPushs"
+                        class="form-control d-flex justify-content-center border-0"
+                        onclick="myNotifs()" style="background-color:#edeef0;"
+                        onmouseout="outOfElementInChoose('myPushs')"
+                        onmouseover="overElementInChoose('myPushs')">
+                    <div class="col-1"><i class="fa fa-envelope-o pt-1" aria-hidden="true"></i></div>
+                    <div class="col-10 d-flex justify-content-start">Мои уведомления</div>
+                    <div class="col-1 d-flex justify-content-center border border-warning rounded" style="background-color:#e6c556;">
+                        <div class="text-center text-secondary">@Model.NonReadNotifs</div>
+                    </div>
+                </button>
                 @if (User.IsInRole("Admin"))
                 {
-                    <hr class="p-0 m-0"/>
+                    <hr class="p-0 m-0" />
                     <button type="button" id="deletedDeclarations"
                             style="background-color:#edeef0;"
-                            class="form-control d-flex justify-content-center border-0 mb-2"
+                            class="form-control d-flex justify-content-center border-0"
                             onclick="removedByUsersAds()"
                             onmouseout="outOfElementInChoose('deletedDeclarations')"
                             onmouseover="overElementInChoose('deletedDeclarations')">
@@ -88,7 +101,9 @@
 
     <div id="myProfileAction"></div>
     <div id="myDeclarationAction"></div>
+    <div id="myNotifsAction"></div>
     <div id="deletedDeclarationAction"></div>
+
 </div>
 
 <div id="DeclarationDeleteDialog" class="modal fade" tabindex="-1">

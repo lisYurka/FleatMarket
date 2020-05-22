@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FleatMarket.Base.Entities;
@@ -16,10 +17,11 @@ namespace FleatMarket.Web.Controllers
         private readonly IUserService userService;
         private readonly IDeclarationService declarationService;
         private readonly IImageService imageService;
+        private readonly INotificationService notificationService;
         private readonly UserManager<User> userManager;
         private readonly ILogger<UserController> logger;
 
-        public UserController(IUserService _userService, IDeclarationService _declarationService,
+        public UserController(IUserService _userService, IDeclarationService _declarationService, INotificationService _notificationService,
             IImageService _imageService, ILogger<UserController> _logger, UserManager<User> _userManager)
         {
             userService = _userService;
@@ -27,6 +29,7 @@ namespace FleatMarket.Web.Controllers
             imageService = _imageService;
             logger = _logger;
             userManager = _userManager;
+            notificationService = _notificationService;
         }
 
         [Authorize]
@@ -35,6 +38,7 @@ namespace FleatMarket.Web.Controllers
             var userDeclarations = declarationService.GetAllDeclarations().Where(d => d.User.Email == User.Identity.Name);
             var currentUser = userService.GetUserByEmail(User.Identity.Name);
             var soldDeclarats = userDeclarations.Count(d => d.DeclarationStatusId == 2);
+            var nonReadNotifs = userService.GetUserNonReadNotifsCount(currentUser.Email);
             PersonalAreaViewModel model = new PersonalAreaViewModel
             {
                 ImagePath = currentUser.Image.ImagePath,
@@ -42,7 +46,8 @@ namespace FleatMarket.Web.Controllers
                 UserName = currentUser.Name,
                 SoldDeclarationsCount = soldDeclarats,
                 LastDateOfEdit = currentUser.LastEditDate,
-                RegistrationDate = currentUser.RegistrationDate
+                RegistrationDate = currentUser.RegistrationDate,
+                NonReadNotifs = nonReadNotifs
             };
             return View(model);
         }
@@ -148,6 +153,34 @@ namespace FleatMarket.Web.Controllers
             else
                 ViewBag.Nthng = "";
             return PartialView("_RemovedDeclars", viewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult MyNotifications()
+        {
+            List<NotificationViewModel> models = new List<NotificationViewModel>();
+            userService.GetUserNotifs(User.Identity.Name).ForEach(n => {
+                NotificationViewModel viewModel = new NotificationViewModel
+                {
+                    Id = n.Id,
+                    Message = n.Message
+                };
+                models.Add(viewModel);
+            });
+            return PartialView("_MyNotifics", models);
+        }
+
+        [HttpPost]
+        public void ReadNotif(int notifId)
+        {
+            int first = Convert.ToInt32(notifId);
+            var notifs = userService.GetUserNotifs(User.Identity.Name).Where(i => i.Id == first);
+            foreach(var item in notifs)
+            {
+                item.IsRead = true;
+                notificationService.UpdateNotification(item);
+            }
         }
 
         [HttpPost]

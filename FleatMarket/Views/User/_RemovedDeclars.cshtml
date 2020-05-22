@@ -1,5 +1,6 @@
 ﻿@model List<OneDeclarationViewModel>
-    <div id="hiddenText" class="text-center font-weight-normal h3 mt-3">@ViewBag.Nthng</div>
+
+<div id="hiddenText" class="text-center font-weight-normal h3 mt-3">@ViewBag.Nthng</div>
 @foreach (var item in Model)
 {
     @Html.Partial("/Views/Declaration/_OneDeclaration.cshtml", item)

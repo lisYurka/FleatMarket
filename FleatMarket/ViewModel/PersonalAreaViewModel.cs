@@ -8,5 +8,7 @@
         public int SoldDeclarationsCount { get; set; }
         public string RegistrationDate { get; set; }
         public string LastDateOfEdit { get; set; }
+
+        public int NonReadNotifs { get; set; }
     }
 }
