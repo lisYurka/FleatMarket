@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FleatMarket.Infrastructure.Migrations
 {
-    public partial class @in : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,18 +55,11 @@ namespace FleatMarket.Infrastructure.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ImagePath = table.Column<string>(nullable: true),
-                    ImageName = table.Column<string>(nullable: true),
-                    ImageId = table.Column<int>(nullable: true)
+                    ImageName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Image", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Image_Image_ImageId",
-                        column: x => x.ImageId,
-                        principalTable: "Image",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -114,6 +107,7 @@ namespace FleatMarket.Infrastructure.Migrations
                     IsActive = table.Column<bool>(nullable: false),
                     LastEditDate = table.Column<string>(nullable: true),
                     RegistrationDate = table.Column<string>(nullable: true),
+                    NotifCount = table.Column<int>(nullable: false),
                     RoleId = table.Column<string>(nullable: true),
                     ImageId = table.Column<int>(nullable: true)
                 },
@@ -263,13 +257,34 @@ namespace FleatMarket.Infrastructure.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Notification",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Message = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
+                    IsRead = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notification", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notification_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName", "RoleName" },
                 values: new object[,]
                 {
-                    { "1", "7d9b0f28-46c3-4101-a7b0-5f64605b7296", "User", "USER", "user" },
-                    { "2", "c78aa021-7876-44ab-949a-16e60b3d4364", "Admin", "ADMIN", "admin" }
+                    { "1", "a2a81f8c-7afc-4a01-b6af-493c161926cd", "User", "USER", "user" },
+                    { "2", "a76fa739-c187-46c9-b530-d883df56b58a", "Admin", "ADMIN", "admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -297,11 +312,11 @@ namespace FleatMarket.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Image",
-                columns: new[] { "Id", "ImageId", "ImageName", "ImagePath" },
+                columns: new[] { "Id", "ImageName", "ImagePath" },
                 values: new object[,]
                 {
-                    { 1, null, "DefaultDeclarationImage", "/images/default_decl_image.jpg" },
-                    { 2, null, "DefaultUserImage", "/images/default_user_image.jpg" }
+                    { 1, "DefaultDeclarationImage", "/images/default_decl_image.jpg" },
+                    { 2, "DefaultUserImage", "/images/default_user_image.jpg" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -374,9 +389,9 @@ namespace FleatMarket.Infrastructure.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Image_ImageId",
-                table: "Image",
-                column: "ImageId");
+                name: "IX_Notification_UserId",
+                table: "Notification",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -398,6 +413,9 @@ namespace FleatMarket.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Declarations");
+
+            migrationBuilder.DropTable(
+                name: "Notification");
 
             migrationBuilder.DropTable(
                 name: "Categories");

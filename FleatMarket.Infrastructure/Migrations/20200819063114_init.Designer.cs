@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FleatMarket.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200521170610_initc")]
-    partial class initc
+    [Migration("20200819063114_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -151,9 +151,6 @@ namespace FleatMarket.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ImageId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
@@ -161,8 +158,6 @@ namespace FleatMarket.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ImageId");
 
                     b.ToTable("Image");
 
@@ -237,7 +232,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "efa23a53-f341-45bd-915c-5c6ac88609ba",
+                            ConcurrencyStamp = "a2a81f8c-7afc-4a01-b6af-493c161926cd",
                             Name = "User",
                             NormalizedName = "USER",
                             RoleName = "user"
@@ -245,7 +240,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "3d5b5d3c-7ada-41e0-bbb7-faff8787329a",
+                            ConcurrencyStamp = "a76fa739-c187-46c9-b530-d883df56b58a",
                             Name = "Admin",
                             NormalizedName = "ADMIN",
                             RoleName = "admin"
@@ -464,19 +459,12 @@ namespace FleatMarket.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("FleatMarket.Base.Entities.Image", "Image")
-                        .WithMany()
+                        .WithMany("Declarations")
                         .HasForeignKey("ImageId");
 
                     b.HasOne("FleatMarket.Base.Entities.User", "User")
                         .WithMany("Declarations")
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("FleatMarket.Base.Entities.Image", b =>
-                {
-                    b.HasOne("FleatMarket.Base.Entities.Image", null)
-                        .WithMany("Declarations")
-                        .HasForeignKey("ImageId");
                 });
 
             modelBuilder.Entity("FleatMarket.Base.Entities.Notification", b =>

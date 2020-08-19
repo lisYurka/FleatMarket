@@ -230,7 +230,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "849672c0-32ce-417b-83e8-78637f5b893e",
+                            ConcurrencyStamp = "a2a81f8c-7afc-4a01-b6af-493c161926cd",
                             Name = "User",
                             NormalizedName = "USER",
                             RoleName = "user"
@@ -238,7 +238,7 @@ namespace FleatMarket.Infrastructure.Migrations
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "6941c43e-ad73-43f9-96a9-511a7e43a3fb",
+                            ConcurrencyStamp = "a76fa739-c187-46c9-b530-d883df56b58a",
                             Name = "Admin",
                             NormalizedName = "ADMIN",
                             RoleName = "admin"

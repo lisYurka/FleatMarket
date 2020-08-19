@@ -1,0 +1,6 @@
+[19/08/2020 09:13:24] --> Application started. Press Ctrl+C to shut down.
+[19/08/2020 09:13:24] --> Hosting environment: Development
+[19/08/2020 09:13:24] --> Content root path: C:\Users\User\Documents\GitHub\FleatMarket\FleatMarket
+[19/08/2020 09:13:26] --> Failed executing DbCommand (244ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+CREATE DATABASE [FleatMarketDb];
+[19/08/2020 09:13:26] --> An unhandled exception has occurred while executing the request.
